@@ -1,0 +1,66 @@
+Una forma de plantear las clases que se me ocurre ahora es la siguiente
+
+class Elemento
+	int velocidad;
+	direccion (no se como lo podriamos indicar, con un Enum? capaz que va bien)
+	int posicionX;
+	int posicionY;
+
+	como metodos va a tener el de Moverse, DibujarseEnPantalla?, Destruirse?
+
+después vamos a tener que la clase Municion y Bomba, extienden Elemento, redefiniendo los métodos acorde a su implementación
+
+Podríamos tener una clase Armamento que extienda Elemento, y luego Municion y Bomba extienden Armamento (para tenerlo más refinado el asunto)
+
+Por otro lado vamos a tener el Radar, que no sé si extenderá Elemento, porque yo creo que los Elemento son elementos del juego que se mueven; el radar no se mueve, pero tiene una dirección igualmente (ahí nos vendría bien el Enum).
+El Radar va a tener ángulo de apertura y alcance (el alcance depende del ángulo). Como métodos tendrá detectarElemento y no sé qué más.
+El detectarElemento puede servir para que cuando se detecta algo, envíe un mje al robot/satélite que tenga ese Radar y haga algo (supongo que servirá para los bots)
+
+
+
+La clase Robot va a implementar la interfaz DisparaMunicion y DisparaBomba; también la de TieneEscudo.
+El Robot es un Elemento que TIENE UN Radar. También incorpora el atributo de energía y la capacidad de cargar/dejar personas.
+
+El Satélite vendría a ser un Robot que no se mueve, y que implementa las interfaces DisparaMunicion, DisparaBomba y TieneEscudo.
+
+
+El Refugio podría ser un Elemento que no se mueve, aunque mucho no me gusta. No se mueve y no tendrá dirección
+
+
+El tema del daño que pueden hacer/recibir los Robot y Satélite, creo yo que lo tendríamos que hacer interfaces (Danio? InfligenDanio/RecibenDanio??) porque son los únicos elementos del juego que pueden hacer/recibir daño. 
+
+De la clase Persona a rescatar no se dice nada, aunque estaría bueno que extiendan Elemento (solamente se pueden mover si los lleva un Robot) y que implementen la interfaz RecibeDaño (así se pueden morir también). Aunque si recibe daño tendríamos que ponerle la interfaz TieneEscudo o algo similar para representarle los puntos de HP.
+
+
+
+Hasta acá venimos. Ahora la clase Equipo:
+
+class Equipo
+	Robot robot;
+	Refugio refugio;
+	Satelite sat1, sat2;
+
+	y hasta ahí
+
+
+los equipos Bots, implementarán de acuerdo a su comportamiento sus métodos (la forma que actúan, cómo posicionan el refugio y los satélites), o usarán los mismos métodos pero de distinta forma??
+	Osea lo que quiero decir es, vamos a tener la clase EquipoQuejoDido que extiende Equipo, o va a ser 
+		Equipo quejoDido;
+		que usará los métodos de la clase Equipo de acuerdo a su comportamiento???
+
+
+
+
+Por último tenemos el Escenario. El Escenario va a tener a los equipos soldadoRyan, quejoDido, rencoroso y el del jugador.
+El Escenario también tiene los Bonus que aparecen aleatoriamente.
+
+Los de los Bonus, que si alguno le dispara y le pega, el Bonus se lo lleva ese Robot, me parece RE CHOTO OSEAENQUÉJUEGOSEVIOESOMAURICIOREPT
+El otro tema también es lo de si un Robot le afana una persona del refugio de otro equipo, el Robot que afanó se lleva una penalización OSEAWOOOOTS si le re zarpó la persona osea tuvo que pasar por donde estaban los Satélites y todo, y le hacés una penalización??? MAURICIIOOIIOIOIO.
+
+
+
+Bueno, un muuy humilde esquema de las clases.
+
+
+
+
