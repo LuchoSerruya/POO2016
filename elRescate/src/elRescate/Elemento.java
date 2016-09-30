@@ -35,7 +35,6 @@ public abstract class Elemento {
 		return true;
 	}
 	
-	
 	public Elemento(int ancho, int alto, int x, int y){
 		tam = new Tamanio(ancho, alto);
 		pos = new Posicion(x, y);
