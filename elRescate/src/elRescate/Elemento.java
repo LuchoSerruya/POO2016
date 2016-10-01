@@ -6,7 +6,7 @@ public abstract class Elemento {
 	
 	
 	
-	/* hace falta setPos??
+	/* hace falta setPos?? pablo: creo que hace falta!
 	 * cómo sería el tema para moverse???
 	 */
 	
@@ -18,7 +18,9 @@ public abstract class Elemento {
 		return pos;
 	}	
 	
-	
+	public void setPos(Posicion posicion){
+		this.pos = posicion;
+	}
 	public void jugar(){
 		
 	}
