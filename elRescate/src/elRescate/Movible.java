@@ -6,7 +6,7 @@ public class Movible extends Elemento {
 	//TODO revisar si esto es un int o un double
 	private double velocidad;
 	
-	private static double VELOCIDAD_DEFECTO = 10;
+	private static final double VELOCIDAD_DEFECTO = 10;
 	
 	
 	/**
@@ -42,6 +42,8 @@ public class Movible extends Elemento {
 		//modifico la posicion
 		posicionMovible.setX(posicionMovible.getX() + 1);
 		posicionMovible.setY(posicionMovible.getY() + 1);
+
+		//TODO Luciano: ojo con esto, de esta forma se estaría moviendo en diagonal
 		
 		//le doy la posicion que manipule
 		this.setPos(posicionMovible); 		

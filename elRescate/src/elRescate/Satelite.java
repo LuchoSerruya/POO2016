@@ -6,7 +6,7 @@ public class Satelite extends Elemento {
 	private int nivelEscudo;
 	private int cantidadMuniciones;
 	
-	private final static int ESCUDO_INICIAL = 50; 
+	private static fina int ESCUDO_INICIAL = 50; 
 	
 	public Satelite(Tamanio tamanio, Posicion posicion){
 		super(tamanio, posicion);
@@ -30,6 +30,5 @@ public class Satelite extends Elemento {
 		this.cantidadMuniciones = cantMuniciones;
 	}
 
-	//TODO implementarMUNICION!!!!!
 	
 }

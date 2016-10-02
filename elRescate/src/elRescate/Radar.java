@@ -4,8 +4,8 @@ public class Radar extends Elemento {
 	private double anguloApertura;
 	private double alcance;
 	
-	private static int ANCHO_RADAR = 3;
-	private static int ALTO_RADAR = 3;
+	private static final int ANCHO_RADAR = 3;
+	private static final int ALTO_RADAR = 3;
 	//listeners??
 	
 	//escanear??
