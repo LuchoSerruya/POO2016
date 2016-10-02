@@ -6,7 +6,7 @@ public class Satelite extends Elemento {
 	private int nivelEscudo;
 	private int cantidadMuniciones;
 	
-	private static fina int ESCUDO_INICIAL = 50; 
+	private static final int ESCUDO_INICIAL = 50; 
 	
 	public Satelite(Tamanio tamanio, Posicion posicion){
 		super(tamanio, posicion);
