@@ -7,7 +7,6 @@ public class Refugio extends Elemento {
 	
 	/*TODO determinar que coleccion vamos a usar 
 	 * para almacenar las personas (Pablo sugiere arrayList)
-	 * ionosemira
 	 * */
 
 	//TODO Luciano: Bogliacino dijo que vamos a usar un arrayList; 
