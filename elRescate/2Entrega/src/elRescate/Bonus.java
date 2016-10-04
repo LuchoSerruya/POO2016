@@ -29,7 +29,7 @@ public abstract class Bonus extends Elemento{
 	public abstract void darBonus();
 	
 	/**
-	 * Crea un bonus es una posicion determinada
+	 * Crea un bonus es una posicion determinadas
 	 * @param pos Posicion del bonus
 	 */
 	public Bonus(Posicion pos){
