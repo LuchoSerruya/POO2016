@@ -25,8 +25,8 @@ public class BonusEscudo extends Bonus{
 		//y se lo asigne a su escudo/escudo
 	}
 	
-	public BonusEscudo(Tamanio tam, Posicion pos){
-		super(tam, pos);
+	public BonusEscudo(Posicion pos){
+		super(pos);
 		this.setEscudo(VALOR_BONUS);		
 		
 	}
