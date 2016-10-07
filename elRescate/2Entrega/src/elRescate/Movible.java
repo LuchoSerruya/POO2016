@@ -1,17 +1,20 @@
 package elRescate;
+import java.lang.Math;
 
-public class Movible extends Elemento {	
+public class Movible extends Elemento {
+	
 	private double direccion;
 	
-	//TODO revisar si esto es un int o un double
+	//velocidad a la que se mueve
 	private double velocidad;
 	
+	//Velocidad por defecto
 	private static final double VELOCIDAD_DEFECTO = 10;
 	
 	
 	/**
-	 * 
-	 * @param tamanio objeto tamanio para crear el elemento
+	 * Constructor que recibe los dos objetos
+	 * @param tamanio Objeto Tamaño para crear el elemento
 	 * @param posicion objeto que contiene la posicion en donde crear el movible
 	 */
 	public Movible(Tamanio tamanio, Posicion posicion){
@@ -20,7 +23,8 @@ public class Movible extends Elemento {
 		this.velocidad = 0;
 	}
 	
-	/**.
+	/**
+	 * Constructor con los parametros sueltos
 	 * @param ancho ancho del Movible
 	 * @param alto	alto del movible
 	 * @param x		coordenada x 
@@ -31,40 +35,62 @@ public class Movible extends Elemento {
 	}
 	
 	/**
-	 * Por ahora esta como x++ y++
-	 * TODO reveer Movible.avanzar!
-	 * TODO fijarse la relacion entre esto y la velocidad con la direccion
+	 * Realiza el movimiento del Movible
 	 */
 	public void avanzar(){
 		//consigo la posicion actual
 		Posicion posicionMovible = this.getPos();
 		
-		//modifico la posicion
-		posicionMovible.setX(posicionMovible.getX() + 1);
-		posicionMovible.setY(posicionMovible.getY() + 1);
+		//modifico la posicion utilizando los deltas
+		posicionMovible.setX((int)(posicionMovible.getX() +  this.deltaY()));
+		posicionMovible.setY((int)(posicionMovible.getY() + this.deltaX()));
 
-		//TODO Luciano: ojo con esto, de esta forma se estaría moviendo en diagonal
-		
 		//le doy la posicion que manipule
 		this.setPos(posicionMovible); 		
 	}
 	
+	//coseguimos el delta X para la velocidad
+	private double deltaX() {
+		return this.velocidad * Math.cos(this.direccion);
+	}
+
+	//Conseguimos el delta Y para la velocidad
+	private double deltaY() {
+		return this.velocidad * Math.sin(this.direccion);
+	}
+	
+	/**
+	 * Devulve la velocidad
+	 * @return Velocidad del movible
+	 */
 	public double getVelocidad(){
 		return this.velocidad;
 	}
 	
+	/**
+	 * Devuelve la dirección del movible
+	 * @return Dirección del Movible
+	 */
 	public double getDireccion(){
 		return this.direccion;
 	}
 	
+	/**
+	 * Setea la velocidad
+	 * @param velocidad Velocidad a darle al Movible
+	 */
 	public void setVelocidad(double velocidad){
 		this.velocidad = 0;
-		
+
 		if(velocidad > 0){
 			this.velocidad = velocidad;
 		}
 	}
 	
+	/**
+	 * Setea la dirección del Movible
+	 * @param direccion Dirección a darle al movible
+	 */
 	public void setDireccion(double direccion){
 		this.direccion = 0;
 		

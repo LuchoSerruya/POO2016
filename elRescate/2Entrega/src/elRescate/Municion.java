@@ -2,10 +2,8 @@ package elRescate;
 
 public class Municion extends Movible {
 	private int danio;
-	
-	//WATISDIS? |
-	//			V
-	//private Robot robot
+				
+	private Robot robot;
 	
 	//tamaño de la municion
 	private static final int ANCHO_MUNICION = 3;
@@ -17,10 +15,19 @@ public class Municion extends Movible {
 	//danio de la municion
 	private static final int DANIO_MUNICION = 10;
 	
-	public Municion(Posicion posicion){
+	/**
+	 * Crea la munición en la posicip
+	 * @param posicion
+	 */
+	public Municion(Posicion posicion, Robot duenio){
 		super(new Tamanio(ANCHO_MUNICION,ALTO_MUNICION), posicion);
 		this.setDanio(DANIO_MUNICION);
 		this.setVelocidad(VELOCIDAD_MUNICION);
+		this.robot = duenio;
+		//le damos la dirección del que la lanzó
+		this.setDireccion(duenio.getDireccion());
+		//TODO desculare el tema de la dirección y de crearla y pixel mas alla en la direccióon
+		
 	}
 	
 	public void setDanio(int danio){

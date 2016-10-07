@@ -109,7 +109,7 @@ public class Robot extends Movible {
 		 * 
 		 * Para finalmente hacer
 		 * */
-		return new Municion(p);
+		return new Municion(p,this);
 		
 	}
 	/**

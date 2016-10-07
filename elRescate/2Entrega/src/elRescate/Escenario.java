@@ -4,21 +4,16 @@ import java.util.ArrayList;
 
 /**
  * 
- * Administradora del juego
- * @author pablo
- *
+ * Clase administradora del juego
  */
 
 public class Escenario{
-
-	/*
-	 * Esto tendria que tener una coleccion y que jueguen todos
-	 * 
-	 * */
-	
+	//lista de elementos
 	private ArrayList<Elemento> elementos;
 	
-	
+	/**
+	 * Inicia el juego
+	 */
 	public void iniciarJuego(){
 		//crearElementos();
 		
@@ -32,6 +27,9 @@ public class Escenario{
 		}
 	}
 	
+	/**
+	 * Se fija si hay elementos para quitar del escenario y los quita
+	 */
 	private void depurarElementos() {
 		for(int i = 0;i < this.elementos.size(); i++){
 			Elemento elemento = elementos.get(i);
@@ -45,6 +43,9 @@ public class Escenario{
 		
 	}
 
+	/**
+	 * Verifica las coliciónes entre elementos de juego
+	 */
 	private void verificarChoques() {
 		for(int i = 0; i < elementos.size(); i++){
 			Elemento e1= elementos.get(i);
@@ -59,6 +60,9 @@ public class Escenario{
 
 	//TODO CLASE RECTAnnnnNNNNNNNnnNNnnNnGLEEEEEE
 	
+	/**
+	 * Otorga un turno de juego a cada elemento del escenario
+	 */
 	public void turnos(){
 		for(int i = 0;i < this.elementos.size(); i++){
 			Elemento elemento = elementos.get(i);
@@ -66,6 +70,9 @@ public class Escenario{
 		}
 	}
 	
+	/**
+	 * Crea los elementos del juego
+	 */
 	private void crearElementos(){
 		this.elementos = new ArrayList<Elemento>();
 	}

@@ -1,16 +1,16 @@
 package elRescate;
 /**
  * Bonus que otorga más escudo a aquel que lo recibe
- * @author pablo
  *
  */
 public class BonusEnergia extends Bonus{
+	
+	//valor de energia que otorga
 	public static final int VALOR_BONUS = 10;
 	
 	
 	private int energia;
 	/**
-	 * 
 	 * @return energía que otorga el bonus
 	 */
 	public int getEnergia() {
@@ -37,11 +37,12 @@ public class BonusEnergia extends Bonus{
 		//tambien podriamos tener en esta clase el metodo getBonus
 		//y que el que gane el bonus llame a ese metodo
 		//y se lo asigne a su energia/escudo
+		//TODO implementación del bonus
 	}
 	
 	/**
-	 * 
-	 * @param pos
+	 * creamos el bonus en una posición del escenario
+	 * @param pos posicion en la que creamos el bonus
 	 */
 	public BonusEnergia(Posicion pos){
 		super(pos);

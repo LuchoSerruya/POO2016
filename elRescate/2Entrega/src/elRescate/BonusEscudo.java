@@ -23,8 +23,13 @@ public class BonusEscudo extends Bonus{
 		//tambien podriamos tener en esta clase el metodo getBonus
 		//y que el que gane el bonus llame a ese metodo
 		//y se lo asigne a su escudo/escudo
+		//TODO implementación bonus escudo
 	}
 	
+	/**
+	 * Creamos un bonus de escudo en una posicion pasada
+	 * @param pos Posicion a donde crear el bonus
+	 */
 	public BonusEscudo(Posicion pos){
 		super(pos);
 		this.setEscudo(VALOR_BONUS);		

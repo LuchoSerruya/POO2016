@@ -5,13 +5,15 @@ package elRescate;
  *
  */
 public abstract class Bonus extends Elemento{
-	
+	//Tamanio del bonus - predeterminado
 	protected static final int ANCHO_BONUS = 3;
 	protected static final int ALTO_BONUS = 3;
 	
+	//tiempo de vida del bonus
 	private int tiempoVida;
+	
+	
 	/**
-	 * 
 	 * @return Tiempo de vida del Bonus
 	 */
 	public int getTiempoVida() {
