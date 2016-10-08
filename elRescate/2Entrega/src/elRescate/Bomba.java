@@ -39,9 +39,17 @@ public class Bomba extends Movible {
 	 */
 	@Override
 	public void avanzar() {
+		//conseguimos la posicion de la bomba
+		Posicion posicionBomba = this.getPos();
 		
-		//TODO Implementar el avance con disminucion de velocidad de la bomba
-		
+		//modifico la posicion utilizando los deltas
+		posicionBomba.setX((int)(posicionBomba.getX() +  this.deltaY()));
+		posicionBomba.setY((int)(posicionBomba.getY() + this.deltaX()));
+
+		//le doy la posicion que manipule
+		this.setPos(posicionBomba);
+		this.setVelocidad(this.getVelocidad() - 1);
+		//TODO qué hacer cuando la bomba explta¡????
 	}
 	
 	

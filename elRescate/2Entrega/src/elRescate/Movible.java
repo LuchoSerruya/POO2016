@@ -50,12 +50,12 @@ public class Movible extends Elemento {
 	}
 	
 	//coseguimos el delta X para la velocidad
-	private double deltaX() {
+	protected double deltaX() {
 		return this.velocidad * Math.cos(this.direccion);
 	}
 
 	//Conseguimos el delta Y para la velocidad
-	private double deltaY() {
+	protected double deltaY() {
 		return this.velocidad * Math.sin(this.direccion);
 	}
 	

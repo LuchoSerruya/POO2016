@@ -26,7 +26,8 @@ public class Municion extends Movible {
 		this.robot = duenio;
 		//le damos la dirección del que la lanzó
 		this.setDireccion(duenio.getDireccion());
-		//TODO desculare el tema de la dirección y de crearla y pixel mas alla en la direccióon
+		//TODO desculare el tema de la dirección y de crearla pixel mas alla en la dirección
+
 		
 	}
 	
