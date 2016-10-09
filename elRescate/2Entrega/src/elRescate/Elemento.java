@@ -10,6 +10,8 @@ public abstract class Elemento {
 	//Posicion del mismo en el escenario
 	private Posicion pos;
 	
+	private boolean existe;
+	
 	/**
 	 * @return Tamaño del elemento
 	 */
@@ -32,32 +34,36 @@ public abstract class Elemento {
 	}
 	
 	/**
+	 * Le otorga un nuevo tamaño al elemento
+	 * @param tamanio Nuevo tamaño del elemento
+	 */
+	public void setTam(Tamanio tamanio){
+		this.tam = tamanio;
+	}
+	
+	/**
 	 * Turno del elemento en el juego
 	 */
-	public void jugar(){
-		
-	}
+	public abstract void jugar();
 	
 	/**
 	 * Destruir el elemento
 	 */
 	public void destruir(){
-		
+		this.existe = false;
 	}
 	
 	/**
 	 * Qué ejecutar cuando el elemento choca con otro
 	 * @param elem Elemento con quién choca
 	 */
-	public void chocarElemento(Elemento elem){
-		
-	}
+	public abstract void chocarElemento(Elemento elem);
 	
 	/**
 	 * @return true si el elemento está vivo, false si no
 	 */
 	public boolean estaVivo(){
-		return true;
+		return this.existe;
 	}
 	
 	/**
@@ -70,6 +76,7 @@ public abstract class Elemento {
 	public Elemento(int ancho, int alto, int x, int y){
 		tam = new Tamanio(ancho, alto);
 		pos = new Posicion(x, y);
+		this.existe = true;
 	}
 	
 	/**

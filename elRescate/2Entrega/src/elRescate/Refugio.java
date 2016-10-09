@@ -1,10 +1,13 @@
 package elRescate;
 
+import java.util.ArrayList;
+
 public class Refugio extends Elemento {
 
 	private static final int ANCHO_REFUGIO = 10;
 	private static final int ALTO_REFUGIO = 10;
-	
+	//TODO queda una pila
+	ArrayList<Persona> listaPersonas;
 	/*TODO determinar que coleccion vamos a usar 
 	 * para almacenar las personas (Pablo sugiere arrayList)
 	 * */
@@ -18,7 +21,8 @@ public class Refugio extends Elemento {
 	 */
 	public Refugio(Posicion posicion){
 		super(new Tamanio(ANCHO_REFUGIO, ALTO_REFUGIO), posicion);
-		//inicializar coleccion de personas
+		
+		//lista de personas
 	}
 	
 	/**

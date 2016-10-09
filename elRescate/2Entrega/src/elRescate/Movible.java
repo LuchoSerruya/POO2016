@@ -1,7 +1,7 @@
 package elRescate;
 import java.lang.Math;
 
-public class Movible extends Elemento {
+public abstract class Movible extends Elemento {
 	
 	private double direccion;
 	
@@ -21,6 +21,8 @@ public class Movible extends Elemento {
 		super(tamanio, posicion);
 		this.direccion = 0;
 		this.velocidad = 0;
+		
+		this.setVelocidad(VELOCIDAD_DEFECTO);
 	}
 	
 	/**

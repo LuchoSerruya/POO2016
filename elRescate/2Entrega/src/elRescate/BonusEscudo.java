@@ -24,6 +24,11 @@ public class BonusEscudo extends Bonus{
 		//y que el que gane el bonus llame a ese metodo
 		//y se lo asigne a su escudo/escudo
 		//TODO implementación bonus escudo
+		/*
+		 * Del lado del robot, llama a darBonus
+		 * del lado del bonus, destruirse
+		 */
+		
 	}
 	
 	/**
@@ -35,7 +40,10 @@ public class BonusEscudo extends Bonus{
 		this.setEscudo(VALOR_BONUS);		
 		
 	}
-
+	
+	public void jugar(){
+		
+	}
 	
 
 }

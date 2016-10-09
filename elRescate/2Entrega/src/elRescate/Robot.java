@@ -137,5 +137,11 @@ public class Robot extends Movible {
 		this.persona = persona;
 	}
 	
+	/*
+	 * TODO como implementamos el tema del rescate en si,
+	 * tenemos un metodo que carga a la persona, pero no uno que 
+	 * la descargue, ya sea en el caso de haberla rescatado o perdido 
+	 */
+	
 }
 

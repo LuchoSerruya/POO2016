@@ -26,13 +26,15 @@ public class Municion extends Movible {
 		this.robot = duenio;
 		//le damos la dirección del que la lanzó
 		this.setDireccion(duenio.getDireccion());
-		//TODO desculare el tema de la dirección y de crearla pixel mas alla en la dirección
-
-		
+		//TODO ver de solucionar lo del dueño de la munición
 	}
 	
 	public void setDanio(int danio){
 		this.danio = danio;
+	}
+	
+	public int getDanio(){
+		return this.danio;
 	}
 	
 }
