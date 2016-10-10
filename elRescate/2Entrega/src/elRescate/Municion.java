@@ -37,4 +37,22 @@ public class Municion extends Movible {
 		return this.danio;
 	}
 	
+	/**
+	 * Comportamiento de la Munición al jugar
+	 */
+	@Override
+	public void jugar() {
+		// TODO Auto-generated method stub
+		this.avanzar();
+	}
+	
+	/**
+	 * Comportamiento de la Munición al chocar otro elemento.
+	 * Se destruye
+	 */
+	@Override
+	public void chocarElemento(Elemento elem) {
+		// TODO Auto-generated method stub
+		this.destruir();
+	}
 }

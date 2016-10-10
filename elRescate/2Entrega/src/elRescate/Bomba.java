@@ -17,6 +17,9 @@ public class Bomba extends Movible {
 	//daño de la bomba
 	private static final int DANIO_BOMBA = 10;
 	
+	//si la bomba ha explotado
+	private boolean explotada;
+	
 	/**
 	 * Crea una bomba, y la lanza direccion igual a la que apuntaba quién la lanzó
 	 * @param posicion Posicion de su lanzante
@@ -78,15 +81,35 @@ public class Bomba extends Movible {
 		
 //		//se lo otorgamos
 		this.setTam(tamanioBomba);
+		this.explotada = true;
 	}
 	
+	/**
+	 * Qué realiza la bomba en un turno
+	 */
 	public void jugar(){
-		
+		this.avanzar();
 	}
 	
+	/**
+	 * Inidica si la bomba explotó o no
+	 * @return true si la bomba esta explotando
+	 */
+	public boolean haExplotado(){
+		return this.explotada;
+	}
+	
+	/**
+	 * Comportamiento de la bomba al chocar con un elemento
+	 */
+	 
 	@Override
 	public void chocarElemento(Elemento elem) {
-		// TODO Auto-generated method stub
-		
+		/* La bomba al chocar con cualquier cosa, se destruirá.
+		 * Aquellos que choquen con la bomba, en caso de tener escudo
+		 * deben encargarse de generarse el daño a sí mismos.
+		 * Así unificamos el comportamiento de la bomba
+		 */
+		this.destruir();
 	}
 }

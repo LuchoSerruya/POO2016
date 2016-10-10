@@ -8,27 +8,26 @@ public class BonusEnergia extends Bonus{
 	//valor de energia que otorga
 	public static final int VALOR_BONUS = 10;
 
+	public int energia;
 	
-	private int energia;
 	/**
 	 * @return energía que otorga el bonus
 	 */
 	public int getEnergia() {
-		return energia;
+		return this.energia;
 	}
-
 	/**
 	 * Darle valor a la energía que otorga el bonus
 	 * @param energia
 	 */
-	public void setEnergia(int energia) {
+	public void setEnergia(int energia){
 		this.energia = energia;
 	}
 	
 	/**
 	 * Otorga el bonus
 	 */
-	public void darBonus(){
+	public int darBonus(){
 		//este podria acceder al metodo setEnergia del satelite/robot que gano el bonus
 		//y asignarle el bonus
 		//otra podria ser que le envie un mensaje al satelite/robot que lo gano
@@ -38,6 +37,7 @@ public class BonusEnergia extends Bonus{
 		//y que el que gane el bonus llame a ese metodo
 		//y se lo asigne a su energia/escudo
 		//TODO implementación del bonus
+		return this.energia;
 	}
 	
 	/**
@@ -48,11 +48,14 @@ public class BonusEnergia extends Bonus{
 		super(pos);
 		this.setEnergia(VALOR_BONUS);
 		
-		
 	}
 
+	/**
+	 * Comportamiento del Bonus al jugar
+	 */
 	public void jugar(){
 		
 	}
+	
 
 }

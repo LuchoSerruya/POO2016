@@ -3,7 +3,6 @@ package elRescate;
 public class BonusEscudo extends Bonus{
 	public static final int VALOR_BONUS = 10;
 	
-	
 	private int escudo;
 	
 	public int getEscudo() {
@@ -14,7 +13,7 @@ public class BonusEscudo extends Bonus{
 		this.escudo = escudo;
 	}
 	
-	public void darBonus(){
+	public int darBonus(){
 		//este podria acceder al metodo setescudo del satelite/robot que gano el bonus
 		//y asignarle el bonus
 		//otra podria ser que le envie un mensaje al satelite/robot que lo gano
@@ -28,6 +27,7 @@ public class BonusEscudo extends Bonus{
 		 * Del lado del robot, llama a darBonus
 		 * del lado del bonus, destruirse
 		 */
+		return VALOR_BONUS;
 		
 	}
 	

@@ -94,11 +94,10 @@ public abstract class Movible extends Elemento {
 	 * @param direccion Dirección a darle al movible
 	 */
 	public void setDireccion(double direccion){
-		this.direccion = 0;
-		
-		if(direccion > 0){
-			this.direccion = direccion;
-		}
+		/* De esta mananera si se le da una dirección 
+		 * que supere los 360 grados, esta se mantiene 
+		 * en el rango de 0 a 360 */
+		this.direccion = direccion % 360;
 	}
 	
 }

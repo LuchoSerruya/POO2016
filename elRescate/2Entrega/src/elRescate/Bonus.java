@@ -34,7 +34,7 @@ public abstract class Bonus extends Elemento{
 		this.tiempoVida = tiempoVida;
 	}
 	
-	public abstract void darBonus();
+	public abstract int darBonus();
 	
 	/**
 	 * Crea un bonus es una posicion determinadas
@@ -48,6 +48,10 @@ public abstract class Bonus extends Elemento{
 		turnoAparicion = random.nextInt((20-10)+1) + 10;
 	}
 	
-	
+	@Override
+	public void chocarElemento(Elemento elem) {
+		// TODO Auto-generated method stub
+		this.destruir();
+	}
 
 }
