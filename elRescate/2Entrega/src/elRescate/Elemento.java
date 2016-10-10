@@ -44,20 +44,24 @@ public abstract class Elemento {
 	/**
 	 * Turno del elemento en el juego
 	 */
-	public abstract void jugar();
+	public void jugar(){
+		
+	}
 	
 	/**
 	 * Destruir el elemento
 	 */
 	public void destruir(){
-		this.existe = false;
+		//Depende de la implementación para mostrarlos
 	}
 	
 	/**
 	 * Qué ejecutar cuando el elemento choca con otro
 	 * @param elem Elemento con quién choca
 	 */
-	public abstract void chocarElemento(Elemento elem);
+	public void chocarElemento(Elemento elem){
+		
+	}
 	
 	/**
 	 * @return true si el elemento está vivo, false si no
@@ -65,7 +69,9 @@ public abstract class Elemento {
 	public boolean estaVivo(){
 		return this.existe;
 	}
-	
+	public void setExiste(boolean existe){
+		this.existe = existe;
+	}
 	/**
 	 * Constructor de cuatro parametros, tamaño y posicion dato por dato
 	 * @param ancho Ancho del elemento a crear
@@ -108,5 +114,6 @@ public abstract class Elemento {
 		this(ancho, alto, posicion.getX(), posicion.getY());
 	}
 
+	
 	
 }

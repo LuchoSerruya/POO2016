@@ -1,10 +1,8 @@
 package elRescate;
-
+/**
+ * Zona central de escenario donde se encuentran las personas a rescatar
+ */
 public class ZonaRescate extends Elemento {
-	
-	/**
-	 * Zona central del escenario (aquí se encontrarán las personas a rescatar)
-	 */
 	
 	//Constantes de tamaño del rescate
 	private static final int ANCHO_ZONA_RESCATE = 10;
@@ -30,8 +28,15 @@ public class ZonaRescate extends Elemento {
 	 * @return devuelve una persona rescatada
 	 */
 	public Persona rescatarPersona(){
-		//TODO Luciano: acá lo mismo que el los refugios (contador de personas)
 		return new Persona();
 	}
 	
+	/**
+	 * Comportamiento de la Zona de Rescate, si un robot la atraviesa
+	 * Este le da una persona a ese robot
+	 */
+	@Override
+	public void chocarElemento(Elemento elem) {
+		
+	}
 }

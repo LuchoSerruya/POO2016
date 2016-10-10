@@ -95,20 +95,13 @@ public class Robot extends Movible {
 	}
 	
 	/**
-	 * Dispara una munición según dirección (?)
-	 * @return
+	 * @return Municion disparada
 	 */
-	//TODO Luciano: ionosémira
 	public Municion dispararMunicion(){
-		//pedimosm la direccion del robot
-		double direccion = this.getDireccion();
-		
+		//conseguimos la direccion del robot
 		Posicion p = this.getPos();
-		/*
-		 * Aca iria una tramoya con el tema del angulo, la direccion y todo
-		 * 
-		 * Para finalmente hacer
-		 * */
+		
+		//disparamos la munición
 		return new Municion(p,this);
 		
 	}
@@ -117,16 +110,7 @@ public class Robot extends Movible {
 	 * @return
 	 */
 	public Bomba lanzarBomba(){
-		//pedimosm la direccion del robot
-		double direccion = this.getDireccion();
-		
-		Posicion p = this.getPos();
-		/*
-		 * Aca iria una tramoya con el tema del angulo, la direccion y todo
-		 * 
-		 * Para finalmente hacer
-		 * */
-		return new Bomba(p);
+		return new Bomba(this.getPos(), this.getDireccion());
 	}
 	
 	/**
@@ -137,11 +121,18 @@ public class Robot extends Movible {
 		this.persona = persona;
 	}
 	
-	/*
-	 * TODO como implementamos el tema del rescate en si,
-	 * tenemos un metodo que carga a la persona, pero no uno que 
-	 * la descargue, ya sea en el caso de haberla rescatado o perdido 
-	 */
+	public Persona entregarPersona(){
+		Persona p = this.persona;
+		this.persona = null;
+		return p;
+	}
 	
+	/**
+	 * Comportamiento del robot en su turno
+	 */
+	@Override
+	public void jugar() {
+		// TODO Definir que hace el robot en jugar
+	}
 }
 

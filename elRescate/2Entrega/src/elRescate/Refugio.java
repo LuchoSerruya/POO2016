@@ -1,19 +1,24 @@
 package elRescate;
 
-import java.util.ArrayList;
-
+import java.util.EmptyStackException;
+import java.util.Stack;
+/**
+ * Refugia a donde se llevan las personas recartadas. Tener en cuenta que antes 
+ * de hacer un {@link Refugio#quitarPersona()} se debe verificar la cantidad de 
+ * refugiados con {@link Refugio#getCantidadRefugiados()} y realizarlo si 
+ * la cantidad es > 0.
+ * 
+ *
+ */
 public class Refugio extends Elemento {
 
 	private static final int ANCHO_REFUGIO = 10;
 	private static final int ALTO_REFUGIO = 10;
-	//TODO queda una pila
-	ArrayList<Persona> listaPersonas;
-	/*TODO determinar que coleccion vamos a usar 
-	 * para almacenar las personas (Pablo sugiere arrayList)
-	 * */
-
-	//TODO Luciano: Bogliacino dijo que vamos a usar un arrayList; 
-	//dijo que en ocasiones particulares vamos a usar alguna colección distinta a un arrayList
+	
+	Stack<Persona> listaPersonas;
+	
+	private int cantidadRefugiados;
+	
 	
 	/**
 	 * Crea un refugio con un tamanio fijo en una posición indicada
@@ -23,20 +28,27 @@ public class Refugio extends Elemento {
 		super(new Tamanio(ANCHO_REFUGIO, ALTO_REFUGIO), posicion);
 		
 		//lista de personas
+		listaPersonas = new Stack<Persona>();
+		
+		this.cantidadRefugiados = 0;
 	}
 	
+	/**
+	 * Devuelve la cantidad de refugiados
+	 * @return Cantidad de refugiados
+	 */
+	public int getCantidadRefugiados(){
+		return this.cantidadRefugiados;
+	}
 	/**
 	 * Se extrae una persona del refugio
 	 * @return
 	 */
 	public Persona quitarPersona(){
-		/*tramoya con la coleccion para quitar una persona,
-		 * por ahora tiene esto para que no chille el compilador
-		 * */
-
-		//Luciano: yo creo que podríamos ir llevando un contador de cantidad de personas que tiene el refugio, 
-		//e ir decrementado o incrementándolo de acuerdo a la situación
-		return new Persona();
+		Persona salvado = listaPersonas.peek();
+		listaPersonas.pop();
+		cantidadRefugiados--;
+		return salvado;
 	}
 	
 	/**
@@ -44,10 +56,24 @@ public class Refugio extends Elemento {
 	 * @param persona persona a rescatar
 	 */
 	public void salvarPersona(Persona persona){
-		/*
-		 * Agregamos persona a la coleccion
-		 * */
+		listaPersonas.push(persona);
+		cantidadRefugiados++;
 	}
 	
+	/**
+	 * Comportamiento del Refugia al ser chocado. Si un robot enemigo lo atraviesa, 
+	 * el Refugio pierde una persona. Si un robot amigo lo hace y tenía una persona
+	 * ésta se agrega al Refugio
+	 */
+	@Override
+	public void chocarElemento(Elemento elem) {
+		//TODO implementar el rescate o perdida de personas (equipos)
+		
+		/*
+		 * si es un robot del mismo equipo, y tiene una persona, agregarla
+		 * Si no, perder una
+		 * El tema de las penalidades y tal
+		 */
+	}
 	
 }

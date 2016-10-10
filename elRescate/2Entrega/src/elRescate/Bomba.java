@@ -24,26 +24,30 @@ public class Bomba extends Movible {
 	 * Crea una bomba, y la lanza direccion igual a la que apuntaba quién la lanzó
 	 * @param posicion Posicion de su lanzante
 	 */
-	public Bomba(Posicion posicion){
+	public Bomba(Posicion posicion, double direccion){
 		super(new Tamanio(ANCHO_BOMBA, ALTO_BOMBA), posicion);
 		this.setVelocidad(VELOCIDAD_BOMBA);
 		this.setDanio(DANIO_BOMBA);
+		this.setDireccion(direccion);
 	}
 	
 	/**
-	 * Cambiar el daño que produce la bomba
 	 * @param danio Daño que produce la bomba
 	 */
 	public void setDanio(int danio){
 		this.danio = danio;
 	}
 	
+	/**
+	 * 
+	 * @return Daño que produce la bomba
+	 */
 	public int getDanio(){
 		return this.danio;
 	}
 	
 	/**
-	 * Forma particular de avanzar de la bomba
+	 * Forma particular de avanzar de la bomba. A medida que avanza, va perdiendo velocidad
 	 */
 	@Override
 	public void avanzar() {
@@ -101,8 +105,8 @@ public class Bomba extends Movible {
 	
 	/**
 	 * Comportamiento de la bomba al chocar con un elemento
+	 * @param elem Elemento con el que chocó
 	 */
-	 
 	@Override
 	public void chocarElemento(Elemento elem) {
 		/* La bomba al chocar con cualquier cosa, se destruirá.
@@ -110,6 +114,6 @@ public class Bomba extends Movible {
 		 * deben encargarse de generarse el daño a sí mismos.
 		 * Así unificamos el comportamiento de la bomba
 		 */
-		this.destruir();
+		this.setExiste(false);
 	}
 }

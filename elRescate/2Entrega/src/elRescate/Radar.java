@@ -79,5 +79,14 @@ public class Radar extends Elemento {
 		this.alcance = 4;
 	}
 	
+	/**
+	 * Comportamiento del radar en su turno de juego
+	 */
+	@Override
+	public void jugar() {
+		//TODO kcemos aca con el radar
+		//Por ahora hacemos que sólo se vaya rotando de a 90 grados
+	}
+	
 	
 }

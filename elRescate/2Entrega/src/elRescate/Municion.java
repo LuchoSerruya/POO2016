@@ -3,7 +3,7 @@ package elRescate;
 public class Municion extends Movible {
 	private int danio;
 				
-	private Robot robot;
+	private Elemento duenio;
 	
 	//tamaño de la municion
 	private static final int ANCHO_MUNICION = 3;
@@ -19,32 +19,40 @@ public class Municion extends Movible {
 	 * Crea la munición en la posicip
 	 * @param posicion
 	 */
-	public Municion(Posicion posicion, Robot duenio){
+	public Municion(Posicion posicion, Elemento duenio){
 		super(new Tamanio(ANCHO_MUNICION,ALTO_MUNICION), posicion);
 		this.setDanio(DANIO_MUNICION);
 		this.setVelocidad(VELOCIDAD_MUNICION);
-		this.robot = duenio;
+		this.duenio = duenio;
 		//le damos la dirección del que la lanzó
+		//TODO LA DIRECCION MABEL
 		this.setDireccion(duenio.getDireccion());
-		//TODO ver de solucionar lo del dueño de la munición
 	}
 	
+	/**
+	 * Setea el daño causado por la munición
+	 * @param danio
+	 */
 	public void setDanio(int danio){
 		this.danio = danio;
 	}
 	
+	/**
+	 * Retorna el daño que causa la munición
+	 * @return daño causado por la municion
+	 */
 	public int getDanio(){
 		return this.danio;
 	}
 	
 	/**
-	 * Comportamiento de la Munición al jugar
+	 * Comportamiento de la Munición al jugar. Sólo avanza
 	 */
 	@Override
 	public void jugar() {
-		// TODO Auto-generated method stub
 		this.avanzar();
 	}
+	
 	
 	/**
 	 * Comportamiento de la Munición al chocar otro elemento.
@@ -52,7 +60,18 @@ public class Municion extends Movible {
 	 */
 	@Override
 	public void chocarElemento(Elemento elem) {
-		// TODO Auto-generated method stub
-		this.destruir();
+		//TODO preguntar cómo se van a implementar los equipos
+		//Si me choco con el que me lanzó, no hago nada
+		if(this.getDuenio() != elem){
+			this.setExiste(false);
+		}
+	}
+	
+	
+	/**
+	 * @return dueño de la Munción
+	 */
+	public Elemento getDuenio() {
+		return this.duenio;
 	}
 }

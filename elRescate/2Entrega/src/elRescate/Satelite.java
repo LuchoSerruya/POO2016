@@ -48,6 +48,27 @@ public class Satelite extends Elemento {
 		if(this.cantidadMuniciones < 0)
 			this.cantidadMuniciones = 0;
 	}
-
+	
+	public Municion disparar(){
+		//conseguimos la direccion del sat
+		Posicion p = this.getPos();
+		
+		//TODO LA DIRECCION MABEL Y NELLY
+		//disparamos la munición
+		return new Municion(p,this);
+	}
+	
+	@Override
+	public void jugar() {
+		// TODO que hace el satelite mientras juega
+		
+	}
+	
+	@Override
+	public void chocarElemento(Elemento elem) {
+		// TODO que hace el sateli si choca algo
+		
+	}
+	
 	
 }

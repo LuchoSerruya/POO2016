@@ -36,10 +36,6 @@ public abstract class Bonus extends Elemento{
 	
 	public abstract int darBonus();
 	
-	/**
-	 * Crea un bonus es una posicion determinadas
-	 * @param pos Posicion del bonus
-	 */
 	public Bonus(Posicion pos){
 		super(new Tamanio(ANCHO_BONUS, ALTO_BONUS), pos);
 		//creamos contenedor del numero aleatorio
@@ -50,8 +46,7 @@ public abstract class Bonus extends Elemento{
 	
 	@Override
 	public void chocarElemento(Elemento elem) {
-		// TODO Auto-generated method stub
-		this.destruir();
+		this.setExiste(false);
 	}
 
 }
