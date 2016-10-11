@@ -36,6 +36,7 @@ public abstract class Bonus extends Elemento{
 	
 	public abstract int darBonus();
 	
+	//TODO crear bonus es posicion libre del escenario
 	public Bonus(Posicion pos){
 		super(new Tamanio(ANCHO_BONUS, ALTO_BONUS), pos);
 		//creamos contenedor del numero aleatorio

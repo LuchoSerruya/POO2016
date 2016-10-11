@@ -17,7 +17,7 @@ public class Satelite extends Elemento {
 	 */
 	public Satelite(Posicion posicion){
 		super(new Tamanio(ANCHO_SATELITE, ALTO_SATELITE), posicion);
-		radar = new Radar(this.getPos());
+		radar = new Radar(this.getPos(),this.radar.getDireccion());
 		setNivelEscudo(ESCUDO_INICIAL); 
 	}
 	
@@ -49,13 +49,13 @@ public class Satelite extends Elemento {
 			this.cantidadMuniciones = 0;
 	}
 	
-	public Municion disparar(){
+	public void disparar(){
 		//conseguimos la direccion del sat
 		Posicion p = this.getPos();
 		
 		//TODO LA DIRECCION MABEL Y NELLY
 		//disparamos la munición
-		return new Municion(p,this);
+		Escenario.getEscenario().agregarElemento((new Municion(p,this,this.radar.getDireccion())));
 	}
 	
 	@Override

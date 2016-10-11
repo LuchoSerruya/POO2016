@@ -19,14 +19,14 @@ public class Municion extends Movible {
 	 * Crea la munición en la posicip
 	 * @param posicion
 	 */
-	public Municion(Posicion posicion, Elemento duenio){
+	public Municion(Posicion posicion, Elemento duenio, double direccion){
 		super(new Tamanio(ANCHO_MUNICION,ALTO_MUNICION), posicion);
 		this.setDanio(DANIO_MUNICION);
 		this.setVelocidad(VELOCIDAD_MUNICION);
 		this.duenio = duenio;
 		//le damos la dirección del que la lanzó
 		//TODO LA DIRECCION MABEL
-		this.setDireccion(duenio.getDireccion());
+		this.setDireccion(direccion);
 	}
 	
 	/**
@@ -50,7 +50,7 @@ public class Municion extends Movible {
 	 */
 	@Override
 	public void jugar() {
-		this.avanzar();
+		this.avanzar(this.getVelocidad());
 	}
 	
 	

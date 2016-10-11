@@ -5,6 +5,9 @@ public class Radar extends Elemento {
 	private double anguloApertura;
 	private double alcance;
 	
+	//dirección del radar
+	private double direccion;
+	
 	//ArrayList de los listeners
 	private ArrayList<RadarListener> listeners;
 	
@@ -31,7 +34,7 @@ public class Radar extends Elemento {
 	 * Crea un radar en una posición determinada (dependiente del satélite/robot)
 	 * @param posicion
 	 */
-	public Radar(Posicion posicion){
+	public Radar(Posicion posicion, double direccion){
 		/*
 		 * Con este constructor limitamos a que nos pasen
 		 * la posicion y el tamaño del elemento que posee
@@ -40,6 +43,7 @@ public class Radar extends Elemento {
 		
 		super(new Tamanio(ANCHO_RADAR, ALTO_RADAR), posicion);
 		this.setAnguloApertura(0);
+		this.direccion = direccion;
 	}
 	
 	
@@ -77,6 +81,21 @@ public class Radar extends Elemento {
 		//TODO PONER UNA FORMULA DE ALCANCE COHERENTE!!!!
 		//acá vemos qué hacemos, por ahora lo dejamos así
 		this.alcance = 4;
+	}
+	
+	/**
+	 * Setea la dirección en la que apunta el radar
+	 * @param direccion Nueva dirección
+	 */
+	public void setDireccion(double direccion){
+		this.direccion = direccion;
+	}
+	
+	/**
+	 * @return Direccion a la que apunta el radar
+	 */
+	public double getDireccion(){
+		return this.direccion;
 	}
 	
 	/**

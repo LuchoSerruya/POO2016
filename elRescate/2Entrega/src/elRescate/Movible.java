@@ -39,9 +39,12 @@ public abstract class Movible extends Elemento {
 	/**
 	 * Realiza el movimiento del Movible
 	 */
-	public void avanzar(){
+	public void avanzar(double velocidad){
 		//consigo la posicion actual
 		Posicion posicionMovible = this.getPos();
+		
+		//le damos velocidad dada por parametro
+		this.setVelocidad(velocidad);
 		
 		//modifico la posicion utilizando los deltas
 		posicionMovible.setX((int)(posicionMovible.getX() +  this.deltaY()));
@@ -53,12 +56,12 @@ public abstract class Movible extends Elemento {
 	
 	//coseguimos el delta X para la velocidad
 	protected double deltaX() {
-		return this.velocidad * Math.cos(this.direccion);
+		return this.getVelocidad() * Math.cos(this.direccion);
 	}
 
 	//Conseguimos el delta Y para la velocidad
 	protected double deltaY() {
-		return this.velocidad * Math.sin(this.direccion);
+		return this.getVelocidad() * Math.sin(this.direccion);
 	}
 	
 	/**

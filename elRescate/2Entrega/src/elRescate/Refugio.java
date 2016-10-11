@@ -1,6 +1,5 @@
 package elRescate;
 
-import java.util.EmptyStackException;
 import java.util.Stack;
 /**
  * Refugia a donde se llevan las personas recartadas. Tener en cuenta que antes 

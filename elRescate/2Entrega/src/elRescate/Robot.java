@@ -23,7 +23,7 @@ public class Robot extends Movible {
 		setCantidadBombas(BOMBAS_DEFAULT);
 		setCantidadMuniciones(MUNICIONES_DEFAULT);
 		
-		this.radar = new Radar(this.getPos());
+		this.radar = new Radar(this.getPos(),this.getDireccion());
 	}
 	
 	public void setCantidadMuniciones(int cantidadMuniciones){
@@ -88,29 +88,31 @@ public class Robot extends Movible {
 	
 	/**
 	 * Devuelve nivel de energia del robot
-	 * @return
+	 * @return Nivel de Energía del Robot
 	 */
 	public int getNivelEnergia(){
 		return this.nivelEnergia;
 	}
 	
 	/**
-	 * @return Municion disparada
+	 * Dispara una munición en la dirección en la 
+	 * que apunta el radar. Ésta es agregada al 
+	 * escenario
 	 */
-	public Municion dispararMunicion(){
-		//conseguimos la direccion del robot
-		Posicion p = this.getPos();
-		
+	public void dispararMunicion(){
 		//disparamos la munición
-		return new Municion(p,this);
+		Escenario.getEscenario().agregarElemento(new Municion(this.getPos(),this,this.radar.getDireccion()));
 		
 	}
+	
+	
 	/**
-	 * Lanza una bomba
-	 * @return
+	 * Lanza una bomba en la dirección en la 
+	 * que apunta el radar. Ésta es agregada al 
+	 * escenario
 	 */
-	public Bomba lanzarBomba(){
-		return new Bomba(this.getPos(), this.getDireccion());
+	public void lanzarBomba(){
+		Escenario.getEscenario().agregarElemento(new Bomba(this.getPos(), this.getDireccion()));
 	}
 	
 	/**

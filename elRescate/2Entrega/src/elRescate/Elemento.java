@@ -20,7 +20,7 @@ public abstract class Elemento {
 	}
 
 	/**
-	 * @return Posicioón del elemento
+	 * @return Posición del elemento
 	 */
 	public Posicion getPos() {
 		return pos;

@@ -50,9 +50,9 @@ public class Bomba extends Movible {
 	 * Forma particular de avanzar de la bomba. A medida que avanza, va perdiendo velocidad
 	 */
 	@Override
-	public void avanzar() {
+	public void avanzar(double velocidad) {
 		//si la bomba todavía posee velocidad
-		if(!(this.getVelocidad()==0)){
+		if(this.getVelocidad()!=0){
 			//conseguimos la posicion de la bomba
 			Posicion posicionBomba = this.getPos();
 			
@@ -92,7 +92,7 @@ public class Bomba extends Movible {
 	 * Qué realiza la bomba en un turno
 	 */
 	public void jugar(){
-		this.avanzar();
+		this.avanzar(this.getVelocidad());
 	}
 	
 	/**

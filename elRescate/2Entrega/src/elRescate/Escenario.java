@@ -12,6 +12,26 @@ import java.awt.Rectangle;
 public class Escenario{
 	//lista de elementos
 	private ArrayList<Elemento> elementos;
+	private static Escenario escenario;
+	private Tamanio tamanioEscenario;
+	/**
+	 * @return devuelve el escenario de juego
+	 */
+	public static Escenario getEscenario(){
+		if(escenario == null){
+			escenario = new Escenario(new Tamanio(Posicion.MAX_X, Posicion.MAX_Y));
+		}
+		return escenario;
+	}
+	
+	/**
+	 * Crea un escenario
+	 * @param tamanio
+	 */
+	private Escenario(Tamanio tamanio){
+		this.crearListaElementos();
+		this.tamanioEscenario = tamanio;
+	}
 	
 	/**
 	 * Inicia el juego
@@ -83,8 +103,6 @@ public class Escenario{
 			}
 		}
 	}
-
-	
 	
 	/**
 	 * Otorga un turno de juego a cada elemento del escenario
@@ -99,9 +117,20 @@ public class Escenario{
 	/**
 	 * Crea los elementos del juego
 	 */
-	private void crearElementos(){
+	private void crearListaElementos(){
 		this.elementos = new ArrayList<Elemento>();
 	}
 	
+	/**
+	 * Agrega un elemento al escenario
+	 * @param elemento Elemento a agregar
+	 */
+	public void agregarElemento(Elemento elemento){
+		this.elementos.add(elemento);
+	}
+	
+	public Tamanio getTamanio(){
+		return this.tamanioEscenario;
+	}
 	
 }
