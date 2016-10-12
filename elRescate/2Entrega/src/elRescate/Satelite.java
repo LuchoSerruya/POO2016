@@ -1,11 +1,15 @@
 package elRescate;
 
-public class Satelite extends Elemento {
+import java.util.ArrayList;
+
+public class Satelite extends Elemento implements TieneEscudo {
 
 
 	private Radar radar;
 	private int nivelEscudo;
 	private int cantidadMuniciones;
+	
+	private ArrayList<Elemento> equipo;
 	
 	private static final int ESCUDO_INICIAL = 50;
 	private final static int ANCHO_SATELITE = 3;
@@ -19,6 +23,7 @@ public class Satelite extends Elemento {
 		super(new Tamanio(ANCHO_SATELITE, ALTO_SATELITE), posicion);
 		radar = new Radar(this.getPos(),this.radar.getDireccion());
 		setNivelEscudo(ESCUDO_INICIAL); 
+		
 	}
 	
 	/**
@@ -27,8 +32,10 @@ public class Satelite extends Elemento {
 	 */
 	public void setNivelEscudo(int nivelEscudo){
 		this.nivelEscudo = nivelEscudo;
-		if (this.nivelEscudo < 0)
+		if (this.nivelEscudo <= 0){
 			this.nivelEscudo = 0;
+			this.setExiste(false);
+		}
 	}
 	
 	/**
@@ -47,6 +54,14 @@ public class Satelite extends Elemento {
 		this.cantidadMuniciones = cantMuniciones;
 		if(this.cantidadMuniciones < 0)
 			this.cantidadMuniciones = 0;
+	}
+	
+	public void setEquipo(ArrayList<Elemento> equipo){
+		this.equipo = equipo;
+	}
+	
+	public ArrayList<Elemento> getEquipo(){
+		return this.equipo;
 	}
 	
 	public void disparar(){

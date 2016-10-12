@@ -1,12 +1,15 @@
 package elRescate;
 
-public class Robot extends Movible {
+import java.util.ArrayList;
+
+public class Robot extends Movible implements TieneEscudo{
 	private int nivelEscudo;
 	private int nivelEnergia;
 	private Radar radar;
 	private Persona persona;
 	private int cantidadMuniciones;
 	private int cantidadBombas;
+	private ArrayList<Elemento> equipo;
 	
 	private static final int MUNICIONES_DEFAULT = 100;
 	private static final int BOMBAS_DEFAULT = 10;
@@ -22,13 +25,13 @@ public class Robot extends Movible {
 		
 		setCantidadBombas(BOMBAS_DEFAULT);
 		setCantidadMuniciones(MUNICIONES_DEFAULT);
-		
+
 		this.radar = new Radar(this.getPos(),this.getDireccion());
 	}
 	
 	public void setCantidadMuniciones(int cantidadMuniciones){
 		this.cantidadMuniciones = cantidadMuniciones;
-		if(this.cantidadMuniciones < 0)
+		if(this.cantidadMuniciones <= 0)
 			this.cantidadMuniciones = 0;
 	}
 	
@@ -38,7 +41,7 @@ public class Robot extends Movible {
 	 */
 	public void setCantidadBombas(int cantidadBombas){
 		this.cantidadBombas = cantidadBombas;
-		if(this.cantidadBombas < 0)
+		if(this.cantidadBombas <= 0)
 			this.cantidadBombas = 0;
 	}
 	
@@ -58,14 +61,24 @@ public class Robot extends Movible {
 		return this.cantidadBombas;
 	}
 	
+	public void setEquipo(ArrayList<Elemento> equipo){
+		this.equipo = equipo;
+	}
+	
+	public ArrayList<Elemento> getEquipo(){
+		return this.equipo;
+	}
+	
 	/**
 	 * Setea nivel de escudo del robot
 	 * @param nivelEscudo
 	 */
 	public void setNivelEscudo(int nivelEscudo){
 		this.nivelEscudo = nivelEscudo;
-		if(this.nivelEscudo < 0)
+		if (this.nivelEscudo <= 0){
 			this.nivelEscudo = 0;
+			this.setExiste(false);
+		}
 	}
 	
 	/**

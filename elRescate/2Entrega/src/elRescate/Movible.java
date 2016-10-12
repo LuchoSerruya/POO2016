@@ -100,7 +100,7 @@ public abstract class Movible extends Elemento {
 		/* De esta mananera si se le da una dirección 
 		 * que supere los 360 grados, esta se mantiene 
 		 * en el rango de 0 a 360 */
-		this.direccion = direccion % 360;
+		this.direccion = direccion % 361;
 	}
 	
 }

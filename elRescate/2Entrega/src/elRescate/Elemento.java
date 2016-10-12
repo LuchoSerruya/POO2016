@@ -72,18 +72,6 @@ public abstract class Elemento {
 	public void setExiste(boolean existe){
 		this.existe = existe;
 	}
-	/**
-	 * Constructor de cuatro parametros, tamaño y posicion dato por dato
-	 * @param ancho Ancho del elemento a crear
-	 * @param alto Alto del elemento a crear
-	 * @param x Coordenada x del elemento a crear
-	 * @param y Coordenada y del elemento a crear
-	 */
-	public Elemento(int ancho, int alto, int x, int y){
-		tam = new Tamanio(ancho, alto);
-		pos = new Posicion(x, y);
-		this.existe = true;
-	}
 	
 	/**
 	 * Constructor de dos parametros, recibe el tamaño y la posicón como dos objetos
@@ -91,29 +79,11 @@ public abstract class Elemento {
 	 * @param posicion Posición del elemento
 	 */
 	public Elemento(Tamanio tamanio, Posicion posicion){
-		this(tamanio.getAncho(), tamanio.getAlto(), posicion.getX(), posicion.getY());
+		this.tam = tamanio;
+		this.pos = posicion;
+		this.setExiste(true);
 	}
 	
-	/**
-	 * Recibe el Tamaño como objeto y la posición como coordenadas sueltas
-	 * @param tamanio Tamaño del elemento
-	 * @param x Coordenada x del elemento
-	 * @param y Coordenada y del elemento
-	 */
-	public Elemento(Tamanio tamanio, int x, int y){
-		this(tamanio.getAncho(), tamanio.getAlto(), x, y);		
-	}
-	
-	/**
-	 * Construcro que recibe el Tamaño como datos de alto y ancho. La Posición como objeto
-	 * @param ancho Ancho del elemento
-	 * @param alto Alto de elemento
-	 * @param posicion Posición del elemento
-	 */
-	public Elemento(int ancho, int alto, Posicion posicion){
-		this(ancho, alto, posicion.getX(), posicion.getY());
-	}
-
 	
 	
 }

@@ -66,7 +66,7 @@ public class Bomba extends Movible {
 			
 		}
 		else{
-			//si se quedó sin, tiene que explotar
+			//si se quedó sin velocidad, tiene que explotar
 			this.explotar();
 		}
 	}
@@ -75,7 +75,7 @@ public class Bomba extends Movible {
 	 * Explosión de la bomba, esta agranda su tamaño
 	 * y afecta a los elementos con los que colisione
 	 */
-	private void explotar() {
+	public void explotar() {
 		//conseguimos su tamaño actual
 		Tamanio tamanioBomba = this.getTam();
 		
@@ -114,6 +114,8 @@ public class Bomba extends Movible {
 		 * deben encargarse de generarse el daño a sí mismos.
 		 * Así unificamos el comportamiento de la bomba
 		 */
+		
+		
 		this.setExiste(false);
 	}
 }
