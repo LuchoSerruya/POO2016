@@ -2,7 +2,7 @@ package elRescate;
 
 import java.util.ArrayList;
 
-public class Satelite extends Elemento implements TieneEscudo {
+public class Satelite extends Elemento implements TieneEscudo, RadarListener {
 
 
 	private Radar radar;
@@ -83,6 +83,13 @@ public class Satelite extends Elemento implements TieneEscudo {
 	public void chocarElemento(Elemento elem) {
 		// TODO que hace el sateli si choca algo
 		
+	}
+
+	@Override
+	public void elementosDetectado(ArrayList<Elemento> elementos) {
+		/*
+		 * Idem de lo que hicimos con el Robot
+		 */
 	}
 	
 	

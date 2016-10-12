@@ -1,8 +1,9 @@
 package elRescate;
 
 import java.util.ArrayList;
+import java.util.RandomAccess;
 
-public class Robot extends Movible implements TieneEscudo{
+public class Robot extends Movible implements TieneEscudo, RadarListener{
 	private int nivelEscudo;
 	private int nivelEnergia;
 	private Radar radar;
@@ -149,5 +150,17 @@ public class Robot extends Movible implements TieneEscudo{
 	public void jugar() {
 		// TODO Definir que hace el robot en jugar
 	}
+
+
+	@Override
+	public void elementosDetectado(ArrayList<Elemento> elementos) {
+		/*
+		 * El robot procesa los elementos detectados por el radar
+		 * Acá podría ir el tema de, por ejemplo, dispararle a lo primero
+		 * que detecte. 
+		 */
+	}
+	
+	
 }
 
