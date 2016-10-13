@@ -34,7 +34,7 @@ public abstract class Bonus extends Elemento{
 		this.tiempoVida = tiempoVida;
 	}
 	
-	public abstract int darBonus();
+	public abstract void darBonus(Elemento elem);
 	
 	//TODO crear bonus es posicion libre del escenario
 	public Bonus(Posicion pos){
@@ -46,8 +46,21 @@ public abstract class Bonus extends Elemento{
 	}
 	
 	@Override
-	public void chocarElemento(Elemento elem) {
+	public void chocarElemento(Elemento elem){
+		if(elem instanceof Municion){
+			Municion muni = (Municion) elem;
+			this.darBonus(muni.getDuenio());			
+		}
+		else if (elem instanceof Bomba){
+			Bomba bomb = (Bomba) elem;
+			this.darBonus(bomb.getDuenio());			
+		}
+		else if (elem instanceof Robot){
+			Robot robot = (Robot) elem;
+			this.darBonus(robot);
+		}
 		this.setExiste(false);
 	}
+
 
 }

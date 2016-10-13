@@ -81,8 +81,42 @@ public class Satelite extends Elemento implements TieneEscudo {
 	
 	@Override
 	public void chocarElemento(Elemento elem) {
-		// TODO que hace el sateli si choca algo
+		if(elem instanceof Municion){
+			Municion muni = (Municion) elem;
+			if(!(esEquipo(muni, this.equipo)))
+				this.setNivelEscudo(this.getNivelEscudo() - muni.getDanio());
+		}
+		else if(elem instanceof Bomba){
+			Bomba bomb = (Bomba) elem;
+			if(!(esEquipo(bomb, this.equipo)))
+				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());
+		}
 		
+	}
+	
+	/**
+	 * Verifica si el que disparo la municion es del mismo equipo
+	 * que el Satelite
+	 * @param m municion lanzada
+	 * @param equipo de la municion
+	 * @return true si la municion es de un elemento companiero, false si no es
+	 */
+	public static boolean esEquipo(Municion m, ArrayList<Elemento> equipo){
+		/*Devuelve verdadero si el que disparo la municion es del mismo equipo
+		que el Robot que choco*/
+		return equipo.contains(m.getDuenio());
+	}
+	
+	/**
+	 * Verifica si el que disparo la bomba es del mismo equipo
+	 * que el Satelite
+	 * @param b bomba lanzada
+	 * @param equipo de la bomba
+	 * @return true si la bomba es de un elemento companiero, false si no es
+	 */
+	public static boolean esEquipo(Bomba b, ArrayList<Elemento> equipo){
+		
+		return equipo.contains(b.getDuenio());
 	}
 	
 	

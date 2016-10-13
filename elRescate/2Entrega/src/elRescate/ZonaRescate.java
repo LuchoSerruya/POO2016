@@ -37,6 +37,10 @@ public class ZonaRescate extends Elemento {
 	 */
 	@Override
 	public void chocarElemento(Elemento elem) {
+		if(elem instanceof Robot){
+			Robot robot = (Robot)elem;
+			robot.cargarPersona(this.rescatarPersona());
+		}
 		
 	}
 }

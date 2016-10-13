@@ -7,6 +7,8 @@ public class Bomba extends Movible {
 	
 	private int danio;
 	
+	private Elemento duenio;
+	
 	//tamaño de la bomba
 	private static final int ANCHO_BOMBA = 3;
 	private static final int ALTO_BOMBA = 3;
@@ -24,11 +26,13 @@ public class Bomba extends Movible {
 	 * Crea una bomba, y la lanza direccion igual a la que apuntaba quién la lanzó
 	 * @param posicion Posicion de su lanzante
 	 */
-	public Bomba(Posicion posicion, double direccion){
+	public Bomba(Posicion posicion, Elemento duenio, double direccion){
 		super(new Tamanio(ANCHO_BOMBA, ALTO_BOMBA), posicion);
 		this.setVelocidad(VELOCIDAD_BOMBA);
 		this.setDanio(DANIO_BOMBA);
 		this.setDireccion(direccion);
+		
+		this.duenio = duenio;
 	}
 	
 	/**
@@ -47,12 +51,20 @@ public class Bomba extends Movible {
 	}
 	
 	/**
+	 * 
+	 * @return duenio de la bomba
+	 */
+	public Elemento getDuenio() {
+		return this.duenio;
+	}
+	
+	/**
 	 * Forma particular de avanzar de la bomba. A medida que avanza, va perdiendo velocidad
 	 */
 	@Override
 	public void avanzar(double velocidad) {
 		//si la bomba todavía posee velocidad
-		if(this.getVelocidad()!=0){
+		if(this.getVelocidad()>0){
 			//conseguimos la posicion de la bomba
 			Posicion posicionBomba = this.getPos();
 			
@@ -86,6 +98,7 @@ public class Bomba extends Movible {
 //		//se lo otorgamos
 		this.setTam(tamanioBomba);
 		this.explotada = true;
+		this.setExiste(false);
 	}
 	
 	/**
@@ -116,6 +129,6 @@ public class Bomba extends Movible {
 		 */
 		
 		
-		this.setExiste(false);
+		this.explotar();
 	}
 }

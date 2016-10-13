@@ -10,10 +10,13 @@ public class BonusEscudo extends Bonus{
 	}
 	
 	/**
-	 * Otorga el bonus
+	 * Otorga el bonus de escudo (Robot/Satelite)
 	 */
-	public int darBonus(){
-		return this.escudo;
+	public void darBonus(Elemento elem){
+		if (elem instanceof TieneEscudo){
+			TieneEscudo e = (TieneEscudo) elem;
+			e.setNivelEscudo(e.getNivelEscudo() + this.escudo);
+		}
 	}
 	
 	/**

@@ -118,6 +118,25 @@ public class Robot extends Movible implements TieneEscudo{
 		
 	}
 	
+	@Override
+	public void chocarElemento(Elemento elem) {
+		
+		if(elem instanceof Municion){
+			Municion muni = (Municion) elem;
+			if(!(Satelite.esEquipo(muni, this.equipo)))
+				this.setNivelEscudo(this.getNivelEscudo() - muni.getDanio());
+		}
+		else if(elem instanceof Bomba){
+			Bomba bomb = (Bomba) elem;
+			if(!(Satelite.esEquipo(bomb, this.equipo)))
+				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());
+		}
+		
+	}
+	
+	
+	
+	
 	
 	/**
 	 * Lanza una bomba en la dirección en la 
@@ -125,7 +144,7 @@ public class Robot extends Movible implements TieneEscudo{
 	 * escenario
 	 */
 	public void lanzarBomba(){
-		Escenario.getEscenario().agregarElemento(new Bomba(this.getPos(), this.getDireccion()));
+		Escenario.getEscenario().agregarElemento(new Bomba(this.getPos(), this, this.getDireccion()));
 	}
 	
 	/**

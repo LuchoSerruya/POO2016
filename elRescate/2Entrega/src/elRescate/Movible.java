@@ -25,16 +25,6 @@ public abstract class Movible extends Elemento {
 		this.setVelocidad(VELOCIDAD_DEFECTO);
 	}
 	
-	/**
-	 * Constructor con los parametros sueltos
-	 * @param ancho ancho del Movible
-	 * @param alto	alto del movible
-	 * @param x		coordenada x 
-	 * @param y		coordenada y
-	 */
-	public Movible(int ancho, int alto, int x, int y){
-		this(new Tamanio(ancho, alto), new Posicion(x,y));
-	}
 	
 	/**
 	 * Realiza el movimiento del Movible

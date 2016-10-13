@@ -19,11 +19,16 @@ public class BonusEnergia extends Bonus{
 	}
 	
 	/**
-	 * Otorga el bonus
+	 * Otorga el bonus de energia (solo aplicable para Robot)
 	 */
-	public int darBonus(){
-		return this.energia;
+	public void darBonus(Elemento elem){
+		if (elem instanceof Robot){
+			Robot robot = (Robot) elem;
+			robot.setNivelEnergia(robot.getNivelEnergia() + this.energia);
+		}
+		
 	}
+		
 	
 	/**
 	 * creamos el bonus en una posición del escenario
