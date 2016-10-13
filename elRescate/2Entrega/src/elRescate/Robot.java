@@ -122,15 +122,23 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 	@Override
 	public void chocarElemento(Elemento elem) {
 		
+		//Si es una municion
 		if(elem instanceof Municion){
+			//lo casteo
 			Municion muni = (Municion) elem;
+			//si no es de mi equipo, me genero el daño
 			if(!(Satelite.esEquipo(muni, this.equipo)))
 				this.setNivelEscudo(this.getNivelEscudo() - muni.getDanio());
-		}
+		} //si es una bomba
 		else if(elem instanceof Bomba){
+			//casteo
 			Bomba bomb = (Bomba) elem;
+			//verifico equipo y me aplico el daño
 			if(!(Satelite.esEquipo(bomb, this.equipo)))
 				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());
+		}
+		else if (elem instanceof Bonus){
+			((Bonus)elem).darBonus(this);
 		}
 		
 	}
@@ -174,10 +182,17 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 	@Override
 	public void elementosDetectado(ArrayList<Elemento> elementos) {
 		/*
+		 * Elimino al robot de la lista
+		 * No sé qué querrá hacer detectandose a si mismo )?(
+		 */
+		elementos.remove(this);
+		
+		/*
 		 * El robot procesa los elementos detectados por el radar
 		 * Acá podría ir el tema de, por ejemplo, dispararle a lo primero
 		 * que detecte. 
 		 */
+		
 	}
 	
 	

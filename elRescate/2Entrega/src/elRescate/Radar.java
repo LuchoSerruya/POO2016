@@ -1,9 +1,13 @@
 package elRescate;
+import java.awt.Polygon;
 import java.util.ArrayList;
 
+
 public class Radar extends Elemento {
-	private double anguloApertura;
+	private int anguloApertura;
 	private double alcance;
+	
+	private static int incrementoGradosPoligono = 5;
 	
 	//dirección del radar
 	private double direccion;
@@ -51,7 +55,7 @@ public class Radar extends Elemento {
 	 * Setea angulo de apertura del radar
 	 * @param angulo
 	 */
-	public void setAnguloApertura(double angulo){
+	public void setAnguloApertura(int angulo){
 		this.anguloApertura = angulo;
 		this.setAlcance(angulo);
 	}
@@ -60,7 +64,7 @@ public class Radar extends Elemento {
 	 * Devuelve angulo de apertura del radar
 	 * @return
 	 */
-	public double getAnguloApertura(){
+	public int getAnguloApertura(){
 		return this.anguloApertura;
 	}
 	
@@ -105,6 +109,65 @@ public class Radar extends Elemento {
 	public void jugar() {
 		//TODO kcemos aca con el radar
 		//Por ahora hacemos que sólo se vaya rotando de a 90 grados
+	}
+	
+	public void escanear(){
+		System.out.println("Radar Escaneanding...");
+		
+		//Armar poligono
+		Polygon zonaBarrida = this.armarPoligono(this.getPos().getX(), this.getPos().getY());
+		
+		//le pido al escenario que me diga si hay elementos dentro del poligono
+		ArrayList<Elemento> elementosDetectados = Escenario.getEscenario().enArea(zonaBarrida);
+		
+		//elemino de la lista al radar en sí
+		elementosDetectados.remove(this);
+		
+		
+		for(RadarListener listener : this.listeners){
+			listener.elementosDetectado(elementosDetectados);
+		}
+	}
+
+	/**
+	 * Armado del poligono usado para la detección del radar
+	 * @param x coordenada x del radar
+	 * @param y coordenada y del radar
+	 * @return Poligono de alcance del radar
+	 */
+	private Polygon armarPoligono(int x, int y) {
+		
+		/* 
+		 * pido el angulo y lo divido para poder barrer
+		 * con una mitad del angulo para un lado y mitad
+		 * para el otro
+		 */
+		double angulo = this.getAnguloApertura() / 2;
+		
+		/* 
+		 * calculo la cantidad de puntos 
+		 * uno mas para que incluya la posicion del radar
+		 * */
+		int cantidadPuntos = 1 + (int)(this.getAnguloApertura() / incrementoGradosPoligono);
+		
+		
+		//creo los arreglos para pasale al poligono
+		int[] xPuntos = new int[cantidadPuntos];
+		int[] yPuntos = new int[cantidadPuntos];
+		
+		//le agrego la posicion del radar
+		xPuntos[0] = x;
+		yPuntos[0] = y;
+		
+		//voy poniendo en el arreglo los puntos calculados con los deltas
+		for (int i = 1; i< cantidadPuntos; i++){
+			xPuntos[i] = (int)Movible.deltaX(this.getAlcance(), angulo);
+			yPuntos[i] = (int)Movible.deltaY(this.getAlcance(), angulo);
+			angulo += incrementoGradosPoligono;
+		}
+		
+		//devuelvo el poligono ya armado
+		return new Polygon(xPuntos, yPuntos, cantidadPuntos);
 	}
 	
 	

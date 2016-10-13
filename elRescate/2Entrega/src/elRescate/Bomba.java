@@ -128,6 +128,10 @@ public class Bomba extends Movible {
 		 * Así unificamos el comportamiento de la bomba
 		 */
 		
+		//Polimorfismo af
+		if(elem instanceof Bonus){
+			((Bonus)elem).darBonus(duenio);
+		}
 		
 		this.explotar();
 	}

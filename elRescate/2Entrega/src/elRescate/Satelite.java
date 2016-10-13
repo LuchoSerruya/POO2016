@@ -90,7 +90,7 @@ public class Satelite extends Elemento implements TieneEscudo, RadarListener {
 			Bomba bomb = (Bomba) elem;
 			if(!(esEquipo(bomb, this.equipo)))
 				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());
-		}
+		}		
 		
 	}
 	
@@ -119,10 +119,17 @@ public class Satelite extends Elemento implements TieneEscudo, RadarListener {
 		return equipo.contains(b.getDuenio());
 	}
 
+	/**
+	 * Procesa los elementos detectados por el radar
+	 * @param elementos elementos que detectó el radar
+	 */
 	@Override
 	public void elementosDetectado(ArrayList<Elemento> elementos) {
+		//eliminar satelite de la lista
+		elementos.remove(this);
+		
 		/*
-		 * Idem de lo que hicimos con el Robot
+		 * Procesar el tema
 		 */
 	}
 	

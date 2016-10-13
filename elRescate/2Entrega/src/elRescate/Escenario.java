@@ -1,7 +1,7 @@
 package elRescate;
 
 import java.util.ArrayList;
-
+import java.awt.Polygon;
 import java.awt.Rectangle;
 
 /**
@@ -83,23 +83,11 @@ public class Escenario{
 	private void verificarChoques() {
 		for(Elemento e1 : elementos){
 			//conseguimos tamaño y posicion de e1
-			Posicion posE1 = e1.getPos();
-			Tamanio tamE1 = e1.getTam();
-			Rectangle rectanguloE1 = new Rectangle(
-					tamE1.getAlto(), 
-					tamE1.getAncho(), 
-					posE1.getX(), 
-					posE1.getY());
+			Rectangle rectanguloE1 = this.armarRectangulo(e1);
 			
 			for(Elemento e2 : elementos){
 				//armo rectangulo de e2
-				Posicion posE2 = e2.getPos();
-				Tamanio tamE2 = e2.getTam();
-				Rectangle rectanguloE2 = new Rectangle(
-						tamE2.getAlto(), 
-						tamE2.getAncho(), 
-						posE2.getX(), 
-						posE2.getY());
+				Rectangle rectanguloE2 = this.armarRectangulo(e2);
 				
 				//reviso si se intersectan, si se da, los choco
 				if(rectanguloE1.intersects(rectanguloE2)){
@@ -181,4 +169,26 @@ public class Escenario{
 		return this.tamanioEscenario;
 	}
 	
+	public ArrayList<Elemento> enArea(Polygon poligono){
+		ArrayList<Elemento> listaElementos = new ArrayList<Elemento>();
+		for(Elemento e: elementos){
+			if(poligono.intersects(armarRectangulo(e))){
+				listaElementos.add(e);
+			}
+		}
+		
+		return listaElementos;
+	}
+	
+	private Rectangle armarRectangulo(Elemento e){
+		Posicion posE = e.getPos();
+		Tamanio tamE = e.getTam();
+		return new Rectangle(
+				tamE.getAlto(), 
+				tamE.getAncho(), 
+				posE.getX(), 
+				posE.getY());
+		
+		
+	}
 }

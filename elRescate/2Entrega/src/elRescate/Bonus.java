@@ -47,18 +47,7 @@ public abstract class Bonus extends Elemento{
 	
 	@Override
 	public void chocarElemento(Elemento elem){
-		if(elem instanceof Municion){
-			Municion muni = (Municion) elem;
-			this.darBonus(muni.getDuenio());			
-		}
-		else if (elem instanceof Bomba){
-			Bomba bomb = (Bomba) elem;
-			this.darBonus(bomb.getDuenio());			
-		}
-		else if (elem instanceof Robot){
-			Robot robot = (Robot) elem;
-			this.darBonus(robot);
-		}
+		//si choca algo, que se destruya
 		this.setExiste(false);
 	}
 

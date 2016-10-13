@@ -37,21 +37,21 @@ public abstract class Movible extends Elemento {
 		this.setVelocidad(velocidad);
 		
 		//modifico la posicion utilizando los deltas
-		posicionMovible.setX((int)(posicionMovible.getX() +  this.deltaY()));
-		posicionMovible.setY((int)(posicionMovible.getY() + this.deltaX()));
+		posicionMovible.setX((int)(posicionMovible.getX() +  deltaY(this.getVelocidad(),this.getDireccion())));
+		posicionMovible.setY((int)(posicionMovible.getY() + deltaX(this.getVelocidad(),this.getDireccion())));
 
 		//le doy la posicion que manipule
 		this.setPos(posicionMovible); 		
 	}
 	
 	//coseguimos el delta X para la velocidad
-	protected double deltaX() {
-		return this.getVelocidad() * Math.cos(this.direccion);
+	static double deltaX(double radio,double angulo) {
+		return radio * Math.cos(angulo);
 	}
 
 	//Conseguimos el delta Y para la velocidad
-	protected double deltaY() {
-		return this.getVelocidad() * Math.sin(this.direccion);
+	static double deltaY(double radio, double angulo) {
+		return radio * Math.sin(angulo);
 	}
 	
 	/**
