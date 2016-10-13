@@ -2,7 +2,7 @@ package elRescate;
 
 import java.util.ArrayList;
 
-public class Satelite extends Elemento implements TieneEscudo {
+public class Satelite extends Elemento implements TieneEscudo, RadarListener {
 
 
 	private Radar radar;
@@ -117,6 +117,13 @@ public class Satelite extends Elemento implements TieneEscudo {
 	public static boolean esEquipo(Bomba b, ArrayList<Elemento> equipo){
 		
 		return equipo.contains(b.getDuenio());
+	}
+
+	@Override
+	public void elementosDetectado(ArrayList<Elemento> elementos) {
+		/*
+		 * Idem de lo que hicimos con el Robot
+		 */
 	}
 	
 	
