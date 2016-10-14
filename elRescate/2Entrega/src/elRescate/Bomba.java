@@ -69,8 +69,8 @@ public class Bomba extends Movible {
 			Posicion posicionBomba = this.getPos();
 			
 			//modifico la posicion utilizando los deltas
-			posicionBomba.setX((int)(posicionBomba.getX() +  this.deltaY()));
-			posicionBomba.setY((int)(posicionBomba.getY() + this.deltaX()));
+			posicionBomba.setX((int)(posicionBomba.getX() +  deltaX(this.getDireccion(),this.getVelocidad())));
+			posicionBomba.setY((int)(posicionBomba.getY() + deltaY(this.getDireccion(),this.getVelocidad())));
 	
 			//le doy la posicion que manipule
 			this.setPos(posicionBomba);
