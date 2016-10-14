@@ -48,6 +48,7 @@ public class Radar extends Elemento {
 		super(new Tamanio(ANCHO_RADAR, ALTO_RADAR), posicion);
 		this.setAnguloApertura(0);
 		this.direccion = direccion;
+		this.listeners = new ArrayList<RadarListener>();
 	}
 	
 	
@@ -92,7 +93,7 @@ public class Radar extends Elemento {
 	 * @param direccion Nueva dirección
 	 */
 	public void setDireccion(double direccion){
-		this.direccion = direccion;
+		this.direccion = (direccion % 360) + 1;
 	}
 	
 	/**

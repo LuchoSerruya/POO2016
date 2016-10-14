@@ -62,7 +62,7 @@ public abstract class Elemento {
 	 * @param elem Elemento con quién choca
 	 */
 	public void chocarElemento(Elemento elem){
-		
+		System.out.println("choque!");
 	}
 	
 	/**
@@ -87,6 +87,10 @@ public abstract class Elemento {
 		this.setExiste(true);
 	}
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return String.format("X: %d | Y: %d", this.getPos().getX(), this.getPos().getY());
+	}
 	
 }

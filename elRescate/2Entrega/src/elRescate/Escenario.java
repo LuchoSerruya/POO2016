@@ -47,9 +47,21 @@ public class Escenario{
 			verificarChoques();
 			//quitar los que haya que
 			depurarElementos();
+			
+			mostrarEstado();
+			
+			
 		}
 	}
 	
+	private void mostrarEstado() {
+		
+		for(int i = 0;i < this.elementos.size(); i++){
+			elementos.get(i).toString();
+		}
+		
+	}
+
 	/**
 	 * Se fija si hay elementos para quitar del escenario y los quita
 	 */

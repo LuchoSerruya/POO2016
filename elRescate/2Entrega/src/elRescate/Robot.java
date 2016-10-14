@@ -1,6 +1,7 @@
 package elRescate;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.RandomAccess;
 
 public class Robot extends Movible implements TieneEscudo, RadarListener{
@@ -28,6 +29,7 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 		setCantidadMuniciones(MUNICIONES_DEFAULT);
 
 		this.radar = new Radar(this.getPos(),this.getDireccion());
+		this.radar.addRadarListener(this);
 	}
 	
 	public void setCantidadMuniciones(int cantidadMuniciones){
@@ -176,16 +178,31 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 	@Override
 	public void jugar() {
 		// TODO Definir que hace el robot en jugar
+		this.radar.escanear();
+		Random rdm = new Random();
+		
+		int random = rdm.nextInt(10);
+		this.avanzar(this.getDireccion() + random);
 	}
 
+	@Override
+	public void avanzar(double velocidad) {
+		super.avanzar(velocidad);
+		//se actualiza la posición del radar
+		this.radar.setPos(this.getPos());
+	}
 
 	@Override
 	public void elementosDetectado(ArrayList<Elemento> elementos) {
 		/*
 		 * Elimino al robot de la lista
-		 * No sé qué querrá hacer detectandose a si mismo )?(
 		 */
 		elementos.remove(this);
+		if(!elementos.isEmpty()){
+			this.setDireccion(this.apuntar(elementos.get(0)));
+			this.dispararMunicion();
+		}
+		
 		
 		/*
 		 * El robot procesa los elementos detectados por el radar

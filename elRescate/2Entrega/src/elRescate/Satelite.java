@@ -129,7 +129,7 @@ public class Satelite extends Elemento implements TieneEscudo, RadarListener {
 		elementos.remove(this);
 		
 		/*
-		 * Procesar el tema
+		 * Procesar elementos detectados
 		 */
 	}
 	

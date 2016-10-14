@@ -46,11 +46,13 @@ public abstract class Movible extends Elemento {
 	
 	//coseguimos el delta X para la velocidad
 	static double deltaX(double radio,double angulo) {
+		angulo = Math.toRadians(angulo);
 		return radio * Math.cos(angulo);
 	}
 
 	//Conseguimos el delta Y para la velocidad
 	static double deltaY(double radio, double angulo) {
+		angulo = Math.toRadians(angulo);
 		return radio * Math.sin(angulo);
 	}
 	
@@ -90,7 +92,7 @@ public abstract class Movible extends Elemento {
 		/* De esta mananera si se le da una dirección 
 		 * que supere los 360 grados, esta se mantiene 
 		 * en el rango de 0 a 360 */
-		this.direccion = direccion % 361;
+		this.direccion = direccion % 360;
 	}
 	
 	/**
