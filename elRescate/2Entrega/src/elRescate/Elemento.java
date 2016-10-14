@@ -52,6 +52,8 @@ public abstract class Elemento {
 	 * Destruir el elemento
 	 */
 	public void destruir(){
+		//Eliminamos el elemento destruido de la lista del escenario
+		Escenario.getEscenario().quitarElemento(this);
 		//Depende de la implementación para mostrarlos
 	}
 	
@@ -81,6 +83,7 @@ public abstract class Elemento {
 	public Elemento(Tamanio tamanio, Posicion posicion){
 		this.tam = tamanio;
 		this.pos = posicion;
+		Escenario.getEscenario().agregarElemento(this);
 		this.setExiste(true);
 	}
 	

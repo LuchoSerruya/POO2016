@@ -54,9 +54,9 @@ public class Escenario{
 	 * Se fija si hay elementos para quitar del escenario y los quita
 	 */
 	private void depurarElementos() {
-		
-		for (Elemento elemento : elementos){
-			//Elemento elemento = elementos.get(i);
+		Elemento elemento;
+		for(int i = 0;i < this.elementos.size(); i++){
+			elemento = elementos.get(i);
 			//si tiene que ser quitado
 			if(!elemento.estaVivo()){
 				//se lo quita
@@ -64,29 +64,21 @@ public class Escenario{
 			}
 		}
 	}
-			
-			/*
-		for(int i = 0;i < this.elementos.size(); i++){
-			Elemento elemento = elementos.get(i);
-			//si tiene que ser quitado
-			if(!elemento.estaVivo()){
-				//se lo quita
-				elemento.destruir();
-			}
-		}
-	}*/
 	
 			
 	/**
 	 * Verifica las coliciónes entre elementos de juego
 	 */
 	private void verificarChoques() {
-		for(Elemento e1 : elementos){
+		Elemento e1, e2;
+		for(int i = 0; i < elementos.size(); i++){
 			//conseguimos tamaño y posicion de e1
+			e1 = elementos.get(i);
 			Rectangle rectanguloE1 = this.armarRectangulo(e1);
 			
-			for(Elemento e2 : elementos){
+			for(int j = 0; j < elementos.size(); i++){
 				//armo rectangulo de e2
+				e2 = elementos.get(j);
 				Rectangle rectanguloE2 = this.armarRectangulo(e2);
 				
 				//reviso si se intersectan, si se da, los choco
@@ -98,57 +90,17 @@ public class Escenario{
 		}
 	}
 	
-	/*
-		for(int i = 0; i < elementos.size(); i++){
-			Elemento e1= elementos.get(i);
-			
-			//conseguimos tamaño y posicion de e1
-			Posicion posE1 = e1.getPos();
-			Tamanio tamE1 = e1.getTam();
-			Rectangle rectanguloE1 = new Rectangle(
-					tamE1.getAlto(), 
-					tamE1.getAncho(), 
-					posE1.getX(), 
-					posE1.getY());
-			
-			for(int j = 0; j < elementos.size(); i++){
-				Elemento e2= elementos.get(i);
-	
-				//armo rectangulo de e2
-				Posicion posE2 = e2.getPos();
-				Tamanio tamE2 = e2.getTam();
-				Rectangle rectanguloE2 = new Rectangle(
-						tamE2.getAlto(), 
-						tamE2.getAncho(), 
-						posE2.getX(), 
-						posE2.getY());
-				
-				//reviso si se intersectan, si se da, los choco
-				if(rectanguloE1.intersects(rectanguloE2)){
-					e1.chocarElemento(e2);
-					e2.chocarElemento(e1);
-				}
-				
-					
-			}
-		}
-	}*/
-	
 	/**
 	 * Otorga un turno de juego a cada elemento del escenario
 	 */
 	public void turnos(){
-		for(Elemento elemento : elementos){
+		
+		Elemento elemento;
+		for(int i = 0;i < this.elementos.size(); i++){
+			elemento = elementos.get(i);
 			elemento.jugar();
 		}
 	}
-	
-	/*
-		for(int i = 0;i < this.elementos.size(); i++){
-			Elemento elemento = elementos.get(i);
-			elemento.jugar();
-		}
-	}*/
 	
 	/**
 	 * Crea los elementos del juego
@@ -163,6 +115,10 @@ public class Escenario{
 	 */
 	public void agregarElemento(Elemento elemento){
 		this.elementos.add(elemento);
+	}
+	
+	public void quitarElemento(Elemento elemento){
+		this.elementos.remove(elemento);
 	}
 	
 	public Tamanio getTamanio(){
