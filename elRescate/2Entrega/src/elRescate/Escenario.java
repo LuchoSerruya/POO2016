@@ -42,14 +42,21 @@ public class Escenario{
 		//crearElementos();
 		
 		while(true){
-			//que jueguen todos
-			turnos();
-			//ver qué paso
-			verificarChoques();
-			//quitar los que haya que
-			depurarElementos();
-			
-			mostrarEstado();
+			try{
+				//que jueguen todos
+				turnos();
+				Thread.sleep(1000);
+				//ver qué paso
+				verificarChoques();
+				Thread.sleep(1000);
+				//quitar los que haya que
+				depurarElementos();
+				Thread.sleep(1000);
+				
+				mostrarEstado();
+			}catch(Exception e){
+				
+			}
 			
 			
 		}

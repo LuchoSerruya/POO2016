@@ -13,10 +13,13 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 	private int cantidadBombas;
 	private ArrayList<Elemento> equipo;
 	
+	private static final int ENERGIA_DEFUALT = 100;
+	private static final int ESCUDO_DEFUALT = 100;
 	private static final int MUNICIONES_DEFAULT = 100;
 	private static final int BOMBAS_DEFAULT = 10;
-	private final static int ANCHO_ROBOT = 2;
-	private final static int ALTO_ROBOT= 2;
+	private static final int ANCHO_ROBOT = 2;
+	private static final int ALTO_ROBOT= 2;
+	private static final int GASTO_ENERGIA_MOVIMIENTO = 1;
 	
 	/**
 	 * Crea un robot con un tamanio fijo en una posicion indicada. Setea sus valores de cantidad de bombas y municiones a un valor por defecto
@@ -27,6 +30,9 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 		
 		setCantidadBombas(BOMBAS_DEFAULT);
 		setCantidadMuniciones(MUNICIONES_DEFAULT);
+		
+		this.setNivelEscudo(ESCUDO_DEFUALT);
+		this.setNivelEnergia(ENERGIA_DEFUALT);
 
 		this.radar = new Radar(this.getPos(),this.getDireccion());
 		this.radar.addRadarListener(this);
@@ -117,7 +123,11 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 	 */
 	public void dispararMunicion(){
 		//disparamos la munición
-		Escenario.getEscenario().agregarElemento(new Municion(this.getPos(),this,this.radar.getDireccion()));
+		if(this.getCantidadMuniciones() > 0){
+			Escenario.getEscenario().agregarElemento(new Municion(this.getPos(),this,this.radar.getDireccion()));
+			//Disminuimos cantidad de municiones
+			this.setCantidadMuniciones(this.getCantidadMuniciones() - 1);
+		}
 		
 	}
 	
@@ -155,7 +165,11 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 	 * escenario
 	 */
 	public void lanzarBomba(){
-		Escenario.getEscenario().agregarElemento(new Bomba(this.getPos(), this, this.getDireccion()));
+		if(this.getCantidadBombas() > 0){
+			Escenario.getEscenario().agregarElemento(new Bomba(this.getPos(), this, this.getDireccion()));
+			//Disminuimos cantidad de bombas
+			this.setCantidadBombas(this.getCantidadBombas() - 1);
+		}
 	}
 	
 	/**
@@ -163,8 +177,18 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 	 * @param persona
 	 */
 	public void cargarPersona(Persona persona){
-		this.persona = persona;
+		if (!(this.llevandoPersona()))
+			this.persona = persona;
 	}
+	
+	/**
+	 * Indica si se esta llevando una persona o no
+	 * @return True si se tiene una persona cargada, falso si no
+	 */
+	public boolean llevandoPersona(){
+		return this.persona != null;
+	}
+	
 	
 	public Persona entregarPersona(){
 		Persona p = this.persona;
@@ -180,8 +204,10 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 		// TODO Definir que hace el robot en jugar
 		this.radar.escanear();
 		
+		//Si tiene energia para moverse, se mueve
+		if(this.getNivelEnergia() > 0)
+			this.avanzar(this.getVelocidad());
 		
-		this.avanzar(this.getVelocidad());
 		this.setDireccion(this.getDireccion()+90);
 	}
 
@@ -190,6 +216,13 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 		super.avanzar(velocidad);
 		//se actualiza la posición del radar
 		this.radar.setPos(this.getPos());
+		
+		//Preguntamos si tiene una persona cargada para controlar el gasto de energia
+		if(this.llevandoPersona())
+			this.setNivelEnergia(this.getNivelEnergia() - GASTO_ENERGIA_MOVIMIENTO);
+		else
+			this.setNivelEnergia(this.getNivelEnergia() - (GASTO_ENERGIA_MOVIMIENTO * 2));
+		
 	}
 
 	@Override

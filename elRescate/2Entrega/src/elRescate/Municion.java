@@ -1,5 +1,7 @@
 package elRescate;
 
+import java.awt.Rectangle;
+
 public class Municion extends Movible {
 	private int danio;
 				
@@ -52,7 +54,11 @@ public class Municion extends Movible {
 	 */
 	@Override
 	public void jugar() {
-		this.avanzar(this.getVelocidad());
+		//se mueve o se destruye si se fue del escenario
+		if(!(this.fueraDeEscenario()))
+			this.avanzar(this.getVelocidad());
+		else
+			this.setExiste(false);;
 	}
 	
 	

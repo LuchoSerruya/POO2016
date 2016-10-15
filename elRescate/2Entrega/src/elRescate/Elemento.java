@@ -93,4 +93,13 @@ public abstract class Elemento {
 		return String.format("X: %d | Y: %d", this.getPos().getX(), this.getPos().getY());
 	}
 	
+	/**
+	 * Indica si el elemento esta fuera del escenario
+	 * @return True si esta fuera de los limites del escenario, false si esta dentro del escenario
+	 */
+	public boolean fueraDeEscenario(){
+		return ((this.getPos().getX() < Posicion.MIN_X) || (this.getPos().getX() > Posicion.MAX_X) ||
+				(this.getPos().getY() < Posicion.MIN_Y) || (this.getPos().getY() > Posicion.MAX_Y));
+	}
+	
 }
