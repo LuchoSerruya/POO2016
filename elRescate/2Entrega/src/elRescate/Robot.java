@@ -179,10 +179,10 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 	public void jugar() {
 		// TODO Definir que hace el robot en jugar
 		this.radar.escanear();
-		Random rdm = new Random();
 		
-		int random = rdm.nextInt(10);
-		this.avanzar(this.getDireccion() + random);
+		
+		this.avanzar(this.getVelocidad());
+		this.setDireccion(this.getDireccion()+90);
 	}
 
 	@Override

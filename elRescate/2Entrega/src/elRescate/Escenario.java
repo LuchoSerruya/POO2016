@@ -3,6 +3,7 @@ package elRescate;
 import java.util.ArrayList;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.io.IOException;
 
 /**
  * 
@@ -57,7 +58,14 @@ public class Escenario{
 	private void mostrarEstado() {
 		
 		for(int i = 0;i < this.elementos.size(); i++){
-			elementos.get(i).toString();
+			System.out.println(elementos.get(i).toString());
+		}
+		
+		System.out.println("Presione una tecla");
+		try{
+			System.in.read();
+		}catch (IOException e){
+			
 		}
 		
 	}
@@ -88,13 +96,13 @@ public class Escenario{
 			e1 = elementos.get(i);
 			Rectangle rectanguloE1 = this.armarRectangulo(e1);
 			
-			for(int j = 0; j < elementos.size(); i++){
+			for(int j = 0; j < elementos.size(); j++){
 				//armo rectangulo de e2
 				e2 = elementos.get(j);
 				Rectangle rectanguloE2 = this.armarRectangulo(e2);
 				
 				//reviso si se intersectan, si se da, los choco
-				if(rectanguloE1.intersects(rectanguloE2)){
+				if((rectanguloE1.intersects(rectanguloE2))&&(e1!=e2)){
 					e1.chocarElemento(e2);
 					e2.chocarElemento(e1);
 				}
