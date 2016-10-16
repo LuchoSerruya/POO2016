@@ -2,15 +2,21 @@ package elRescate;
 
 public class EquipoSoldadoRyan extends Equipo {
 	private static EquipoSoldadoRyan equipo;
+	private static final Posicion POSICION_REFUGIO_SOLDADO_RYAN = new Posicion(1, 1);
+	private static final Posicion POSICION_SAT1_SOLDADO_RYAN = new Posicion(10, 5);
+	private static final Posicion POSICION_SAT2_SOLDADO_RYAN = new Posicion(5, 10);
 	
 	
-	@Override
 	public static Equipo getEquipo() {
+		
 		if(equipo == null){
 			equipo = new EquipoSoldadoRyan(
-					new RobotSoldadoRyan(new Posicion(10,10)), new Satelite());
+					new RobotSoldadoRyan(new Posicion(10,10)),
+					new SateliteSoldadoRyan(POSICION_SAT1_SOLDADO_RYAN),
+					new SateliteSoldadoRyan(POSICION_SAT2_SOLDADO_RYAN),
+					new Refugio(POSICION_REFUGIO_SOLDADO_RYAN));
 		}
-		return escenario;
+		return equipo;
 	}
 	
 	/**
@@ -20,14 +26,7 @@ public class EquipoSoldadoRyan extends Equipo {
 	 * @param sat2 Satelite 2
 	 * @param refugio Refugio del equipo
 	 */
-	private public EquipoSoldadoRyan(Robot robot, Satelite sat1, Satelite sat2, Refugio refugio){
-		this.robot = robot;
-		this.elementos.add(this.robot);
-		this.sat1 = sat1;
-		this.elementos.add(this.sat1);
-		this.sat2 = sat2;
-		this.elementos.add(this.sat2);
-		this.refugio = refugio;	
-		this.elementos.add(this.refugio);
+	private EquipoSoldadoRyan(Robot robot, Satelite sat1, Satelite sat2, Refugio refugio){
+		super(robot, sat1, sat2, refugio);
 	}
 }

@@ -5,21 +5,26 @@ import java.util.ArrayList;
 public abstract class Robot extends Movible implements TieneEscudo, RadarListener{
 	private int nivelEscudo;
 	private int nivelEnergia;
-	private Radar radar;
-	private Persona persona;
 	private int cantidadMuniciones;
 	private int cantidadBombas;
 	
+	private Radar radar;
+	private Persona persona;
+	
 	private static final int ENERGIA_DEFUALT = 100;
-	private static final int ESCUDO_DEFUALT = 100;
+	protected static final int ESCUDO_DEFUALT = 100;
 	private static final int MUNICIONES_DEFAULT = 100;
 	private static final int BOMBAS_DEFAULT = 10;
+	
 	private static final int ANCHO_ROBOT = 2;
 	private static final int ALTO_ROBOT= 2;
+	
 	private static final int GASTO_ENERGIA_MOVIMIENTO = 1;
+	protected static final double VELOCIDAD_ROBOT = 5;
 	
 	/**
-	 * Crea un robot con un tamanio fijo en una posicion indicada. Setea sus valores de cantidad de bombas y municiones a un valor por defecto
+	 * Crea un robot con un tamanio fijo en una posicion indicada. 
+	 * Setea sus valores de cantidad de bombas y municiones a un valor por defecto
 	 * @param posicion
 	 */
 	public Robot(Posicion posicion){
@@ -67,11 +72,14 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 		return this.cantidadBombas;
 	}
 		
+	
 	/**
 	 * 
 	 * @return referencia al equipo al que pertence
 	 */
 	public abstract Equipo getEquipo();
+	
+	
 	
 	/**
 	 * Setea nivel de escudo del robot
@@ -80,7 +88,6 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	public void setNivelEscudo(int nivelEscudo){
 		this.nivelEscudo = nivelEscudo;
 		if (this.nivelEscudo <= 0){
-			this.nivelEscudo = 0;
 			this.setExiste(false);
 		}
 	}
@@ -109,6 +116,37 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	 */
 	public int getNivelEnergia(){
 		return this.nivelEnergia;
+	}
+	
+	public Radar getRadar(){
+		return this.radar;
+	}
+	
+	@Override
+	public void avanzar(double velocidad) {
+		super.avanzar(velocidad);
+		//se actualiza la posición del radar
+		this.radar.setPos(this.getPos());
+		
+		//Preguntamos si tiene una persona cargada para controlar el gasto de energia
+		if(this.llevandoPersona())
+			this.setNivelEnergia(this.getNivelEnergia() - GASTO_ENERGIA_MOVIMIENTO);
+		else
+			this.setNivelEnergia(this.getNivelEnergia() - (GASTO_ENERGIA_MOVIMIENTO * 2));
+		
+	}
+	
+	/**
+	 * Lanza una bomba en la dirección en la 
+	 * que apunta el radar. Ésta es agregada al 
+	 * escenario
+	 */
+	public void lanzarBomba(){
+		if(this.getCantidadBombas() > 0){
+			Escenario.getEscenario().agregarElemento(new Bomba(this.getPos(), this, this.getDireccion()));
+			//Disminuimos cantidad de bombas
+			this.setCantidadBombas(this.getCantidadBombas() - 1);
+		}
 	}
 	
 	/**
@@ -150,18 +188,7 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 		
 	}
 	
-	/**
-	 * Lanza una bomba en la dirección en la 
-	 * que apunta el radar. Ésta es agregada al 
-	 * escenario
-	 */
-	public void lanzarBomba(){
-		if(this.getCantidadBombas() > 0){
-			Escenario.getEscenario().agregarElemento(new Bomba(this.getPos(), this, this.getDireccion()));
-			//Disminuimos cantidad de bombas
-			this.setCantidadBombas(this.getCantidadBombas() - 1);
-		}
-	}
+	
 	
 	/**
 	 * Rescata una persona de un refugio o zona de rescates
@@ -192,25 +219,17 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	 */
 	@Override
 	public void jugar() {
+		//Si no se encuentra algo que todos los robots van a hacer
+		//hacer este metodo abstracto
 
 	}
 
-	@Override
-	public void avanzar(double velocidad) {
-		super.avanzar(velocidad);
-		//se actualiza la posición del radar
-		this.radar.setPos(this.getPos());
-		
-		//Preguntamos si tiene una persona cargada para controlar el gasto de energia
-		if(this.llevandoPersona())
-			this.setNivelEnergia(this.getNivelEnergia() - GASTO_ENERGIA_MOVIMIENTO);
-		else
-			this.setNivelEnergia(this.getNivelEnergia() - (GASTO_ENERGIA_MOVIMIENTO * 2));
-		
-	}
+	
 
 	@Override
-	public abstract void elementosDetectado(ArrayList<Elemento> elementos); 
+	public void elementosDetectado(ArrayList<Elemento> elementos){
+		elementos.remove(this);
+	}
 	
 	
 }

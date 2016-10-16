@@ -1,4 +1,4 @@
-package elRescate;
+	package elRescate;
 
 import java.util.Random;
 

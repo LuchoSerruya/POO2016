@@ -1,12 +1,12 @@
 package elRescate;
 
-import java.awt.Rectangle;
 
 public class Municion extends Movible {
 	private int danio;
-				
-	private Elemento duenio;
+	
 	//esto mas que un Elemento tendria que ser un Robot/Satelite
+	private Elemento duenio;
+	
 	
 	//tamaño de la municion
 	private static final int ANCHO_MUNICION = 3;

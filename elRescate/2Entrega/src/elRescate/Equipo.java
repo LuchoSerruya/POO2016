@@ -18,7 +18,7 @@ public abstract class Equipo {
 	 * @param sat2 Satelite 2
 	 * @param refugio Refugio del equipo
 	 */
-	private Equipo(Robot robot, Satelite sat1, Satelite sat2, Refugio refugio){
+	public Equipo(Robot robot, Satelite sat1, Satelite sat2, Refugio refugio){
 		this.robot = robot;
 		this.elementos.add(this.robot);
 		this.sat1 = sat1;
@@ -28,12 +28,6 @@ public abstract class Equipo {
 		this.refugio = refugio;	
 		this.elementos.add(this.refugio);
 	}
-	
-	/**
-	 * Metodo abstracto para obtener referencia a equipo. Cada subclase de equipo hará un singleton
-	 * @return Equipo
-	 */
-	public abstract Equipo getEquipo();
 	
 	/**
 	 * @return Lista de elementos del equipo

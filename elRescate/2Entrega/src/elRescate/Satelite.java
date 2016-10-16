@@ -9,9 +9,11 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	private int nivelEscudo;
 	private int cantidadMuniciones;
 	
-	private static final int ESCUDO_INICIAL = 50;
+	protected static final int ESCUDO_INICIAL = 50;
 	private final static int ANCHO_SATELITE = 3;
 	private final static int ALTO_SATELITE = 3;
+	private static final int MUNICIONES_DEFAULT = 100;
+
 
 	/**
 	 * Crea un satélite con un tamanio fijo en la posición indicada. Tiene un nivel de escudo inicial predeterminado
@@ -19,8 +21,11 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	 */
 	public Satelite(Posicion posicion){
 		super(new Tamanio(ANCHO_SATELITE, ALTO_SATELITE), posicion);
-		radar = new Radar(this.getPos(),this.radar.getDireccion());
-		setNivelEscudo(ESCUDO_INICIAL); 
+		this.radar = new Radar(this.getPos(),this.radar.getDireccion());
+		this.radar.addRadarListener(this);
+		
+		this.setNivelEscudo(ESCUDO_INICIAL);
+		this.setCantidadMuniciones(MUNICIONES_DEFAULT);
 		
 	}
 	
@@ -31,7 +36,6 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	public void setNivelEscudo(int nivelEscudo){
 		this.nivelEscudo = nivelEscudo;
 		if (this.nivelEscudo <= 0){
-			this.nivelEscudo = 0;
 			this.setExiste(false);
 		}
 	}
@@ -54,25 +58,26 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 			this.cantidadMuniciones = 0;
 	}
 	
+	public Radar getRadar(){
+		return this.radar;
+	}
+	
 	/**
 	 * @return referencia al equipo al que pertence
 	 */
 	public abstract Equipo getEquipo();
 	
 	
-	public void disparar(){
-		//conseguimos la direccion del sat
-		Posicion p = this.getPos();
-		
-		//TODO LA DIRECCION MABEL Y NELLY
+	public void dispararMunicion(){
 		//disparamos la munición
-		Escenario.getEscenario().agregarElemento((new Municion(p,this,this.radar.getDireccion())));
+		if(this.getCantidadMuniciones() > 0){
+			Escenario.getEscenario().agregarElemento(new Municion(this.getPos(),this,this.radar.getDireccion()));
+			//Disminuimos cantidad de municiones
+			this.setCantidadMuniciones(this.getCantidadMuniciones() - 1);
+		}
 	}
 	
-	@Override
-	public void jugar() {
-		
-	}
+	
 	
 	@Override
 	public void chocarElemento(Elemento elem) {
@@ -96,10 +101,10 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	 * @param equipo de la municion
 	 * @return true si la municion es de un elemento companiero, false si no es
 	 */
-	public static boolean esEquipo(Municion m, ArrayList<Elemento> equipo){
+	public static boolean esEquipo(Municion m, ArrayList<Elemento> elementosEquipo){
 		/*Devuelve verdadero si el que disparo la municion es del mismo equipo
 		que el Robot que choco*/
-		return equipo.contains(m.getDuenio());
+		return elementosEquipo.contains(m.getDuenio());
 	}
 	
 	/**
@@ -114,6 +119,13 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 		return equipo.contains(b.getDuenio());
 	}
 
+	
+	@Override
+	public void jugar() {
+		//Si no se encuentra algo que todos los satelites van a hacer
+		//hacer este metodo abstracto
+	}
+	
 	/**
 	 * Procesa los elementos detectados por el radar
 	 * @param elementos elementos que detectó el radar

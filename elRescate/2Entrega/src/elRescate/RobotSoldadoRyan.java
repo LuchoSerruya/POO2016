@@ -8,10 +8,14 @@ public class RobotSoldadoRyan extends Robot {
 	@Override
 	public void jugar() {
 		if(!this.llevandoPersona()){
-			this.apuntar(Escenario.getEscenario().getZonaRescate());
+			this.getRadar().apuntar(Escenario.getEscenario().getZonaRescate());
 		} else{
-			this.apuntar(EquipoSoldadoRyan.getEquipo().getRefugio()));
+			this.getRadar().apuntar(EquipoSoldadoRyan.getEquipo().getRefugio());
 		}
+		
+		//que onda con la velocidad????
+		//faltarian definir constantes de velocidad para el robot
+		this.avanzar(VELOCIDAD_ROBOT);
 	}
 	
 	public RobotSoldadoRyan(Posicion posicion){
@@ -20,7 +24,21 @@ public class RobotSoldadoRyan extends Robot {
 	
 	@Override
 	public Equipo getEquipo() {
-		// TODO Auto-generated method stub
-		return null;
+		return EquipoSoldadoRyan.getEquipo();
+	}
+	
+	@Override
+	public void elementosDetectado(ArrayList<Elemento> elementos) {
+		super.elementosDetectado(elementos);
+		for(Elemento e : elementos){
+			if((e instanceof Bomba) || 
+			  ((e instanceof BonusEscudo) && (this.getNivelEscudo() < (ESCUDO_DEFUALT * 0.4)))){
+				/*Si detecta una bomba o si detecta un bonus de escudo 
+				 * y tiene menos del 40% del escudo inicial, apunta y dispara*/
+				this.getRadar().apuntar(e);
+				this.dispararMunicion();
+			}
+		}
+		
 	}
 }
