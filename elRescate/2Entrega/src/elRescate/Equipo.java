@@ -2,25 +2,22 @@ package elRescate;
 
 import java.util.ArrayList;
 
-public class Equipo {
+public abstract class Equipo {
 	/**
 	 * Clase basica para el equipo
 	 */
 	private ArrayList<Elemento> elementos;
-//	private static Equipo equipo;
 	private Robot robot;
 	private Satelite sat1, sat2;
 	private Refugio refugio;
-
 	
-	/*
-	public static Equipo getEquipo(){
-		if (equipo == null){
-			equipo = new Equipo();
-		}
-		return equipo;
-	}*/
-	
+	/**
+	 * Constructor con el robot, los dos satelites y el refugio del equipo.
+	 * @param robot Robot del equipo
+	 * @param sat1 Satelite 1
+	 * @param sat2 Satelite 2
+	 * @param refugio Refugio del equipo
+	 */
 	private Equipo(Robot robot, Satelite sat1, Satelite sat2, Refugio refugio){
 		this.robot = robot;
 		this.elementos.add(this.robot);
@@ -30,16 +27,23 @@ public class Equipo {
 		this.elementos.add(this.sat2);
 		this.refugio = refugio;	
 		this.elementos.add(this.refugio);
-		
-		this.robot.setEquipo(elementos);
-		this.sat1.setEquipo(elementos);
-		this.sat2.setEquipo(elementos);
-		
 	}
 	
+	/**
+	 * Metodo abstracto para obtener referencia a equipo. Cada subclase de equipo hará un singleton
+	 * @return Equipo
+	 */
+	public abstract Equipo getEquipo();
+	
+	/**
+	 * @return Lista de elementos del equipo
+	 */
 	public ArrayList<Elemento> getElementos(){
 		return this.elementos;
 	}
 	
+	public Refugio getRefugio(){
+		return this.refugio;
+	}
 
 }

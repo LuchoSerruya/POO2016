@@ -2,19 +2,17 @@ package elRescate;
 
 import java.util.ArrayList;
 
-public class Satelite extends Elemento implements TieneEscudo, RadarListener {
+public abstract class Satelite extends Elemento implements TieneEscudo, RadarListener {
 
 
 	private Radar radar;
 	private int nivelEscudo;
 	private int cantidadMuniciones;
 	
-	private ArrayList<Elemento> equipo;
-	
 	private static final int ESCUDO_INICIAL = 50;
 	private final static int ANCHO_SATELITE = 3;
 	private final static int ALTO_SATELITE = 3;
-	
+
 	/**
 	 * Crea un satélite con un tamanio fijo en la posición indicada. Tiene un nivel de escudo inicial predeterminado
 	 * @param posicion
@@ -56,13 +54,11 @@ public class Satelite extends Elemento implements TieneEscudo, RadarListener {
 			this.cantidadMuniciones = 0;
 	}
 	
-	public void setEquipo(ArrayList<Elemento> equipo){
-		this.equipo = equipo;
-	}
+	/**
+	 * @return referencia al equipo al que pertence
+	 */
+	public abstract Equipo getEquipo();
 	
-	public ArrayList<Elemento> getEquipo(){
-		return this.equipo;
-	}
 	
 	public void disparar(){
 		//conseguimos la direccion del sat
@@ -75,7 +71,6 @@ public class Satelite extends Elemento implements TieneEscudo, RadarListener {
 	
 	@Override
 	public void jugar() {
-		// TODO que hace el satelite mientras juega
 		
 	}
 	
@@ -83,12 +78,12 @@ public class Satelite extends Elemento implements TieneEscudo, RadarListener {
 	public void chocarElemento(Elemento elem) {
 		if(elem instanceof Municion){
 			Municion muni = (Municion) elem;
-			if(!(esEquipo(muni, this.equipo)))
+			if(!(esEquipo(muni, this.getEquipo().getElementos())))
 				this.setNivelEscudo(this.getNivelEscudo() - muni.getDanio());
 		}
 		else if(elem instanceof Bomba){
 			Bomba bomb = (Bomba) elem;
-			if(!(esEquipo(bomb, this.equipo)))
+			if(!(esEquipo(bomb, this.getEquipo().getElementos())))
 				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());
 		}		
 		

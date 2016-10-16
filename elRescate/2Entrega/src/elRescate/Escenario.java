@@ -16,6 +16,9 @@ public class Escenario{
 	private ArrayList<Elemento> elementos;
 	private static Escenario escenario;
 	private Tamanio tamanioEscenario;
+	private ZonaRescate zonaRescate;
+	
+	
 	/** 
 	 * @return devuelve el escenario de juego
 	 */
@@ -33,6 +36,7 @@ public class Escenario{
 	private Escenario(Tamanio tamanio){
 		this.crearListaElementos();
 		this.tamanioEscenario = tamanio;
+		
 	}
 	
 	/**
@@ -134,6 +138,7 @@ public class Escenario{
 	 */
 	private void crearListaElementos(){
 		this.elementos = new ArrayList<Elemento>();
+		this.elementos.add(this.zonaRescate);
 	}
 	
 	/**
@@ -173,5 +178,12 @@ public class Escenario{
 				posE.getY());
 		
 		
+	}
+	
+	/**
+	 * @return Zona de Rescate del escenario
+	 */
+	public ZonaRescate getZonaRescate(){
+		return this.zonaRescate;
 	}
 }

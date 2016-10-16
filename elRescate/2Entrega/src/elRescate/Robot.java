@@ -1,17 +1,14 @@
 package elRescate;
 
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.RandomAccess;
 
-public class Robot extends Movible implements TieneEscudo, RadarListener{
+public abstract class Robot extends Movible implements TieneEscudo, RadarListener{
 	private int nivelEscudo;
 	private int nivelEnergia;
 	private Radar radar;
 	private Persona persona;
 	private int cantidadMuniciones;
 	private int cantidadBombas;
-	private ArrayList<Elemento> equipo;
 	
 	private static final int ENERGIA_DEFUALT = 100;
 	private static final int ESCUDO_DEFUALT = 100;
@@ -69,14 +66,12 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 	public int getCantidadBombas(){
 		return this.cantidadBombas;
 	}
-	
-	public void setEquipo(ArrayList<Elemento> equipo){
-		this.equipo = equipo;
-	}
-	
-	public ArrayList<Elemento> getEquipo(){
-		return this.equipo;
-	}
+		
+	/**
+	 * 
+	 * @return referencia al equipo al que pertence
+	 */
+	public abstract Equipo getEquipo();
 	
 	/**
 	 * Setea nivel de escudo del robot
@@ -139,14 +134,14 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 			//lo casteo
 			Municion muni = (Municion) elem;
 			//si no es de mi equipo, me genero el daño
-			if(!(Satelite.esEquipo(muni, this.equipo)))
+			if(!(Satelite.esEquipo(muni, this.getEquipo().getElementos())))
 				this.setNivelEscudo(this.getNivelEscudo() - muni.getDanio());
 		} //si es una bomba
 		else if(elem instanceof Bomba){
 			//casteo
 			Bomba bomb = (Bomba) elem;
 			//verifico equipo y me aplico el daño
-			if(!(Satelite.esEquipo(bomb, this.equipo)))
+			if(!(Satelite.esEquipo(bomb, this.getEquipo().getElementos())))
 				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());
 		}
 		else if (elem instanceof Bonus){
@@ -154,10 +149,6 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 		}
 		
 	}
-	
-	
-	
-	
 	
 	/**
 	 * Lanza una bomba en la dirección en la 
@@ -201,14 +192,7 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 	 */
 	@Override
 	public void jugar() {
-		// TODO Definir que hace el robot en jugar
-		this.radar.escanear();
-		
-		//Si tiene energia para moverse, se mueve
-		if(this.getNivelEnergia() > 0)
-			this.avanzar(this.getVelocidad());
-		
-		this.setDireccion(this.getDireccion()+90);
+
 	}
 
 	@Override
@@ -226,24 +210,7 @@ public class Robot extends Movible implements TieneEscudo, RadarListener{
 	}
 
 	@Override
-	public void elementosDetectado(ArrayList<Elemento> elementos) {
-		/*
-		 * Elimino al robot de la lista
-		 */
-		elementos.remove(this);
-		if(!elementos.isEmpty()){
-			this.setDireccion(this.apuntar(elementos.get(0)));
-			this.dispararMunicion();
-		}
-		
-		
-		/*
-		 * El robot procesa los elementos detectados por el radar
-		 * Acá podría ir el tema de, por ejemplo, dispararle a lo primero
-		 * que detecte. 
-		 */
-		
-	}
+	public abstract void elementosDetectado(ArrayList<Elemento> elementos); 
 	
 	
 }
