@@ -166,6 +166,8 @@ public class Escenario{
 		}
 		
 		return listaElementos;
+		
+		
 	}
 	
 	private Rectangle armarRectangulo(Elemento e){
