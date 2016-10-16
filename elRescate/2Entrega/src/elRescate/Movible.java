@@ -20,7 +20,6 @@ public abstract class Movible extends Elemento {
 	public Movible(Tamanio tamanio, Posicion posicion){
 		super(tamanio, posicion);
 		this.direccion = 0;
-		this.velocidad = 0;
 		
 		this.setVelocidad(VELOCIDAD_DEFECTO);
 	}

@@ -14,7 +14,7 @@ import java.io.IOException;
 public class Escenario{
 	//lista de elementos
 	private ArrayList<Elemento> elementos;
-	private static Escenario escenario;
+	private static Escenario escenario = null;
 	private Tamanio tamanioEscenario;
 	private ZonaRescate zonaRescate;
 	
@@ -33,8 +33,10 @@ public class Escenario{
 	 * Crea un escenario 
 	 * @param tamanio
 	 */
+	
+	
 	private Escenario(Tamanio tamanio){
-		this.crearListaElementos();
+		this.elementos = new ArrayList<Elemento>();
 		this.tamanioEscenario = tamanio;
 	}
 	
@@ -129,15 +131,7 @@ public class Escenario{
 		}
 	}
 	
-	/**
-	 * Crea los elementos del juego
-	 */
-	private void crearListaElementos(){
-		this.elementos = new ArrayList<Elemento>();
-		this.zonaRescate = new ZonaRescate();
-		
-		this.elementos.add(this.zonaRescate);
-	}
+	
 	
 	/**
 	 * Agrega un elemento al escenario
@@ -184,6 +178,10 @@ public class Escenario{
 	 * @return Zona de Rescate del escenario
 	 */
 	public ZonaRescate getZonaRescate(){
+		if(this.zonaRescate == null)
+			this.zonaRescate = new ZonaRescate();
+		
+			
 		return this.zonaRescate;
 	}
 }

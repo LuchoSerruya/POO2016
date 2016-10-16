@@ -12,6 +12,21 @@ public abstract class Elemento {
 	
 	private boolean existe;
 	
+	
+	/**
+	 * Constructor de dos parametros, recibe el tamaño y la posicón como dos objetos
+	 * @param tamanio Tamaño del elemento
+	 * @param posicion Posición del elemento
+	 */
+	public Elemento(Tamanio tamanio, Posicion posicion){
+		this.tam = tamanio;
+		this.pos = posicion;
+		this.setExiste(true);
+		
+		Escenario.getEscenario().agregarElemento(this);
+	}
+	
+	
 	/**
 	 * @return Tamaño del elemento
 	 */
@@ -75,17 +90,7 @@ public abstract class Elemento {
 		this.existe = existe;
 	}
 	
-	/**
-	 * Constructor de dos parametros, recibe el tamaño y la posicón como dos objetos
-	 * @param tamanio Tamaño del elemento
-	 * @param posicion Posición del elemento
-	 */
-	public Elemento(Tamanio tamanio, Posicion posicion){
-		this.tam = tamanio;
-		this.pos = posicion;
-		Escenario.getEscenario().agregarElemento(this);
-		this.setExiste(true);
-	}
+	
 	
 	@Override
 	public String toString() {
