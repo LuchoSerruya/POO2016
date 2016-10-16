@@ -11,7 +11,7 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	private Radar radar;
 	private Persona persona;
 	
-	private static final int ENERGIA_DEFUALT = 100;
+	protected static final int ENERGIA_DEFAULT = 100;
 	protected static final int ESCUDO_DEFUALT = 100;
 	private static final int MUNICIONES_DEFAULT = 100;
 	private static final int BOMBAS_DEFAULT = 10;
@@ -34,7 +34,7 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 		setCantidadMuniciones(MUNICIONES_DEFAULT);
 		
 		this.setNivelEscudo(ESCUDO_DEFUALT);
-		this.setNivelEnergia(ENERGIA_DEFUALT);
+		this.setNivelEnergia(ENERGIA_DEFAULT);
 
 		this.radar = new Radar(this.getPos(),this.getDireccion());
 		this.radar.addRadarListener(this);
@@ -143,7 +143,7 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	 */
 	public void lanzarBomba(){
 		if(this.getCantidadBombas() > 0){
-			Escenario.getEscenario().agregarElemento(new Bomba(this.getPos(), this, this.getDireccion()));
+			Escenario.getEscenario().agregarElemento(new Bomba(this.getPos(), this, this.getRadar().getDireccion()));
 			//Disminuimos cantidad de bombas
 			this.setCantidadBombas(this.getCantidadBombas() - 1);
 		}
@@ -157,7 +157,7 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	public void dispararMunicion(){
 		//disparamos la munición
 		if(this.getCantidadMuniciones() > 0){
-			Escenario.getEscenario().agregarElemento(new Municion(this.getPos(),this,this.radar.getDireccion()));
+			Escenario.getEscenario().agregarElemento(new Municion(this.getPos(),this,this.getRadar().getDireccion()));
 			//Disminuimos cantidad de municiones
 			this.setCantidadMuniciones(this.getCantidadMuniciones() - 1);
 		}
@@ -221,9 +221,36 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	public void jugar() {
 		//Si no se encuentra algo que todos los robots van a hacer
 		//hacer este metodo abstracto
-
+		this.getRadar().escanear();
 	}
 
+	/**
+	 * Dado un elemento, orienta el Robot hacia ese
+	 * elemento
+	 * @param elemento elemento al que se debe apuntar
+	 * @return ángulo en el cual posicionarse
+	 */
+	public void orientar(Elemento elemento){
+		
+		/*
+		 * Generamos dos puntos que actuarán de vectores 
+		 * para despues buscar el ángulo entre ellos
+		 */
+		Posicion p1 = new Posicion(0,this.getPos().getY());
+		Posicion p2 = elemento.getPos();
+		
+		/*
+		 * Con este choclo obtenemos el coseno del
+		 * ángulo entre ambos vectores
+		 */
+		double aux = 
+				(p1.getX()*p2.getX() + p1.getY()*p2.getY())/
+				(Math.sqrt(Math.pow(p1.getX(),2)+Math.pow(p1.getY(), 2))+
+						Math.sqrt(Math.pow(p2.getX(),2))+Math.pow(p2.getY(), 2));
+		
+		//Devolvemos el arco seno del ángulo
+		this.setDireccion(Math.acos(aux));
+	}
 	
 
 	@Override

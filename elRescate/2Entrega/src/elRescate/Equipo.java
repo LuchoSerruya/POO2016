@@ -19,6 +19,7 @@ public abstract class Equipo {
 	 * @param refugio Refugio del equipo
 	 */
 	public Equipo(Robot robot, Satelite sat1, Satelite sat2, Refugio refugio){
+		this.elementos = new ArrayList<Elemento>();
 		this.robot = robot;
 		this.elementos.add(this.robot);
 		this.sat1 = sat1;

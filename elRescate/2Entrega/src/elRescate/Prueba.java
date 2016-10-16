@@ -4,14 +4,9 @@ public class Prueba {
 
 	public static void main(String[] args) {
 			
-		System.out.println("Hola");
-		/*
-		 * Ahora Robot es abstracta 
-		 * 
-		Robot r1 = new Robot(new Posicion(2, 3));
-		Robot r2 = new Robot(new Posicion(10, 10));
-		Robot r3 = new Robot(new Posicion(5, 60));
-		Robot r4 = new Robot(new Posicion(15, 75));*/
+		System.out.println("MY NAME IS POTATO");
+		
+		Equipo equipo = EquipoSoldadoRyan.getEquipo();
 		
 		Escenario.getEscenario().iniciarJuego();
 	}

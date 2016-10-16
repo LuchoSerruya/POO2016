@@ -105,13 +105,12 @@ public class Radar extends Elemento {
 	
 	
 	/**
-	 * Dado un elemento, da la dirección en la que hay que 
-	 * posicionarse para apuntar al elemento pasado por
-	 * parámetro
+	 * Dado un elemento, orienta el radar en esa
+	 * direccion
 	 * @param elemento elemento al que se debe apuntar
 	 * @return ángulo en el cual posicionarse
 	 */
-	public double apuntar(Elemento elemento){
+	public void apuntar(Elemento elemento){
 		
 		/*
 		 * Generamos dos puntos que actuarán de vectores 
@@ -129,10 +128,8 @@ public class Radar extends Elemento {
 				(Math.sqrt(Math.pow(p1.getX(),2)+Math.pow(p1.getY(), 2))+
 						Math.sqrt(Math.pow(p2.getX(),2))+Math.pow(p2.getY(), 2));
 		
-		//Devolvemos el arco seno del ángulo
-		return Math.acos(aux);
-
-		
+		//Devolvemos el arco seno del �ngulo
+		this.setDireccion(Math.acos(aux));		
 	}
 	
 	/**
@@ -142,6 +139,8 @@ public class Radar extends Elemento {
 	public void jugar() {
 		//TODO kcemos aca con el radar
 		//Por ahora hacemos que sólo se vaya rotando de a 90 grados
+		
+		this.setDireccion(this.getDireccion() + 90);
 	}
 	
 	public void escanear(){

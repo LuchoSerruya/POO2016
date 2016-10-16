@@ -21,7 +21,7 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	 */
 	public Satelite(Posicion posicion){
 		super(new Tamanio(ANCHO_SATELITE, ALTO_SATELITE), posicion);
-		this.radar = new Radar(this.getPos(),this.radar.getDireccion());
+		this.radar = new Radar(this.getPos(),0);
 		this.radar.addRadarListener(this);
 		
 		this.setNivelEscudo(ESCUDO_INICIAL);
@@ -68,13 +68,19 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	public abstract Equipo getEquipo();
 	
 	
+	/**
+	 * Dispara una munición en la dirección en la 
+	 * que apunta el radar. Ésta es agregada al 
+	 * escenario
+	 */
 	public void dispararMunicion(){
 		//disparamos la munición
 		if(this.getCantidadMuniciones() > 0){
-			Escenario.getEscenario().agregarElemento(new Municion(this.getPos(),this,this.radar.getDireccion()));
+			Escenario.getEscenario().agregarElemento(new Municion(this.getPos(),this,this.getRadar().getDireccion()));
 			//Disminuimos cantidad de municiones
 			this.setCantidadMuniciones(this.getCantidadMuniciones() - 1);
 		}
+		
 	}
 	
 	
@@ -124,6 +130,7 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	public void jugar() {
 		//Si no se encuentra algo que todos los satelites van a hacer
 		//hacer este metodo abstracto
+		this.getRadar().escanear();
 	}
 	
 	/**

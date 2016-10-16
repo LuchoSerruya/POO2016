@@ -36,7 +36,6 @@ public class Escenario{
 	private Escenario(Tamanio tamanio){
 		this.crearListaElementos();
 		this.tamanioEscenario = tamanio;
-		
 	}
 	
 	/**
@@ -46,21 +45,17 @@ public class Escenario{
 		//crearElementos();
 		
 		while(true){
-			try{
 				//que jueguen todos
 				turnos();
-				Thread.sleep(1000);
+
 				//ver qué paso
 				verificarChoques();
-				Thread.sleep(1000);
+
 				//quitar los que haya que
 				depurarElementos();
-				Thread.sleep(1000);
+
 				
 				mostrarEstado();
-			}catch(Exception e){
-				
-			}
 			
 			
 		}
@@ -74,6 +69,7 @@ public class Escenario{
 		
 		System.out.println("Presione una tecla");
 		try{
+			System.in.read();
 			System.in.read();
 		}catch (IOException e){
 			
@@ -138,6 +134,8 @@ public class Escenario{
 	 */
 	private void crearListaElementos(){
 		this.elementos = new ArrayList<Elemento>();
+		this.zonaRescate = new ZonaRescate();
+		
 		this.elementos.add(this.zonaRescate);
 	}
 	
