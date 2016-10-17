@@ -5,7 +5,7 @@ public class EquipoSoldadoRyan extends Equipo {
 	private static final Posicion POSICION_REFUGIO_SOLDADO_RYAN = new Posicion(1, 1);
 	private static final Posicion POSICION_SAT1_SOLDADO_RYAN = new Posicion(10, 5);
 	private static final Posicion POSICION_SAT2_SOLDADO_RYAN = new Posicion(5, 10);
-	private static final Posicion POSICION_ROBOT_SOLDADO_RYAN = new Posicion(10,10);
+	private static final Posicion POSICION_ROBOT_SOLDADO_RYAN = new Posicion(45,100);
 	
 	/**
 	 * @return referencia al equipo

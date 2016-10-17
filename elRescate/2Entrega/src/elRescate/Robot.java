@@ -184,6 +184,8 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 		}
 		else if (elem instanceof Bonus){
 			((Bonus)elem).darBonus(this);
+		} else if(elem instanceof ZonaRescate){
+			System.out.println("Rescate!");
 		}
 		
 	}
@@ -236,9 +238,10 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 		 * Generamos dos puntos que actuarán de vectores 
 		 * para despues buscar el ángulo entre ellos
 		 */
-		Posicion p1 = new Posicion(0,this.getPos().getY());
+		Posicion p1 = new Posicion(elemento.getPos().getX(),this.getPos().getY());
 		Posicion p2 = elemento.getPos();
-		
+		//llevar estos puntos al origen
+		//TODO NOJSADFKLJSD
 		/*
 		 * Con este choclo obtenemos el coseno del
 		 * ángulo entre ambos vectores
@@ -249,7 +252,8 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 						Math.sqrt(Math.pow(p2.getX(),2))+Math.pow(p2.getY(), 2));
 		
 		//Devolvemos el arco seno del ángulo
-		this.setDireccion(Math.acos(aux));
+		
+		this.setDireccion(aux);
 	}
 	
 

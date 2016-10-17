@@ -76,9 +76,7 @@ public abstract class Elemento {
 	 * Qué ejecutar cuando el elemento choca con otro
 	 * @param elem Elemento con quién choca
 	 */
-	public void chocarElemento(Elemento elem){
-		System.out.println("choque!");
-	}
+	public abstract void chocarElemento(Elemento elem);
 	
 	/**
 	 * @return true si el elemento está vivo, false si no

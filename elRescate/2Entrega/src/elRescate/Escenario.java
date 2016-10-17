@@ -166,12 +166,10 @@ public class Escenario{
 		Posicion posE = e.getPos();
 		Tamanio tamE = e.getTam();
 		return new Rectangle(
-				tamE.getAlto(), 
-				tamE.getAncho(), 
 				posE.getX(), 
-				posE.getY());
-		
-		
+				posE.getY(),
+				tamE.getAlto(), 
+				tamE.getAncho());		
 	}
 	
 	/**

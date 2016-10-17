@@ -202,5 +202,9 @@ public class Radar extends Elemento {
 		return new Polygon(xPuntos, yPuntos, cantidadPuntos);
 	}
 	
-	
+	@Override
+	public void chocarElemento(Elemento elem) {
+		// TODO Auto-generated method stub
+		
+	}
 }
