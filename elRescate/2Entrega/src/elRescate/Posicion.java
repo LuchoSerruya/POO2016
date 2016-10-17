@@ -41,7 +41,7 @@ public class Posicion {
 	 * @param y
 	 */
 	public void setY(int y) {
-		if(x >= MIN_Y && x <= MAX_Y)
+		if(y >= MIN_Y && y <= MAX_Y)
 			this.y = y;
 	}
 	

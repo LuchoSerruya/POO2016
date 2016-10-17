@@ -19,7 +19,7 @@ public abstract class Movible extends Elemento {
 	 */
 	public Movible(Tamanio tamanio, Posicion posicion){
 		super(tamanio, posicion);
-		this.setDireccion(1);
+		this.setDireccion(0);
 		
 		this.setVelocidad(VELOCIDAD_DEFECTO);
 	}
@@ -34,11 +34,9 @@ public abstract class Movible extends Elemento {
 		
 		//le damos velocidad dada por parametro
 		this.setVelocidad(velocidad);
-		double dir = this.getDireccion();
-		double dir2 = this.direccion;
 		//modifico la posicion utilizando los deltas
 		posicionMovible.setX((int)(posicionMovible.getX() +  deltaX(this.getVelocidad(),this.getDireccion())));
-		posicionMovible.setY((int)(posicionMovible.getY() + deltaY(this.getVelocidad(),this.getDireccion())));
+		posicionMovible.setY((int)(posicionMovible.getY() - deltaY(this.getVelocidad(),this.getDireccion())));
 
 		//le doy la posicion que manipule
 		this.setPos(posicionMovible); 		

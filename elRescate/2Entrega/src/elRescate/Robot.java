@@ -1,5 +1,6 @@
 package elRescate;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 public abstract class Robot extends Movible implements TieneEscudo, RadarListener{
@@ -186,6 +187,8 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 			((Bonus)elem).darBonus(this);
 		} else if(elem instanceof ZonaRescate){
 			System.out.println("Rescate!");
+		} else if(elem instanceof Refugio){
+			System.out.println("Dejo");
 		}
 		
 	}
@@ -234,25 +237,37 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	 */
 	public void orientar(Elemento elemento){
 		
+		
 		/*
 		 * Generamos dos puntos que actuarán de vectores 
 		 * para despues buscar el ángulo entre ellos
 		 */
-		Posicion p1 = new Posicion(elemento.getPos().getX(),this.getPos().getY());
-		Posicion p2 = elemento.getPos();
+
+
+		Point p1 = new Point(1, 0);
+		Point p2 = new Point(elemento.getPos().getX() - this.getPos().getX(), elemento.getPos().getY() - this.getPos().getY());
 		//llevar estos puntos al origen
 		//TODO NOJSADFKLJSD
 		/*
 		 * Con este choclo obtenemos el coseno del
 		 * ángulo entre ambos vectores
 		 */
-		double aux = 
-				(p1.getX()*p2.getX() + p1.getY()*p2.getY())/
-				(Math.sqrt(Math.pow(p1.getX(),2)+Math.pow(p1.getY(), 2))+
-						Math.sqrt(Math.pow(p2.getX(),2))+Math.pow(p2.getY(), 2));
 		
+		double u1 = p1.getX();
+		double u2 = p1.getY();
+		double v1 = p2.getX();
+		double v2 = p2.getY();
+		double u1v1 = u1*v1;
+		double u2v2 = u2*v2;
+		double dp1 = p1.distance(new Point(0,0));
+		double dp2 = p2.distance(new Point(0,0));
+		
+		
+		double aux = (u1v1+u2v2)/(dp1*dp2);
+		
+	
 		//Devolvemos el arco seno del ángulo
-		
+		aux = Math.toDegrees(Math.acos(aux));
 		this.setDireccion(aux);
 	}
 	

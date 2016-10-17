@@ -67,7 +67,15 @@ public class Refugio extends Elemento {
 	@Override
 	public void chocarElemento(Elemento elem) {
 		//TODO implementar el rescate o perdida de personas (equipos)
-		
+		if(elem instanceof Robot){
+			Robot robot = (Robot)elem;
+			
+			if(this ==robot.getEquipo().getRefugio()){
+				this.salvarPersona(robot.entregarPersona());
+			} else {
+				robot.cargarPersona(this.quitarPersona());
+			}
+		}
 		/*
 		 * si es un robot del mismo equipo, y tiene una persona, agregarla
 		 * Si no, perder una
