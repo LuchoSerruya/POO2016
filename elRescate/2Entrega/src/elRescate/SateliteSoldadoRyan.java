@@ -18,7 +18,7 @@ public class SateliteSoldadoRyan extends Satelite{
 	public void elementosDetectado(ArrayList<Elemento> elementos) {
 		super.elementosDetectado(elementos);
 		
-		//bandera para que no itere de más
+		//bandera para que no itere de mï¿½s
 		boolean encontro= false;
 		
 		for(Elemento e : elementos){
@@ -27,12 +27,13 @@ public class SateliteSoldadoRyan extends Satelite{
 				  ((e instanceof BonusEscudo) && (this.getNivelEscudo() < (ESCUDO_INICIAL * 0.4)))){
 					/*
 					 * Si detecta una bomba o si detecta un bonus de escudo 
-					 * y tiene menos del 40% del escudo inicial y además todavia
-					 * no encontró ni bomba ni bonus, apunta y dispara
+					 * y tiene menos del 40% del escudo inicial y ademï¿½s todavia
+					 * no encontrï¿½ ni bomba ni bonus, apunta y dispara
 					 * */
 					
 					//el apuntar deberia ser de Radar, o de Elemento de ultima
 					//this.apuntar(e);
+					System.out.println("SATELITE SOLDADO RYAN WA A DISPARA");
 					this.getRadar().apuntar(e);
 					this.dispararMunicion();
 					encontro = true;

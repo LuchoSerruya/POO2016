@@ -7,6 +7,7 @@ public class Prueba {
 		System.out.println("MY NAME IS POTATO");
 		
 		Equipo equipo = EquipoSoldadoRyan.getEquipo();
+		Equipo equpo1 = EquipoQuejoDido.getEquipo();
 		
 		Escenario.getEscenario().iniciarJuego();
 	}
