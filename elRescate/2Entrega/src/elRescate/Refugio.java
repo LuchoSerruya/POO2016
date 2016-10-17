@@ -74,12 +74,18 @@ public class Refugio extends Elemento {
 			//Recibimos su persona
 			if((robot.llevandoPersona()) && (this == robot.getEquipo().getRefugio())){
 				this.salvarPersona(robot.entregarPersona());
-			} else {
+			} else if(this != robot.getEquipo().getRefugio()){
 				//Si no se cumple la condicion de arriba, nos roban una persona del refugio
 				robot.cargarPersona(this.quitarPersona());
 				//Aplicar penalidad
 			}
 		}
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return String.format("%s | Cant ref: %d", super.toString(), this.getCantidadRefugiados());
 	}
 	
 }

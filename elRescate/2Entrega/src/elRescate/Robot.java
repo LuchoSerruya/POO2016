@@ -237,38 +237,33 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	 */
 	public void orientar(Elemento elemento){
 		
-		
-		/*
-		 * Generamos dos puntos que actuarán de vectores 
-		 * para despues buscar el ángulo entre ellos
-		 */
+		//vector de referencia (1,0)
+		double xo = 1;
+		double yo = 0;
 
+		//vector de coordenadas hacia donde queremos orientar el robot
+		double xd = elemento.getPos().getX()-this.getPos().getX();
+		double yd = elemento.getPos().getY() - this.getPos().getY();
 
-		Point p1 = new Point(1, 0);
-		Point p2 = new Point(elemento.getPos().getX() - this.getPos().getX(), elemento.getPos().getY() - this.getPos().getY());
-		//llevar estos puntos al origen
-		//TODO NOJSADFKLJSD
-		/*
-		 * Con este choclo obtenemos el coseno del
-		 * ángulo entre ambos vectores
-		 */
+		//calculamos angulos absolutos de ambos vectores
+		double origen = Math.toDegrees(Math.atan2(xo,yo));
+		if(origen < 0){
+			origen +=360;
+		}
+
+		double destino = Math.toDegrees(Math.atan2(xd,yd));
+		if(destino < 0){
+			destino += 360;
+		}
 		
-		double u1 = p1.getX();
-		double u2 = p1.getY();
-		double v1 = p2.getX();
-		double v2 = p2.getY();
-		double u1v1 = u1*v1;
-		double u2v2 = u2*v2;
-		double dp1 = p1.distance(new Point(0,0));
-		double dp2 = p2.distance(new Point(0,0));
+		//la orientación final es la diferencia entre ambos angulos
+		double orientacion = destino - origen;
+		if(orientacion < 0){
+			orientacion += 360;
+		}
 		
+		this.setDireccion(orientacion);
 		
-		double aux = (u1v1+u2v2)/(dp1*dp2);
-		
-	
-		//Devolvemos el arco seno del ángulo
-		aux = Math.toDegrees(Math.acos(aux));
-		this.setDireccion(aux);
 	}
 	
 

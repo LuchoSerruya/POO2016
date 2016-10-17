@@ -112,24 +112,32 @@ public class Radar extends Elemento {
 	 */
 	public void apuntar(Elemento elemento){
 		
-		/*
-		 * Generamos dos puntos que actuarán de vectores 
-		 * para despues buscar el ángulo entre ellos
-		 */
-		Posicion p1 = new Posicion(0,this.getPos().getY());
-		Posicion p2 = elemento.getPos();
+		//vector de referencia (1,0)
+		double xo = 1;
+		double yo = 0;
+
+		//vector de coordenadas hacia donde queremos apuntar el radar
+		double xd = elemento.getPos().getX()-this.getPos().getX();
+		double yd = elemento.getPos().getY() - this.getPos().getY();
+
+		//calculamos angulos absolutos de ambos vectores
+		double origen = Math.toDegrees(Math.atan2(xo,yo));
+		if(origen < 0){
+			origen +=360;
+		}
+
+		double destino = Math.toDegrees(Math.atan2(xd,yd));
+		if(destino < 0){
+			destino += 360;
+		}
 		
-		/*
-		 * Con este choclo obtenemos el coseno del
-		 * ángulo entre ambos vectores
-		 */
-		double aux = 
-				(p1.getX()*p2.getX() + p1.getY()*p2.getY())/
-				(Math.sqrt(Math.pow(p1.getX(),2)+Math.pow(p1.getY(), 2))+
-						Math.sqrt(Math.pow(p2.getX(),2))+Math.pow(p2.getY(), 2));
+		//la orientación final es la diferencia entre ambos angulos
+		double orientacion = destino - origen;
+		if(orientacion < 0){
+			orientacion += 360;
+		}
 		
-		//Devolvemos el arco seno del �ngulo
-		this.setDireccion(Math.acos(aux));		
+		this.setDireccion(orientacion);		
 	}
 	
 	/**
