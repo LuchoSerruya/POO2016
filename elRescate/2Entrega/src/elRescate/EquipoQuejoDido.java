@@ -5,7 +5,7 @@ public class EquipoQuejoDido extends Equipo {
 	private static final Posicion POSICION_REFUGIO_QUEJO_DIDO = new Posicion(95, 1);
 	private static final Posicion POSICION_SAT1_QUEJO_DIDO = new Posicion(10, 75);
 	private static final Posicion POSICION_SAT2_QUEJO_DIDO = new Posicion(15, 80);
-	private static final Posicion POSICION_ROBOT_QUEJO_DIDO = new Posicion(40, 40);
+	private static final Posicion POSICION_ROBOT_QUEJO_DIDO = new Posicion(ZonaRescate.ESQ_SUP_IZQ.getX(),ZonaRescate.ESQ_SUP_IZQ.getY());
 	
 	/**
 	 * @return referencia al equipo

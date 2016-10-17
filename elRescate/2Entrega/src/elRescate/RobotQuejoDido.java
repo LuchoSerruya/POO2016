@@ -22,6 +22,8 @@ public class RobotQuejoDido extends Robot{
 		  * alrededor de la zona de rescate, manteniendo una 
 		  * distancia de 5
 		  */
+		
+		/*
 		if((this.getPos().getX() == 60) && (this.getPos().getY() == 40)){
 			this.setDireccion(270);
 		}
@@ -32,6 +34,21 @@ public class RobotQuejoDido extends Robot{
 			this.setDireccion(90);
 		}
 		else if((this.getPos().getX() == 40) && (this.getPos().getY() == 40)){
+			this.setDireccion(0);
+		}*/
+		
+		
+		if(this.getPos().equals(ZonaRescate.ESQ_SUP_DER)){
+			this.setDireccion(270);
+		}
+		else if(this.getPos().equals(ZonaRescate.ESQ_INF_DER)){
+			this.setDireccion(180);
+		}
+		else if(this.getPos().equals(ZonaRescate.ESQ_INF_IZQ)){
+			this.setDireccion(90);
+			
+		}
+		else if(this.getPos().equals(ZonaRescate.ESQ_SUP_IZQ)){
 			this.setDireccion(0);
 		}
 		

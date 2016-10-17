@@ -11,6 +11,12 @@ public class ZonaRescate extends Elemento {
 	private static final int X_ZONA_RESCATE = (Posicion.MAX_X - ANCHO_ZONA_RESCATE)/2;
 	private static final int Y_ZONA_RESCATE = (Posicion.MAX_Y - ALTO_ZONA_RESCATE)/2;
 	
+	
+	public static final Posicion ESQ_SUP_IZQ = new Posicion(X_ZONA_RESCATE - 5, Y_ZONA_RESCATE - 5);
+	public static final Posicion ESQ_SUP_DER = new Posicion(X_ZONA_RESCATE + ANCHO_ZONA_RESCATE + 5, Y_ZONA_RESCATE - 5);
+	public static final Posicion ESQ_INF_DER = new Posicion(X_ZONA_RESCATE + ANCHO_ZONA_RESCATE + 5, Y_ZONA_RESCATE + ALTO_ZONA_RESCATE + 5);
+	public static final Posicion ESQ_INF_IZQ = new Posicion(X_ZONA_RESCATE - 5, Y_ZONA_RESCATE + ALTO_ZONA_RESCATE + 5);
+	
 	/**
 	 * Constructor de la zona de rescate; va a ser fija, no recibe parámetros
 	 */

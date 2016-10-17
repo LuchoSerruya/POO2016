@@ -55,6 +55,16 @@ public class Posicion {
 		this.setY(y);
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Posicion){
+			Posicion pos = (Posicion)obj;
+			return ((this.getX() == pos.getX()) && (this.getY() == pos.getY()));
+		}
+		else
+			return super.equals(obj);
+	}
+	
 	/**
 	 * Crea una posicion con valores predeterminados
 	 */
