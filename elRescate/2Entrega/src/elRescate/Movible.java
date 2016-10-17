@@ -42,13 +42,23 @@ public abstract class Movible extends Elemento {
 		this.setPos(posicionMovible); 		
 	}
 	
-	//coseguimos el delta X para la velocidad
+	/**
+	 * coseguimos el delta X para la velocidad
+	 * @param radio
+	 * @param angulo
+	 * @return delta X del triangulo
+	 */
 	static double deltaX(double radio,double angulo) {
 		angulo = Math.toRadians(angulo);
 		return radio * Math.cos(angulo);
 	}
 
-	//Conseguimos el delta Y para la velocidad
+	/**
+	 * coseguimos el delta Y para la velocidad
+	 * @param radio
+	 * @param angulo
+	 * @return delta Y del triangulo
+	 */
 	static double deltaY(double radio, double angulo) {
 		angulo = Math.toRadians(angulo);
 		return radio * Math.sin(angulo);

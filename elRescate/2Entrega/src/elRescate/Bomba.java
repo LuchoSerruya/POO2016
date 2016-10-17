@@ -127,8 +127,6 @@ public class Bomba extends Movible {
 		 * deben encargarse de generarse el daño a sí mismos.
 		 * Así unificamos el comportamiento de la bomba
 		 */
-		
-		//Polimorfismo af
 		if(elem instanceof Bonus){
 			((Bonus)elem).darBonus(duenio);
 		}

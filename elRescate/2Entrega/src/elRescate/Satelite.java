@@ -48,16 +48,28 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 		return this.nivelEscudo;
 	}
 	
+	/**
+	 * 
+	 * @return cantidad de municiones del satelite
+	 */
 	public int getCantidadMuniciones(){
 		return this.cantidadMuniciones;
 	}
 
+	/**
+	 * 
+	 * @param cantMuniciones cantidad de municiones a setear en el satelite
+	 */
 	public void setCantidadMuniciones(int cantMuniciones){
 		this.cantidadMuniciones = cantMuniciones;
 		if(this.cantidadMuniciones < 0)
 			this.cantidadMuniciones = 0;
 	}
 	
+	/**
+	 * 
+	 * @return referencia al radar del satelite
+	 */
 	public Radar getRadar(){
 		return this.radar;
 	}

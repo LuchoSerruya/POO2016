@@ -5,6 +5,10 @@ public class BonusEscudo extends Bonus{
 	
 	private int escudo;
 
+	/**
+	 * Setea el valor de escudo que dara como bonus a quien se lo gano
+	 * @param escudo
+	 */
 	public void setEscudo(int escudo) {
 		this.escudo = escudo;
 	}

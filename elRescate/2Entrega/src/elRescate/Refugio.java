@@ -70,17 +70,16 @@ public class Refugio extends Elemento {
 		if(elem instanceof Robot){
 			Robot robot = (Robot)elem;
 			
-			if(this ==robot.getEquipo().getRefugio()){
+			//Si el Robot esta llevando una persona y si soy el refugio de ese Robot
+			//Recibimos su persona
+			if((robot.llevandoPersona()) && (this == robot.getEquipo().getRefugio())){
 				this.salvarPersona(robot.entregarPersona());
 			} else {
+				//Si no se cumple la condicion de arriba, nos roban una persona del refugio
 				robot.cargarPersona(this.quitarPersona());
+				//Aplicar penalidad
 			}
 		}
-		/*
-		 * si es un robot del mismo equipo, y tiene una persona, agregarla
-		 * Si no, perder una
-		 * El tema de las penalidades y tal
-		 */
 	}
 	
 }

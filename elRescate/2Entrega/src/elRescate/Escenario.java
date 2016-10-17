@@ -34,7 +34,10 @@ public class Escenario{
 	 * @param tamanio
 	 */
 	
-	
+	/**
+	 * Constructo privado del escenario (SINGLETON)
+	 * @param tamanio
+	 */
 	private Escenario(Tamanio tamanio){
 		this.elementos = new ArrayList<Elemento>();
 		this.tamanioEscenario = tamanio;
@@ -63,6 +66,9 @@ public class Escenario{
 		}
 	}
 	
+	/**
+	 * Muestra la posicion de cada Elemento creado
+	 */
 	private void mostrarEstado() {
 		
 		for(int i = 0;i < this.elementos.size(); i++){
@@ -141,14 +147,25 @@ public class Escenario{
 		this.elementos.add(elemento);
 	}
 	
+	/**
+	 * Elimina de la lista de Elementos del Escenario
+	 * un Elemento pasado por parametro
+	 * @param elemento
+	 */
 	public void quitarElemento(Elemento elemento){
 		this.elementos.remove(elemento);
 	}
 	
+	/*
 	public Tamanio getTamanio(){
 		return this.tamanioEscenario;
-	}
+	}*/
 	
+	/**
+	 * 
+	 * @param poligono
+	 * @return lista con elementos que se encuentren dentro del poligono
+	 */
 	public ArrayList<Elemento> enArea(Polygon poligono){
 		ArrayList<Elemento> listaElementos = new ArrayList<Elemento>();
 		for(Elemento e: elementos){
@@ -158,10 +175,13 @@ public class Escenario{
 		}
 		
 		return listaElementos;
-		
-		
 	}
 	
+	/**
+	 * Crea un Rectangulo a partir de un Elemento
+	 * @param e
+	 * @return el Rectangulo del Elemento
+	 */
 	private Rectangle armarRectangulo(Elemento e){
 		Posicion posE = e.getPos();
 		Tamanio tamE = e.getTam();
@@ -179,7 +199,6 @@ public class Escenario{
 		if(this.zonaRescate == null)
 			this.zonaRescate = new ZonaRescate();
 		
-			
 		return this.zonaRescate;
 	}
 }

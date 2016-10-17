@@ -5,14 +5,20 @@ import java.util.ArrayList;
 public class RobotQuejoDido extends Robot{
 	
 	@Override
+	/**
+	 * Comportamiento del Robot QuejoDido
+	 */
 	public void jugar() {
 		super.jugar();
 		this.patrullar();		
 	}
 	
+	/**
+	 * Se mueve alrededor de la ZonaRescate con un cierto margen de distancia
+	 */
 	private void patrullar() {
 		 /*
-		  * Con esta estructura de selección el robot se mueve
+		  * Con esta estructura de selecciï¿½n el robot se mueve
 		  * alrededor de la zona de rescate, manteniendo una 
 		  * distancia de 5
 		  */
@@ -45,7 +51,7 @@ public class RobotQuejoDido extends Robot{
 	public void elementosDetectado(ArrayList<Elemento> elementos) {
 		super.elementosDetectado(elementos);
 		
-		//bandera para que no itere de más
+		//bandera para que no itere de mï¿½s
 		boolean encontro = false;
 		
 		for(Elemento e : elementos){

@@ -34,9 +34,17 @@ public abstract class Bonus extends Elemento{
 		this.tiempoVida = tiempoVida;
 	}
 	
+	/**
+	 * Comportamiento que va a tener el Bonus segun sea de energia o de escudo
+	 * @param elem Objeto que se obtendra el bonus (sera un Robot/Satelite)
+	 */
 	public abstract void darBonus(Elemento elem);
 	
-	//TODO crear bonus es posicion libre del escenario
+	
+	/**
+	 * Crea un Bonus en una posicion del escenario
+	 * @param pos
+	 */
 	public Bonus(Posicion pos){
 		super(new Tamanio(ANCHO_BONUS, ALTO_BONUS), pos);
 		//creamos contenedor del numero aleatorio
@@ -45,6 +53,9 @@ public abstract class Bonus extends Elemento{
 		turnoAparicion = random.nextInt((20-10)+1) + 10;
 	}
 	
+	/**
+	 * Si el bonus se choca con un elemento, se destruye
+	 */
 	@Override
 	public void chocarElemento(Elemento elem){
 		//si choca algo, que se destruya

@@ -1,9 +1,11 @@
 package elRescate;
-
+/**
+ * Interfaz a implementar por todos los elementos que tengan escudo
+ * Robot/Satelite
+ */
 public interface TieneEscudo {
 	
-//	public int getEscudo();
-//	public void setEscudo();
+
 	public void setNivelEscudo(int nivelEscudo);
 	public int getNivelEscudo();
 

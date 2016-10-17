@@ -37,6 +37,10 @@ public abstract class Equipo {
 		return this.elementos;
 	}
 	
+	/**
+	 * 
+	 * @return Referencia al refugio del Equipo
+	 */
 	public Refugio getRefugio(){
 		return this.refugio;
 	}

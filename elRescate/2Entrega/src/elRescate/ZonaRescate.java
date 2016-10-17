@@ -8,8 +8,6 @@ public class ZonaRescate extends Elemento {
 	private static final int ANCHO_ZONA_RESCATE = 10;
 	private static final int ALTO_ZONA_RESCATE = 10;
 	
-	//TODO esto tendria que ser en el centro del escenario
-	//TODO Luciano: si 0 < x < 100 y 0 < y < 100, creo yo que el centro debería ser el P = (50, 50)
 	private static final int X_ZONA_RESCATE = (Posicion.MAX_X - ANCHO_ZONA_RESCATE)/2;
 	private static final int Y_ZONA_RESCATE = (Posicion.MAX_Y - ALTO_ZONA_RESCATE)/2;
 	

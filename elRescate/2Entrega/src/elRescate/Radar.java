@@ -128,7 +128,7 @@ public class Radar extends Elemento {
 				(Math.sqrt(Math.pow(p1.getX(),2)+Math.pow(p1.getY(), 2))+
 						Math.sqrt(Math.pow(p2.getX(),2))+Math.pow(p2.getY(), 2));
 		
-		//Devolvemos el arco seno del Ángulo
+		//Devolvemos el arco seno del ï¿½ngulo
 		this.setDireccion(Math.acos(aux));		
 	}
 	
@@ -137,12 +137,14 @@ public class Radar extends Elemento {
 	 */
 	@Override
 	public void jugar() {
-		//TODO kcemos aca con el radar
 		//Por ahora hacemos que sÃ³lo se vaya rotando de a 90 grados
 		
 		this.setDireccion(this.getDireccion() + 90);
 	}
 	
+	/**
+	 * Radar escanea su area
+	 */
 	public void escanear(){
 		System.out.println("Radar Escaneanding...");
 		
@@ -203,8 +205,10 @@ public class Radar extends Elemento {
 	}
 	
 	@Override
+	/**
+	 * Radar no hace nada cuando se choca
+	 */
 	public void chocarElemento(Elemento elem) {
-		// TODO Auto-generated method stub
 		
 	}
 }

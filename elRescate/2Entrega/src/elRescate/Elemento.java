@@ -84,6 +84,11 @@ public abstract class Elemento {
 	public boolean estaVivo(){
 		return this.existe;
 	}
+	
+	/**
+	 * Setea si existe o no el Elemento
+	 * @param existe
+	 */
 	public void setExiste(boolean existe){
 		this.existe = existe;
 	}
