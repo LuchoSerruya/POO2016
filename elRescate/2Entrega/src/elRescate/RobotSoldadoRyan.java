@@ -13,9 +13,6 @@ public class RobotSoldadoRyan extends Robot {
 		} else{
 			this.orientar(EquipoSoldadoRyan.getEquipo().getRefugio());
 		}
-		//que onda con la velocidad????
-		//faltarian definir constantes de velocidad para el robot
-		this.avanzar(VELOCIDAD_ROBOT);
 	}
 	
 	public RobotSoldadoRyan(Posicion posicion){
@@ -30,7 +27,7 @@ public class RobotSoldadoRyan extends Robot {
 	@Override
 	public void elementosDetectado(ArrayList<Elemento> elementos) {
 		super.elementosDetectado(elementos);
-		//bandera para que no itere de más
+		//bandera para que no itere de mï¿½s
 		boolean encontro = false;
 		
 		for(Elemento e : elementos){
@@ -48,5 +45,11 @@ public class RobotSoldadoRyan extends Robot {
 			}
 		}
 		
+	}
+	
+	@Override
+	public String toString() {
+		
+		return String.format("%s ROBOT SOLDADO_RYAN | Cantidad municiones: %d", super.toString(), this.getCantidadMuniciones());
 	}
 }

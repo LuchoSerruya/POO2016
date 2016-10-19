@@ -3,9 +3,10 @@ package elRescate;
 public class EquipoRencoroso extends Equipo {
 	private static EquipoRencoroso equipo;
 	private static final Posicion POSICION_REFUGIO_RENCOROSO = new Posicion(95, 95);
+								//Esquina inferior derecha del escenario
 	private static final Posicion POSICION_SAT1_RENCOROSO = new Posicion(20, 20);
 	private static final Posicion POSICION_SAT2_RENCOROSO = new Posicion(20, 70);
-	private static final Posicion POSICION_ROBOT_RENCOROSO = new Posicion(90,90);
+	private static final Posicion POSICION_ROBOT_RENCOROSO = new Posicion(90, 90);
 	
 	/**
 	 * @return referencia al equipo
@@ -31,5 +32,6 @@ public class EquipoRencoroso extends Equipo {
 	 */
 	private EquipoRencoroso(Robot robot, Satelite sat1, Satelite sat2, Refugio refugio){
 		super(robot, sat1, sat2, refugio);
+		robot.setDireccion(90);
 	}
 }

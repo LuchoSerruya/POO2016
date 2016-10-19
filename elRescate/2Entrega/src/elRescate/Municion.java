@@ -27,8 +27,6 @@ public class Municion extends Movible {
 		this.setDanio(DANIO_MUNICION);
 		this.setVelocidad(VELOCIDAD_MUNICION);
 		this.duenio = duenio;
-		//le damos la dirección del que la lanzó
-		//TODO LA DIRECCION MABEL
 		this.setDireccion(direccion);
 	}
 
@@ -57,8 +55,9 @@ public class Municion extends Movible {
 		//se mueve o se destruye si se fue del escenario
 		if(!(this.fueraDeEscenario()))
 			this.avanzar(this.getVelocidad());
-		else
-			this.setExiste(false);;
+		else{
+			this.setExiste(false);
+		}
 	}
 	
 	
@@ -68,8 +67,6 @@ public class Municion extends Movible {
 	 */
 	@Override
 	public void chocarElemento(Elemento elem) {
-		//TODO preguntar cómo se van a implementar los equipos
-		//Si me choco con el que me lanzó, no hago nada		
 		this.setExiste(false);
 	}
 	
@@ -81,5 +78,12 @@ public class Municion extends Movible {
 	 */
 	public Elemento getDuenio() {
 		return this.duenio;
+	}
+	
+	
+	@Override
+	public String toString() {
+		
+		return String.format("%s Munición", super.toString());
 	}
 }

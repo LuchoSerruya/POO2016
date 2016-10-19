@@ -4,12 +4,9 @@ import java.util.ArrayList;
 
 public class RobotRencoroso extends Robot {
 	
-	
 	@Override
 	public void jugar() {
 		super.jugar();
-		
-		this.avanzar(VELOCIDAD_ROBOT);
 	}
 	
 	public RobotRencoroso(Posicion posicion){
@@ -25,13 +22,13 @@ public class RobotRencoroso extends Robot {
 	public void elementosDetectado(ArrayList<Elemento> elementos) {
 		super.elementosDetectado(elementos);
 		/*
-		 * Bandera para que no itere de más
+		 * Bandera para que no itere de mï¿½s
 		 */
 		boolean encontro = false;
 		
 		for(Elemento e : elementos){
 			/*
-			 * Orientamos el robot en la direcciòn del robot detectado
+			 * Orientamos el robot en la direcciï¿½n del robot detectado
 			 * apuntamos con el radar y le disparamos
 			 */
 			if(!encontro){
@@ -48,10 +45,17 @@ public class RobotRencoroso extends Robot {
 				}	
 			}
 			else{
+				
 				break;
 			}
 		}
 		
+	}
+	
+	@Override
+	public String toString() {
+		
+		return String.format("%s ROBOT RENCOROSO | Cantidad municiones: %d", super.toString(), this.getCantidadMuniciones());
 	}
 	
 	

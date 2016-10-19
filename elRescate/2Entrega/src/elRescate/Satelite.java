@@ -101,41 +101,20 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	public void chocarElemento(Elemento elem) {
 		if(elem instanceof Municion){
 			Municion muni = (Municion) elem;
-			if(!(esEquipo(muni, this.getEquipo().getElementos())))
+			//si no es de mi equipo, me genero el daño
+			if(!(this.getEquipo().getElementos().contains(muni)))
 				this.setNivelEscudo(this.getNivelEscudo() - muni.getDanio());
 		}
 		else if(elem instanceof Bomba){
 			Bomba bomb = (Bomba) elem;
-			if(!(esEquipo(bomb, this.getEquipo().getElementos())))
+			//si no es de mi equipo, me genero el daño
+			if(!(this.getEquipo().getElementos().contains(bomb)))
 				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());
 		}		
 		
 	}
 	
-	/**
-	 * Verifica si el que disparo la municion es del mismo equipo
-	 * que el Satelite
-	 * @param m municion lanzada
-	 * @param equipo de la municion
-	 * @return true si la municion es de un elemento companiero, false si no es
-	 */
-	public static boolean esEquipo(Municion m, ArrayList<Elemento> elementosEquipo){
-		/*Devuelve verdadero si el que disparo la municion es del mismo equipo
-		que el Robot que choco*/
-		return elementosEquipo.contains(m.getDuenio());
-	}
-	
-	/**
-	 * Verifica si el que disparo la bomba es del mismo equipo
-	 * que el Satelite
-	 * @param b bomba lanzada
-	 * @param equipo de la bomba
-	 * @return true si la bomba es de un elemento companiero, false si no es
-	 */
-	public static boolean esEquipo(Bomba b, ArrayList<Elemento> equipo){
-		
-		return equipo.contains(b.getDuenio());
-	}
+
 
 	
 	@Override

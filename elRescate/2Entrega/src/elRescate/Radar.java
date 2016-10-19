@@ -77,7 +77,6 @@ public class Radar extends Elemento {
 		return this.alcance;
 	}
 	
-	//TODO Consular como es la formula de alcance
 	/**
 	 * Setea alcance del radar
 	 * @param angulo
@@ -154,7 +153,7 @@ public class Radar extends Elemento {
 	 * Radar escanea su area
 	 */
 	public void escanear(){
-		System.out.println("Radar Escaneanding...");
+		System.out.println("Radar escaneando...");
 		
 		//Armar poligono
 		Polygon zonaBarrida = this.armarPoligono(this.getPos().getX(), this.getPos().getY());
@@ -165,10 +164,11 @@ public class Radar extends Elemento {
 		//elemino de la lista al radar en sí
 		elementosDetectados.remove(this);
 		
-		
-		for(RadarListener listener : this.listeners){
-			listener.elementosDetectado(elementosDetectados);
-		}
+		//Si el radar detecto al menos un elemento, le avisa a sus oyentes (listeners)
+		if(!elementosDetectados.isEmpty())
+			for(RadarListener listener : this.listeners){
+				listener.elementosDetectado(elementosDetectados);
+			}
 	}
 
 	/**

@@ -19,7 +19,7 @@ public class SateliteRencoroso extends Satelite {
 	public void elementosDetectado(ArrayList<Elemento> elementos) {
 		super.elementosDetectado(elementos);
 
-		//bandera para no iterar de más
+		//bandera para no iterar de mï¿½s
 		boolean encontro= false;
 		
 		for(Elemento e : elementos){
@@ -46,5 +46,11 @@ public class SateliteRencoroso extends Satelite {
 	@Override
 	public Equipo getEquipo() {
 		return EquipoRencoroso.getEquipo();
+	}
+	
+	@Override
+	public String toString() {
+		
+		return String.format("%s SATELITE RECOROSO | Cantidad municiones: %d", super.toString(), this.getCantidadMuniciones());
 	}
 }

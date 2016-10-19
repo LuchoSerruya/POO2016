@@ -71,9 +71,13 @@ public class Escenario{
 	 */
 	private void mostrarEstado() {
 		
+		for(Elemento e : elementos){
+			System.out.println(e.toString());
+		}
+		/*
 		for(int i = 0;i < this.elementos.size(); i++){
 			System.out.println(elementos.get(i).toString());
-		}
+		}*/
 		
 		System.out.println("Presione una tecla");
 		try{
@@ -82,6 +86,7 @@ public class Escenario{
 		}catch (IOException e){
 			
 		}
+		
 		
 	}
 

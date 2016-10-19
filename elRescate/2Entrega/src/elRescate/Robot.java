@@ -1,6 +1,5 @@
 package elRescate;
 
-import java.awt.Point;
 import java.util.ArrayList;
 
 public abstract class Robot extends Movible implements TieneEscudo, RadarListener{
@@ -144,7 +143,10 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	 */
 	public void lanzarBomba(){
 		if(this.getCantidadBombas() > 0){
-			Escenario.getEscenario().agregarElemento(new Bomba(this.getPos(), this, this.getRadar().getDireccion()));
+			Escenario.getEscenario().agregarElemento(new Bomba(
+					new Posicion(this.getPos().getX(), this.getPos().getY()),
+					this,
+					this.getRadar().getDireccion()));
 			//Disminuimos cantidad de bombas
 			this.setCantidadBombas(this.getCantidadBombas() - 1);
 		}
@@ -158,7 +160,18 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	public void dispararMunicion(){
 		//disparamos la munición
 		if(this.getCantidadMuniciones() > 0){
-			Escenario.getEscenario().agregarElemento(new Municion(this.getPos(),this,this.getRadar().getDireccion()));
+			
+			Escenario.getEscenario().agregarElemento(new Municion(
+					new Posicion(this.getPos().getX(), this.getPos().getY()),
+					this,
+					this.getRadar().getDireccion()));
+			
+			/*
+			Escenario.getEscenario().agregarElemento(new Municion(
+					this.getPos(),
+					this,
+					this.getRadar().getDireccion()));*/
+			
 			//Disminuimos cantidad de municiones
 			this.setCantidadMuniciones(this.getCantidadMuniciones() - 1);
 		}
@@ -173,19 +186,26 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 			//lo casteo
 			Municion muni = (Municion) elem;
 			//si no es de mi equipo, me genero el daño
-			if(!(Satelite.esEquipo(muni, this.getEquipo().getElementos())))
+			if(!(this.getEquipo().getElementos().contains(muni)))
 				this.setNivelEscudo(this.getNivelEscudo() - muni.getDanio());
 		} //si es una bomba
 		else if(elem instanceof Bomba){
 			//casteo
 			Bomba bomb = (Bomba) elem;
 			//verifico equipo y me aplico el daño
-			if(!(Satelite.esEquipo(bomb, this.getEquipo().getElementos())))
+			if(!(this.getEquipo().getElementos().contains(bomb)))
 				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());
 		}
 		else if (elem instanceof Bonus){
 			((Bonus)elem).darBonus(this);
-		} else if(elem instanceof ZonaRescate){
+		} 
+		
+		/*
+		 * estos else if son a modo de ejemplo para mostrar
+		 * que cuando un robot se choca contra la ZonaRescate
+		 * o contra un refugio va a mostrar un mensaje
+		 */
+		else if(elem instanceof ZonaRescate){
 			System.out.println("Rescate!");
 		} else if(elem instanceof Refugio){
 			System.out.println("Dejo");
@@ -220,13 +240,15 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	}
 	
 	/**
-	 * Comportamiento del robot en su turno
+	 * Comportamiento del robot (GENERICO) en su turno
 	 */
 	@Override
 	public void jugar() {
 		//Si no se encuentra algo que todos los robots van a hacer
 		//hacer este metodo abstracto
 		this.getRadar().escanear();
+		
+		this.avanzar(VELOCIDAD_ROBOT);
 	}
 
 	/**

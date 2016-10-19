@@ -1,5 +1,6 @@
 package elRescate;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 /**
  * Refugia a donde se llevan las personas recartadas. Tener en cuenta que antes 
@@ -44,10 +45,14 @@ public class Refugio extends Elemento {
 	 * @return
 	 */
 	public Persona quitarPersona(){
-		Persona salvado = listaPersonas.peek();
-		listaPersonas.pop();
-		cantidadRefugiados--;
-		return salvado;
+		try{
+			Persona salvado = listaPersonas.peek();
+			listaPersonas.pop();
+			cantidadRefugiados--;
+			return salvado;
+		}catch(EmptyStackException e){
+			return null;
+		}
 	}
 	
 	/**
@@ -66,7 +71,6 @@ public class Refugio extends Elemento {
 	 */
 	@Override
 	public void chocarElemento(Elemento elem) {
-		//TODO implementar el rescate o perdida de personas (equipos)
 		if(elem instanceof Robot){
 			Robot robot = (Robot)elem;
 			
@@ -77,15 +81,14 @@ public class Refugio extends Elemento {
 			} else if(this != robot.getEquipo().getRefugio()){
 				//Si no se cumple la condicion de arriba, nos roban una persona del refugio
 				robot.cargarPersona(this.quitarPersona());
-				//Aplicar penalidad
+				//TODO Aplicar penalidad
 			}
 		}
 	}
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return String.format("%s | Cant ref: %d", super.toString(), this.getCantidadRefugiados());
+		return String.format("%s | Cantidad rescatados: %d", super.toString(), this.getCantidadRefugiados());
 	}
 	
 }
