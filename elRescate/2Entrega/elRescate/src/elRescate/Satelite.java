@@ -102,13 +102,13 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 		if(elem instanceof Municion){
 			Municion muni = (Municion) elem;
 			//si no es de mi equipo, me genero el daño
-			if(!(this.getEquipo().getElementos().contains(muni)))
+			if(!(this.getEquipo().getElementos().contains(muni.getDuenio())))
 				this.setNivelEscudo(this.getNivelEscudo() - muni.getDanio());
 		}
 		else if(elem instanceof Bomba){
 			Bomba bomb = (Bomba) elem;
 			//si no es de mi equipo, me genero el daño
-			if(!(this.getEquipo().getElementos().contains(bomb)))
+			if(!(this.getEquipo().getElementos().contains(bomb.getDuenio())))
 				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());
 		}		
 		
