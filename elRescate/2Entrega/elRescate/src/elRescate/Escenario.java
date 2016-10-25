@@ -72,13 +72,9 @@ public class Escenario{
 	private void mostrarEstado() {
 		
 		for(Elemento e : elementos){
+//			e.dibujarse();
 			System.out.println(e.toString());
 		}
-		/*
-		for(int i = 0;i < this.elementos.size(); i++){
-			System.out.println(elementos.get(i).toString());
-		}*/
-		
 		System.out.println("Presione una tecla");
 		try{
 			System.in.read();
