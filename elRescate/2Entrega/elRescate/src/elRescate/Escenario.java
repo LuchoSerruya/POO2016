@@ -1,6 +1,9 @@
 package elRescate;
 
 import java.util.ArrayList;
+
+import gui.EscenarioListener;
+
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.io.IOException;
@@ -14,6 +17,7 @@ import java.io.IOException;
 public class Escenario{
 	//lista de elementos
 	private ArrayList<Elemento> elementos;
+	private ArrayList<EscenarioListener> listeners;
 	private static Escenario escenario = null;
 	private Tamanio tamanioEscenario;
 	private ZonaRescate zonaRescate;
@@ -40,6 +44,7 @@ public class Escenario{
 	 */
 	private Escenario(Tamanio tamanio){
 		this.elementos = new ArrayList<Elemento>();
+		this.listeners = new ArrayList<EscenarioListener>();
 		this.tamanioEscenario = tamanio;
 	}
 	
@@ -52,6 +57,8 @@ public class Escenario{
 		while(true){
 				//que jueguen todos
 				turnos();
+				
+				mostrarUI();
 
 				//ver qué paso
 				verificarChoques();
@@ -63,6 +70,12 @@ public class Escenario{
 				mostrarEstado();
 			
 			
+		}
+	}
+	
+	private void mostrarUI(){
+		for(EscenarioListener listener : listeners){
+			listener.actualizar(this.elementos);
 		}
 	}
 	
@@ -85,7 +98,11 @@ public class Escenario{
 		
 		
 	}
-
+	
+	public void addEscenarioListener(EscenarioListener listener){
+		listeners.add(listener);
+	}
+	
 	/**
 	 * Se fija si hay elementos para quitar del escenario y los quita
 	 */
