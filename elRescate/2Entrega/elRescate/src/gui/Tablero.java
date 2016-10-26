@@ -30,6 +30,7 @@ public class Tablero extends Canvas implements MouseMotionListener{
 		g.setColor(this.getForeground());
 
 		for(Elemento e : elementos){
+
 			g.fillOval((int)e.getPos().getX(), (int)e.getPos().getY(), (int)e.getTam().getAncho(), (int)e.getTam().getAlto());
 		}
 	}

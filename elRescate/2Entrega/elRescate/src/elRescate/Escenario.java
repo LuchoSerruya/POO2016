@@ -58,7 +58,7 @@ public class Escenario{
 				//que jueguen todos
 				turnos();
 				
-				mostrarUI();
+				
 
 				//ver qué paso
 				verificarChoques();
@@ -66,8 +66,15 @@ public class Escenario{
 				//quitar los que haya que
 				depurarElementos();
 
+				mostrarUI();
 				
-				mostrarEstado();
+				//mostrarEstado();
+				
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			
 			
 		}
@@ -88,13 +95,7 @@ public class Escenario{
 //			e.dibujarse();
 			System.out.println(e.toString());
 		}
-		System.out.println("Presione una tecla");
-		try{
-			System.in.read();
-			System.in.read();
-		}catch (IOException e){
-			
-		}
+		
 		
 		
 	}

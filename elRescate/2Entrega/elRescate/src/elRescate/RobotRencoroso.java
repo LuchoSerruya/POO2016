@@ -24,17 +24,23 @@ public class RobotRencoroso extends Robot {
 		/*
 		 * Bandera para que no itere de m�s
 		 */
+		
+		
+		
 		boolean encontro = false;
 		
 		for(Elemento e : elementos){
+			System.out.println("!");
 			/*
 			 * Orientamos el robot en la direcci�n del robot detectado
 			 * apuntamos con el radar y le disparamos
 			 */
 			if(!encontro){
 				if(e instanceof Robot){
+					
 					this.orientar(e);
 					this.getRadar().apuntar(e);
+					System.out.println(String.format("%f %f", this.getDireccion(), this.getRadar().getDireccion()));
 					this.dispararMunicion();
 					encontro = true;
 				}

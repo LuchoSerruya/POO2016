@@ -184,6 +184,7 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 		//Si es una municion
 		if(elem instanceof Municion){
 			//lo casteo
+			System.out.println("got hit");
 			Municion muni = (Municion) elem;
 			//si no es de mi equipo, me genero el daño
 			if(!(this.getEquipo().getElementos().contains(muni.getDuenio())))
@@ -204,12 +205,12 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 		 * estos else if son a modo de ejemplo para mostrar
 		 * que cuando un robot se choca contra la ZonaRescate
 		 * o contra un refugio va a mostrar un mensaje
-		 */
+		 *
 		else if(elem instanceof ZonaRescate){
 			System.out.println("Rescate!");
 		} else if(elem instanceof Refugio){
 			System.out.println("Dejo");
-		}
+		}*/
 
 	}
 

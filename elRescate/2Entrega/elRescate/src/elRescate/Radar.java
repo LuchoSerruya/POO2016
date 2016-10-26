@@ -15,8 +15,8 @@ public class Radar extends Elemento {
 	//ArrayList de los listeners
 	private ArrayList<RadarListener> listeners;
 	
-	private static final int ANCHO_RADAR = 3;
-	private static final int ALTO_RADAR = 3;	
+	private static final int ANCHO_RADAR = 1;
+	private static final int ALTO_RADAR = 1;	
 	
 	/**
 	 * Agregamos a un escuchador del Radar
@@ -46,9 +46,10 @@ public class Radar extends Elemento {
 		 */
 		
 		super(new Tamanio(ANCHO_RADAR, ALTO_RADAR), posicion);
-		this.setAnguloApertura(0);
+		this.setAnguloApertura(30);
 		this.direccion = direccion;
 		this.listeners = new ArrayList<RadarListener>();
+		this.setAlcance(10);
 	}
 	
 	
@@ -81,10 +82,10 @@ public class Radar extends Elemento {
 	 * Setea alcance del radar
 	 * @param angulo
 	 */
-	private void setAlcance(double angulo){
+	private void setAlcance(double alcance){
 		//TODO PONER UNA FORMULA DE ALCANCE COHERENTE!!!!
 		//acá vemos qué hacemos, por ahora lo dejamos así
-		this.alcance = 4;
+		this.alcance = alcance;
 	}
 	
 	/**
@@ -145,15 +146,15 @@ public class Radar extends Elemento {
 	@Override
 	public void jugar() {
 		//Por ahora hacemos que sólo se vaya rotando de a 90 grados
-		
-		this.setDireccion(this.getDireccion() + 90);
+		double direccionNueva = this.getDireccion() + 90;
+		this.setDireccion(direccionNueva);
 	}
 	
 	/**
 	 * Radar escanea su area
 	 */
 	public void escanear(){
-		System.out.println("Radar escaneando...");
+		//System.out.println("Radar escaneando...");
 		
 		//Armar poligono
 		Polygon zonaBarrida = this.armarPoligono(this.getPos().getX(), this.getPos().getY());
@@ -190,7 +191,7 @@ public class Radar extends Elemento {
 		 * calculo la cantidad de puntos 
 		 * uno mas para que incluya la posicion del radar
 		 * */
-		int cantidadPuntos = 1 + (int)(this.getAnguloApertura() / incrementoGradosPoligono);
+		int cantidadPuntos = 2 + (int)(this.getAnguloApertura() / incrementoGradosPoligono);
 		
 		
 		//creo los arreglos para pasale al poligono
@@ -200,11 +201,13 @@ public class Radar extends Elemento {
 		//le agrego la posicion del radar
 		xPuntos[0] = x;
 		yPuntos[0] = y;
+		xPuntos[1] = x+(int)Movible.deltaX(this.getAlcance(), this.getDireccion());
+		yPuntos[1] = y-(int)Movible.deltaY(this.getAlcance(), this.getDireccion());
 		
 		//voy poniendo en el arreglo los puntos calculados con los deltas
-		for (int i = 1; i< cantidadPuntos; i++){
-			xPuntos[i] = (int)Movible.deltaX(this.getAlcance(), angulo);
-			yPuntos[i] = (int)Movible.deltaY(this.getAlcance(), angulo);
+		for (int i = 2; i< cantidadPuntos; i++){
+			xPuntos[i] = x+(int)Movible.deltaX(this.getAlcance(), angulo);
+			yPuntos[i] = y-(int)Movible.deltaY(this.getAlcance(), angulo);
 			angulo += incrementoGradosPoligono;
 		}
 		

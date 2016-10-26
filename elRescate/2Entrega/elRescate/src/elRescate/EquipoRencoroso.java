@@ -6,7 +6,7 @@ public class EquipoRencoroso extends Equipo {
 								//Esquina inferior derecha del escenario
 	private static final Posicion POSICION_SAT1_RENCOROSO = new Posicion(20, 20);
 	private static final Posicion POSICION_SAT2_RENCOROSO = new Posicion(20, 70);
-	private static final Posicion POSICION_ROBOT_RENCOROSO = new Posicion(90, 90);
+	private static final Posicion POSICION_ROBOT_RENCOROSO = new Posicion(60, 90);
 	
 	/**
 	 * @return referencia al equipo
