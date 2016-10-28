@@ -79,6 +79,48 @@ public abstract class Elemento {
 	public abstract void chocarElemento(Elemento elem);
 	
 	/**
+	 * Comportamiento al chocar un robot
+	 * @param robot
+	 */
+	public void chocarRobot(Robot robot){}
+	
+	/**
+	 * Comportamiento al chocar una Municion
+	 * @param municion
+	 */
+	public void chocarMunicion(Municion municion){}
+	
+	/**
+	 * Comportamiento al chocar una bomba 
+	 * @param bomba
+	 */
+	public void chocarBomba(Bomba bomba){}
+	
+	/**
+	 * Comportamiento al chocar un satelite
+	 * @param satelite
+	 */
+	public void chocarSatelite(Satelite satelite){}
+	
+	/**
+	 * Comportamiento al chocar un refugio
+	 * @param refugio
+	 */
+	public void chocarRefugio(Refugio refugio){}
+	
+	/**
+	 * Comportamiento al chocar una zona de Rescate
+	 * @param zonaRescate
+	 */
+	public void chocarZonaRescate(ZonaRescate zonaRescate){}
+	
+	/**
+	 * Comportamiento al chocar un bonus
+	 * @param bonus
+	 */
+	public void chocarBonus(Bonus bonus){}
+	
+	/**
 	 * @return true si el elemento está vivo, false si no
 	 */
 	public boolean estaVivo(){
@@ -110,5 +152,6 @@ public abstract class Elemento {
 		return ((this.getPos().getX() <= Posicion.MIN_X) || (this.getPos().getX() >= Posicion.MAX_X) ||
 				(this.getPos().getY() <= Posicion.MIN_Y) || (this.getPos().getY() >= Posicion.MAX_Y));
 	}
+	
 	
 }

@@ -30,7 +30,6 @@ public class RobotRencoroso extends Robot {
 		boolean encontro = false;
 		
 		for(Elemento e : elementos){
-			System.out.println("!");
 			/*
 			 * Orientamos el robot en la direcci�n del robot detectado
 			 * apuntamos con el radar y le disparamos
@@ -40,7 +39,6 @@ public class RobotRencoroso extends Robot {
 					
 					this.orientar(e);
 					this.getRadar().apuntar(e);
-					System.out.println(String.format("%f %f", this.getDireccion(), this.getRadar().getDireccion()));
 					this.dispararMunicion();
 					encontro = true;
 				}

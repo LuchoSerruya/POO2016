@@ -184,7 +184,6 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 		//Si es una municion
 		if(elem instanceof Municion){
 			//lo casteo
-			System.out.println("got hit");
 			Municion muni = (Municion) elem;
 			//si no es de mi equipo, me genero el daño
 			if(!(this.getEquipo().getElementos().contains(muni.getDuenio())))
