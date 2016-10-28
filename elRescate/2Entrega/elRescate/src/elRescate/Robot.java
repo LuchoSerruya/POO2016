@@ -166,38 +166,103 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 					this,
 					this.getRadar().getDireccion()));
 
-			/*
-			Escenario.getEscenario().agregarElemento(new Municion(
-					this.getPos(),
-					this,
-					this.getRadar().getDireccion()));*/
-
 			//Disminuimos cantidad de municiones
 			this.setCantidadMuniciones(this.getCantidadMuniciones() - 1);
 		}
 
 	}
+	
+	/*
+	 * 
+	 * El Robot se encargaria de todo lo relacionado a el mismo
+	 * 
+	 */
+	
+	
+	@Override
+	public void chocarMunicion(Municion municion) {
+		super.chocarMunicion(municion);
+		
+		//Nos hacemos danio (si es enemigo)
+		if(!(this.getEquipo().getElementos().contains(municion.getDuenio())))
+			this.setNivelEscudo(this.getNivelEscudo() - municion.getDanio());
+	}
+	
+	@Override
+	public void chocarBomba(Bomba bomba) {
+		super.chocarBomba(bomba);
+		
+		//Nos hacemos danio (si es enemigo)
+		if(!(this.getEquipo().getElementos().contains(bomba.getDuenio())))
+			this.setNivelEscudo(this.getNivelEscudo() - bomba.getDanio());
+	}
+	
+	@Override
+	public void chocarBonus(Bonus bonus) {
+		super.chocarBonus(bonus);
+		
+		//conseguimos bonus
+		bonus.darBonus(this);
+		
+	}
+	
+	@Override
+	public void chocarZonaRescate(ZonaRescate zonaRescate) {
+		super.chocarZonaRescate(zonaRescate);
+		
+		if(!this.llevandoPersona())
+			this.cargarPersona(zonaRescate.rescatarPersona());
+	}
+	
+	@Override
+	public void chocarRefugio(Refugio refugio) {
+		super.chocarRefugio(refugio);
+		
+		//Si es nuestro refugio y estamos llevando persona
+		if((this.getEquipo().getElementos().contains(refugio)) && (this.llevandoPersona()))
+			//dejamos la persona que llevamos
+			refugio.salvarPersona(this.entregarPersona());
+		else{
+			//si no es nuestro refugio y no estamos llevando persona
+			if(!this.llevandoPersona())
+				//robamos persona
+				this.cargarPersona(refugio.quitarPersona());
+				this.setNivelEscudo(this.getNivelEscudo() - Refugio.PENALIDAD);
+		}
+			
+		
+	}
 
 	@Override
 	public void chocarElemento(Elemento elem) {
+		
+		elem.chocarRobot(this);
 
+		
+		
+		/*
+		 * 
+		 * TODO BORRAR LO COMENTADO 
+		 * 
+		 */
 		//Si es una municion
 		if(elem instanceof Municion){
-			//lo casteo
+			/*lo casteo
 			Municion muni = (Municion) elem;
 			//si no es de mi equipo, me genero el daño
 			if(!(this.getEquipo().getElementos().contains(muni.getDuenio())))
-				this.setNivelEscudo(this.getNivelEscudo() - muni.getDanio());
+				this.setNivelEscudo(this.getNivelEscudo() - muni.getDanio());*/
 		} //si es una bomba
 		else if(elem instanceof Bomba){
-			//casteo
+			/*casteo
 			Bomba bomb = (Bomba) elem;
 			//verifico equipo y me aplico el daño
 			if(!(this.getEquipo().getElementos().contains(bomb.getDuenio())))
-				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());
+				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());*/
 		}
 		else if (elem instanceof Bonus){
-			((Bonus)elem).darBonus(this);
+			//((Bonus)elem).darBonus(this);
+			
 		}
 
 		/*

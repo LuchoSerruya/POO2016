@@ -116,21 +116,36 @@ public class Bomba extends Movible {
 		return this.explotada;
 	}
 	
+	
+	@Override
+	public void chocarBonus(Bonus bonus) {
+		super.chocarBonus(bonus);
+		
+		bonus.darBonus(this.getDuenio());
+	}
 	/**
 	 * Comportamiento de la bomba al chocar con un elemento
 	 * @param elem Elemento con el que chocó
 	 */
 	@Override
 	public void chocarElemento(Elemento elem) {
+		elem.chocarBomba(this);
+		this.explotar();
+		/*
+		 * 
+		 * TODO BORRAR LO COMENTADO 
+		 * 
+		 */
+		
 		/* La bomba al chocar con cualquier cosa, se destruirá.
 		 * Aquellos que choquen con la bomba, en caso de tener escudo
 		 * deben encargarse de generarse el daño a sí mismos.
 		 * Así unificamos el comportamiento de la bomba
-		 */
+		 
 		if(elem instanceof Bonus){
 			((Bonus)elem).darBonus(duenio);
 		}
 		
-		this.explotar();
+		this.explotar();*/
 	}
 }

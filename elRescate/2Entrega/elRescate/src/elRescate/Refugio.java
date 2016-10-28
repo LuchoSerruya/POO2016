@@ -18,6 +18,7 @@ public class Refugio extends Elemento {
 	Stack<Persona> listaPersonas;
 	
 	private int cantidadRefugiados;
+	public static final int PENALIDAD = 3;
 	
 	
 	/**
@@ -71,6 +72,15 @@ public class Refugio extends Elemento {
 	 */
 	@Override
 	public void chocarElemento(Elemento elem) {
+		elem.chocarRefugio(this);
+		
+		/*
+		 * 
+		 * TODO BORRAR LO COMENTADO 
+		 * 
+		 */
+		
+		/*
 		if(elem instanceof Robot){
 			Robot robot = (Robot)elem;
 			
@@ -83,7 +93,7 @@ public class Refugio extends Elemento {
 				robot.cargarPersona(this.quitarPersona());
 				//TODO Aplicar penalidad
 			}
-		}
+		}*/
 	}
 	
 	@Override

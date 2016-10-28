@@ -58,6 +58,7 @@ public abstract class Bonus extends Elemento{
 	 */
 	@Override
 	public void chocarElemento(Elemento elem){
+		elem.chocarBonus(this);
 		//si choca algo, que se destruya
 		this.setExiste(false);
 	}

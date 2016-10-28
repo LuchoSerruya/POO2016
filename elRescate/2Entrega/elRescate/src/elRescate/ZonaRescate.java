@@ -41,10 +41,15 @@ public class ZonaRescate extends Elemento {
 	 */
 	@Override
 	public void chocarElemento(Elemento elem) {
+		elem.chocarZonaRescate(this);
+		
+		//TODO BORRAR LO COMENTADO
+		
+		/*
 		if(elem instanceof Robot){
 			Robot robot = (Robot)elem;
 			robot.cargarPersona(this.rescatarPersona());
-		}
+		}*/
 		
 	}
 }

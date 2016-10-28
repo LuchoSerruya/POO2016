@@ -96,9 +96,32 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	}
 	
 	
+	@Override
+	public void chocarMunicion(Municion municion) {
+		super.chocarMunicion(municion);
+		
+		if(!(this.getEquipo().getElementos().contains(municion.getDuenio())))
+			this.setNivelEscudo(this.getNivelEscudo() - municion.getDanio());
+		
+	}
+	
+	@Override
+	public void chocarBomba(Bomba bomba) {
+		super.chocarBomba(bomba);
+		if(!(this.getEquipo().getElementos().contains(bomba.getDuenio())))
+			this.setNivelEscudo(this.getNivelEscudo() - bomba.getDanio());
+	}
 	
 	@Override
 	public void chocarElemento(Elemento elem) {
+		
+		/*
+		 * 
+		 * TODO BORRAR LO COMENTADO 
+		 * 
+		 */
+		
+		/*
 		if(elem instanceof Municion){
 			Municion muni = (Municion) elem;
 			//si no es de mi equipo, me genero el daño
@@ -110,7 +133,7 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 			//si no es de mi equipo, me genero el daño
 			if(!(this.getEquipo().getElementos().contains(bomb.getDuenio())))
 				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());
-		}		
+		}*/	
 		
 	}
 	

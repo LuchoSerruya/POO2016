@@ -73,7 +73,6 @@ public class JuegoUI extends JFrame implements EscenarioListener, MouseListener 
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -81,7 +80,6 @@ public class JuegoUI extends JFrame implements EscenarioListener, MouseListener 
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -89,7 +87,7 @@ public class JuegoUI extends JFrame implements EscenarioListener, MouseListener 
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
@@ -97,7 +95,7 @@ public class JuegoUI extends JFrame implements EscenarioListener, MouseListener 
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 		
 	}
 

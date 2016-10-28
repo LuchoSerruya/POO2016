@@ -60,6 +60,12 @@ public class Municion extends Movible {
 		}
 	}
 	
+	@Override
+	public void chocarBonus(Bonus bonus) {
+		super.chocarBonus(bonus);
+		
+		bonus.darBonus(this.getDuenio());
+	}
 	
 	/**
 	 * Comportamiento de la Munición al chocar otro elemento.
@@ -67,16 +73,26 @@ public class Municion extends Movible {
 	 */
 	@Override
 	public void chocarElemento(Elemento elem) {
+		elem.chocarMunicion(this);
+		//chocamos algo, nos destruimos
 		this.setExiste(false);
+		
+		
+		
+		/*
+		 * 
+		 * TODO BORRAR LO COMENTADO 
+		 * 
+		 */
+		/*
 		/*
 		 * Si la municion se choca contra un bonus,
 		 * le pasamos la referencia al duenio de la municion
 		 * al bonus
-		 */ 
 		if(elem instanceof Bonus){
 			Bonus bonus = (Bonus) elem;
 			bonus.darBonus(this.getDuenio());
-		}
+		}*/
 	}
 	
 

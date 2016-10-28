@@ -18,7 +18,6 @@ public class SateliteJugador extends Satelite{
 	
 	@Override
 	public void jugar() {
-		// TODO Auto-generated method stub
 		super.jugar();
 	}
 	
