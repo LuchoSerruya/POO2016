@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import elRescate.Elemento;
 import elRescate.Escenario;
 
-public class JuegoUI extends JFrame implements EscenarioListener, MouseListener  {
+public class JuegoUI extends JFrame implements EscenarioListener{
 
 	private Tablero tablero;
 	
@@ -44,58 +44,10 @@ public class JuegoUI extends JFrame implements EscenarioListener, MouseListener 
 	}
  
 
-	/*
-	public void iniciar(Modelo modelo){
-		this.modelo = modelo;
-		
-		this.modelo.addModeloListener(this);
-		this.tablero.addMouseListener(this);
-
-		this.tablero.setModelo(modelo);		
-
-		this.setVisible(true);
-	}*/
-
-
+	
 	@Override
 	public void actualizar(ArrayList<Elemento> elementos) {
 		tablero.mostrar(elementos);
-		
-	}
-
-
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-	}
-
-
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		
-	}
-
-
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		
-	}
-
-
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-
-		
-	}
-
-
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-
 		
 	}
 

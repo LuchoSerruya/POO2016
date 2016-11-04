@@ -7,7 +7,7 @@ public abstract class Equipo {
 	 * Clase basica para el equipo
 	 */
 	private ArrayList<Elemento> elementos;
-	private Robot robot;
+	protected Robot robot;
 	private Satelite sat1, sat2;
 	private Refugio refugio;
 	
@@ -44,5 +44,7 @@ public abstract class Equipo {
 	public Refugio getRefugio(){
 		return this.refugio;
 	}
+	
+	
 
 }

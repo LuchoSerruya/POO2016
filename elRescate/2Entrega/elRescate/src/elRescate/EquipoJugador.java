@@ -12,7 +12,7 @@ public class EquipoJugador extends Equipo{
 	/**
 	 * @return referencia al equipo
 	 */
-	public static Equipo getEquipo() {
+	public static EquipoJugador getEquipo() {
 		
 		if(equipo == null){
 			equipo = new EquipoJugador(
@@ -33,6 +33,12 @@ public class EquipoJugador extends Equipo{
 	 */
 	private EquipoJugador(Robot robot, Satelite sat1, Satelite sat2, Refugio refugio){
 		super(robot, sat1, sat2, refugio);
+	}
+	
+	public RobotJugador getRobot() {
+		RobotJugador robot = (RobotJugador)this.robot;
+		return robot;
+
 	}
 
 }

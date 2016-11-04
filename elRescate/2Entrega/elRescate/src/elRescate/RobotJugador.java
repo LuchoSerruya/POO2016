@@ -4,6 +4,15 @@ import java.util.ArrayList;
 
 public class RobotJugador extends Robot{
 	
+	public final static int MOVER_IZQ = 1;
+	public final static int MOVER_ARRIBA = 2;
+	public final static int MOVER_DER = 3;
+	public final static int MOVER_ABAJO = 4;
+	public final static int DISPARAR_MUNICION = 5;
+	public final static int LANZAR_BOMBA = 6;
+	
+	int accionTeclado = 0;
+	
 	public RobotJugador(Posicion posicion){
 		super(posicion);
 	}
@@ -14,22 +23,56 @@ public class RobotJugador extends Robot{
 		return EquipoJugador.getEquipo();
 	}
 	
+	public int getAccionTeclado() {
+		return accionTeclado;
+	}
+	
+	public void setAccionTeclado(int accionTeclado) {
+		this.accionTeclado = accionTeclado;
+	}
+	
 	@Override
 	public void jugar() {
-		super.jugar();
-		if(this.fueraDeEscenario())
-			this.cambioDireccion();
+		this.getRadar().escanear();
 		
-		/*
-		 * Comportamiento que va a tener el Robot de que va a manejar el jugador
-		 * 
-		 * La clase debe implementar los correspondientes listeners para Mouse y/o teclado
-		 * y implementar sus metodos segun la configuracion de botones que se decida
-		 * 
-		 * 
-		 * Por lo pronto el Robot del jugador se mueve 
-		 * y cuando llega a algun extremo del escenario, cambia su direccion
-		 */
+		switch (getAccionTeclado()){
+			case MOVER_IZQ:
+				this.setDireccion(180);
+				this.avanzar(Robot.VELOCIDAD_ROBOT);
+				System.out.println("me muevo izq");
+				this.setAccionTeclado(0);
+				break;
+			case MOVER_ARRIBA:
+				this.setDireccion(90);
+				this.avanzar(Robot.VELOCIDAD_ROBOT);
+				System.out.println("me muevo arriba");
+				this.setAccionTeclado(0);
+				break;
+			case MOVER_DER:
+				this.setDireccion(0);
+				this.avanzar(Robot.VELOCIDAD_ROBOT);
+				System.out.println("me muevo der");
+				this.setAccionTeclado(0);
+				break;
+			case MOVER_ABAJO:
+				this.setDireccion(270);
+				this.avanzar(Robot.VELOCIDAD_ROBOT);
+				System.out.println("me muevo abajo");
+				this.setAccionTeclado(0);
+				break;
+			case DISPARAR_MUNICION:
+				this.dispararMunicion();
+				System.out.println("disparo");
+				this.setAccionTeclado(0);
+				break;
+			case LANZAR_BOMBA:
+				this.lanzarBomba();
+				System.out.println("tiro bomba");
+				this.setAccionTeclado(0);
+				break;
+			default:
+		}
+	
 		
 	}
 	
@@ -37,22 +80,8 @@ public class RobotJugador extends Robot{
 	public void elementosDetectado(ArrayList<Elemento> elementos) {
 		super.elementosDetectado(elementos);
 		
-		System.out.println("ROBOT JUGADOR: detecte algo");
+		//System.out.println("ROBOT JUGADOR: detecte algo");
 		
-	}
-	
-
-		
-	
-	private void cambioDireccion(){
-		if((this.getDireccion() == 90))
-			this.setDireccion(0);
-		else if((this.getDireccion() == 0))
-			this.setDireccion(270);
-		else if((this.getDireccion() == 270))
-			this.setDireccion(180);
-		else if((this.getDireccion() == 180))
-			this.setDireccion(0);
 	}
 	
 	
