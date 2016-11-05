@@ -12,8 +12,8 @@ import java.util.Stack;
  */
 public class Refugio extends Elemento {
 
-	private static final int ANCHO_REFUGIO = 10;
-	private static final int ALTO_REFUGIO = 10;
+	private static final int ANCHO_REFUGIO = 50;
+	private static final int ALTO_REFUGIO = 50;
 	
 	Stack<Persona> listaPersonas;
 	

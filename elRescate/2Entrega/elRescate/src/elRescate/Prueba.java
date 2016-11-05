@@ -8,7 +8,7 @@ public class Prueba {
 
 		
 		Equipo equipo = EquipoSoldadoRyan.getEquipo();
-		Equipo equipo1 = EquipoQuejoDido.getEquipo();
+		//Equipo equipo1 = EquipoQuejoDido.getEquipo();
 		Equipo equipo2 = EquipoRencoroso.getEquipo();
 		Equipo equipo3 = EquipoJugador.getEquipo();
 		

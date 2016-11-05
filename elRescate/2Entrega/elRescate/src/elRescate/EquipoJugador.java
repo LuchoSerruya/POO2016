@@ -2,11 +2,11 @@ package elRescate;
 
 public class EquipoJugador extends Equipo{
 	private static EquipoJugador equipo;
-	private static final Posicion POSICION_REFUGIO_JUGADOR = new Posicion(1, 95);
+	private static final Posicion POSICION_REFUGIO_JUGADOR = new Posicion(1,510);
 								//Esquina inferior izquierda del escenario
-	private static final Posicion POSICION_SAT1_JUGADOR = new Posicion(5, 85);
-	private static final Posicion POSICION_SAT2_JUGADOR = new Posicion(10, 90);
-	private static final Posicion POSICION_ROBOT_JUGADOR = new Posicion(10, 85);
+	private static final Posicion POSICION_SAT1_JUGADOR = new Posicion(5,450);
+	private static final Posicion POSICION_SAT2_JUGADOR = new Posicion(80, 500);
+	private static final Posicion POSICION_ROBOT_JUGADOR = new Posicion(40, 475);
 	
 	
 	/**

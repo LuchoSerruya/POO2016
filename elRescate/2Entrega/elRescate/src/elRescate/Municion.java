@@ -9,14 +9,14 @@ public class Municion extends Movible {
 	
 	
 	//tamaño de la municion
-	private static final int ANCHO_MUNICION = 3;
-	private static final int ALTO_MUNICION = 3;
+	private static final int ANCHO_MUNICION = 5;
+	private static final int ALTO_MUNICION = 5;
 	
 	//velocidad de la municion
 	private static final double VELOCIDAD_MUNICION = 10;
 	
 	//danio de la municion
-	private static final int DANIO_MUNICION = 10;
+	private static final int DANIO_MUNICION = 1;
 	
 	/**
 	 * Crea la munición en la posicip

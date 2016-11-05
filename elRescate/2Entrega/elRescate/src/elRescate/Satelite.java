@@ -10,8 +10,8 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	private int cantidadMuniciones;
 	
 	protected static final int ESCUDO_INICIAL = 50;
-	private final static int ANCHO_SATELITE = 3;
-	private final static int ALTO_SATELITE = 3;
+	private final static int ANCHO_SATELITE = 15;
+	private final static int ALTO_SATELITE = 15;
 	private static final int MUNICIONES_DEFAULT = 100;
 
 
@@ -28,6 +28,7 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 		this.setCantidadMuniciones(MUNICIONES_DEFAULT);
 		
 	}
+	
 	
 	/**
 	 * Setea nivel de escudo

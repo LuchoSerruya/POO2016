@@ -1,4 +1,7 @@
 package elRescate;
+
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 /**
  * Bomba a ser lanzada
  *
@@ -10,14 +13,14 @@ public class Bomba extends Movible {
 	private Elemento duenio;
 	
 	//tamaño de la bomba
-	private static final int ANCHO_BOMBA = 3;
-	private static final int ALTO_BOMBA = 3;
+	private static final int ANCHO_BOMBA = 6;
+	private static final int ALTO_BOMBA = 6;
 	
 	//velocidad inicial de la bomba
 	private static final double VELOCIDAD_BOMBA = 10.0;
 	
 	//daño de la bomba
-	private static final int DANIO_BOMBA = 10;
+	private static final int DANIO_BOMBA = 5;
 	
 	//si la bomba ha explotado
 	private boolean explotada;
@@ -58,24 +61,17 @@ public class Bomba extends Movible {
 		return this.duenio;
 	}
 	
+	
 	/**
 	 * Forma particular de avanzar de la bomba. A medida que avanza, va perdiendo velocidad
 	 */
 	@Override
 	public void avanzar(double velocidad) {
 		//si la bomba todavía posee velocidad
+		System.out.println(this.getVelocidad());
 		if(this.getVelocidad()>0){
-			//conseguimos la posicion de la bomba
-			Posicion posicionBomba = this.getPos();
-			
-			//modifico la posicion utilizando los deltas
-			posicionBomba.setX((int)(posicionBomba.getX() +  deltaX(this.getDireccion(),this.getVelocidad())));
-			posicionBomba.setY((int)(posicionBomba.getY() + deltaY(this.getDireccion(),this.getVelocidad())));
-	
-			//le doy la posicion que manipule
-			this.setPos(posicionBomba);
-			this.setVelocidad(this.getVelocidad() - 1);
-			
+			super.avanzar(velocidad);
+			this.setVelocidad(this.getVelocidad() - 0.5);
 		}
 		else{
 			//si se quedó sin velocidad, tiene que explotar
@@ -89,16 +85,18 @@ public class Bomba extends Movible {
 	 */
 	public void explotar() {
 		//conseguimos su tamaño actual
+		if(!this.explotada){
 		Tamanio tamanioBomba = this.getTam();
 		
 		//lo modificamos
-		tamanioBomba.setAlto(tamanioBomba.getAlto() * 3);
-		tamanioBomba.setAncho(tamanioBomba.getAncho() * 3);
+		tamanioBomba.setAlto(tamanioBomba.getAlto() * 10);
+		tamanioBomba.setAncho(tamanioBomba.getAncho() * 10);
 		
-//		//se lo otorgamos
+		//se lo otorgamos
 		this.setTam(tamanioBomba);
 		this.explotada = true;
 		this.setExiste(false);
+		}
 	}
 	
 	/**
@@ -130,7 +128,11 @@ public class Bomba extends Movible {
 	@Override
 	public void chocarElemento(Elemento elem) {
 		elem.chocarBomba(this);
-		this.explotar();
+		//si se choca con quien la lanzo, no explota
+		if (elem != this.getDuenio()){
+			this.explotar();
+		}
+		
 		/*
 		 * 
 		 * TODO BORRAR LO COMENTADO 

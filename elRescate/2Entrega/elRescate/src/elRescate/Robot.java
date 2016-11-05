@@ -16,8 +16,8 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	private static final int MUNICIONES_DEFAULT = 100;
 	private static final int BOMBAS_DEFAULT = 10;
 
-	private static final int ANCHO_ROBOT = 2;
-	private static final int ALTO_ROBOT= 2;
+	private static final int ANCHO_ROBOT = 20;
+	private static final int ALTO_ROBOT= 20;
 
 	private static final int GASTO_ENERGIA_MOVIMIENTO = 1;
 	protected static final double VELOCIDAD_ROBOT = 5;
@@ -218,16 +218,20 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	public void chocarRefugio(Refugio refugio) {
 		super.chocarRefugio(refugio);
 		
+		boolean esNuestro = this.getEquipo().getElementos().contains(refugio);
 		//Si es nuestro refugio y estamos llevando persona
-		if((this.getEquipo().getElementos().contains(refugio)) && (this.llevandoPersona()))
+		if(esNuestro && (this.llevandoPersona())){
 			//dejamos la persona que llevamos
 			refugio.salvarPersona(this.entregarPersona());
-		else{
+		}
+		else if(!esNuestro && !this.llevandoPersona()){
+			
 			//si no es nuestro refugio y no estamos llevando persona
-			if(!this.llevandoPersona())
-				//robamos persona
-				this.cargarPersona(refugio.quitarPersona());
-				this.setNivelEscudo(this.getNivelEscudo() - Refugio.PENALIDAD);
+			//robamos persona
+			this.cargarPersona(refugio.quitarPersona());
+			this.setNivelEscudo(this.getNivelEscudo() - Refugio.PENALIDAD);
+		
+				
 		}
 			
 		

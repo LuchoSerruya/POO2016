@@ -39,7 +39,7 @@ public class JuegoUI extends JFrame implements EscenarioListener{
 
 		c.add(tablero, BorderLayout.CENTER);
 		
-		this.setSize(400, 400);
+		this.setSize(600, 600);
 		this.setVisible(true);	
 	}
  

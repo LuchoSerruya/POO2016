@@ -3,8 +3,8 @@ package elRescate;
 
 public class Posicion {
 	//constantes para definir el tamanio del escenario
-	public static final int MAX_X= 100;
-	public static final int MAX_Y = 100;
+	public static final int MAX_X= 600;
+	public static final int MAX_Y = 600;
 	public static final int MIN_X= 0;
 	public static final int MIN_Y = 0;
 	
