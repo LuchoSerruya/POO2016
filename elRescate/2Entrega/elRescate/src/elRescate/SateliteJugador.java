@@ -46,10 +46,6 @@ public class SateliteJugador extends Satelite{
 		}
 	}
 	
-	@Override
-	public String toString() {
-		
-		return String.format("%s SATELITE JUGADOR (disparo a otros robots)| Cantidad municiones: %d", super.toString(), this.getCantidadMuniciones());
-	}
+
 
 }

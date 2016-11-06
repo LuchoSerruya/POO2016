@@ -49,7 +49,7 @@ public class Radar extends Elemento {
 		this.setAnguloApertura(30);
 		this.direccion = direccion;
 		this.listeners = new ArrayList<RadarListener>();
-		this.setAlcance(15);
+		this.setAlcance(50);
 	}
 	
 	

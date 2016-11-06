@@ -49,11 +49,5 @@ public class RobotSoldadoRyan extends Robot {
 		
 	}
 	
-	@Override
-	public String toString() {
-		
-		return String.format("%s ROBOT SOLDADO_RYAN | Cantidad municiones: %d | Nivel Escudo: %d", super.toString(), this.getCantidadMuniciones(),this.getNivelEscudo());
-	}
-	
 	
 }

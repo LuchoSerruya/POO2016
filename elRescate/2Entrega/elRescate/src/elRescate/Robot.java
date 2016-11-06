@@ -19,7 +19,7 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	private static final int ANCHO_ROBOT = 20;
 	private static final int ALTO_ROBOT= 20;
 
-	private static final int GASTO_ENERGIA_MOVIMIENTO = 1;
+	private static final double GASTO_ENERGIA_MOVIMIENTO = 0.2;
 	protected static final double VELOCIDAD_ROBOT = 5;
 
 	/**
@@ -124,16 +124,18 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 
 	@Override
 	public void avanzar(double velocidad) {
-		super.avanzar(velocidad);
-		//se actualiza la posición del radar
-		this.radar.setPos(this.getPos());
-
-		//Preguntamos si tiene una persona cargada para controlar el gasto de energia
-		if(this.llevandoPersona())
-			this.setNivelEnergia(this.getNivelEnergia() - GASTO_ENERGIA_MOVIMIENTO);
-		else
-			this.setNivelEnergia(this.getNivelEnergia() - (GASTO_ENERGIA_MOVIMIENTO * 2));
-
+		//Si aun tengo energia, me muevo
+		if(this.getNivelEnergia() > 0){		
+			super.avanzar(velocidad);
+			//se actualiza la posición del radar
+			this.radar.setPos(this.getPos());
+	
+			//Preguntamos si tiene una persona cargada para controlar el gasto de energia
+			if(this.llevandoPersona())
+				this.setNivelEnergia((int)(this.getNivelEnergia() - GASTO_ENERGIA_MOVIMIENTO));
+			else
+				this.setNivelEnergia((int)(this.getNivelEnergia() - (GASTO_ENERGIA_MOVIMIENTO * 2)));
+		}
 	}
 
 	/**
@@ -363,5 +365,25 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 		elementos.remove(this);
 	}
 
+	/**
+	 * Muestra las stats del robot
+	 */
+	@Override
+	public String toString() {
+		
+		return String.format(
+				"%s\n"
+				+ "Municiones: %d\n"
+				+ "Bombas: %d\n"
+				+ "Nivel Energia: %d\n"
+				+ "Nivel Escudo: %d\n"
+				+ "Lleva Persona?: %b", 
+				super.toString(), 
+				this.getCantidadMuniciones(),
+				this.getCantidadBombas(),
+				this.getNivelEnergia(),
+				this.getNivelEscudo(),
+				this.llevandoPersona());
+	}
 
 }

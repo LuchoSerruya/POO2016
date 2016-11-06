@@ -50,9 +50,4 @@ public class SateliteSoldadoRyan extends Satelite{
 		return EquipoSoldadoRyan.getEquipo();
 	}
 	
-	@Override
-	public String toString() {
-		
-		return String.format("%s SATELITE SOLDADO_RYAN | Cantidad municiones: %d", super.toString(), this.getCantidadMuniciones());
-	}
 }

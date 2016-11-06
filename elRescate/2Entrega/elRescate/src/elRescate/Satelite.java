@@ -142,4 +142,19 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 		 * Procesar elementos detectados
 		 */
 	}
+	
+	/**
+	 * Muestra las stats del satelite
+	 */
+	@Override
+	public String toString() {
+		
+		return String.format(
+				"%s\n"
+				+ "Municiones: %d\n"
+				+ "Nivel Escudo: %d\n",
+				super.toString(), 
+				this.getCantidadMuniciones(),
+				this.getNivelEscudo());
+	}
 }

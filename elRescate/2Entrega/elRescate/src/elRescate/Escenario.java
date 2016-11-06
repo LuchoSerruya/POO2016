@@ -1,12 +1,11 @@
 package elRescate;
 
 import java.util.ArrayList;
-
 import gui.EscenarioListener;
-
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * 
@@ -22,7 +21,9 @@ public class Escenario{
 	private Tamanio tamanioEscenario;
 	private ZonaRescate zonaRescate;
 	
+	private int turnoBonus;
 	
+	Random rdm = new Random();
 	/** 
 	 * @return devuelve el escenario de juego
 	 */
@@ -32,6 +33,7 @@ public class Escenario{
 		}
 		return escenario;
 	}
+	
 	
 	/**
 	 * Crea un escenario 
@@ -46,6 +48,7 @@ public class Escenario{
 		this.elementos = new ArrayList<Elemento>();
 		this.listeners = new ArrayList<EscenarioListener>();
 		this.tamanioEscenario = tamanio;
+		this.turnoBonus = 0;
 	}
 	
 	/**
@@ -55,31 +58,49 @@ public class Escenario{
 		//crearElementos();
 		
 		while(true){
-				//que jueguen todos
-				turnos();
-				
-				
+			aparecerBonus();
+			
+			//que jueguen todos
+			turnos();
+			
+			this.turnoBonus++;
+			
+			//ver qué paso
+			verificarChoques();
 
-				//ver qué paso
-				verificarChoques();
+			//quitar los que haya que
+			depurarElementos();
 
-				//quitar los que haya que
-				depurarElementos();
-
-				mostrarUI();
-				
-				//mostrarEstado();
-				
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			mostrarUI();
+			
+			//mostrarEstado();
+			
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			
 			
 		}
 	}
 	
+	private void aparecerBonus() {
+		if(turnoBonus == Bonus.turnoAparicion){
+			int enOes = rdm.nextInt(2);
+			//hay que agregar un bonus en la posicion random
+			if(enOes % 2 == 0){
+				Escenario.getEscenario().agregarElemento(new BonusEnergia(new Posicion(rdm.nextInt(Posicion.MAX_X), rdm.nextInt(Posicion.MAX_Y))));
+			}
+			else {
+				Escenario.getEscenario().agregarElemento(new BonusEscudo(new Posicion(rdm.nextInt(Posicion.MAX_X), rdm.nextInt(Posicion.MAX_Y))));
+			}
+			this.turnoBonus = 0;
+		}
+
+	}
+
+
 	private void mostrarUI(){
 		for(EscenarioListener listener : listeners){
 			listener.actualizar(this.elementos);
@@ -93,7 +114,7 @@ public class Escenario{
 		
 		for(Elemento e : elementos){
 //			e.dibujarse();
-			if(e instanceof SateliteRencoroso){
+			if(e instanceof Robot){
 				System.out.println(e.toString());
 			}
 		}

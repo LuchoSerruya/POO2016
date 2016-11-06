@@ -10,14 +10,14 @@ import java.util.Random;
 
 public abstract class Bonus extends Elemento{
 	//Tamanio del bonus - predeterminado
-	protected static final int ANCHO_BONUS = 3;
-	protected static final int ALTO_BONUS = 3;
+	protected static final int ANCHO_BONUS = 5;
+	protected static final int ALTO_BONUS = 5;
 	
-	private static int turnoAparicion;
+	public static int turnoAparicion = 0;
 	
 	//tiempo de vida del bonus
 	private int tiempoVida;
-	
+	private int tiempoVivido;
 	
 	/**
 	 * @return Tiempo de vida del Bonus
@@ -51,6 +51,9 @@ public abstract class Bonus extends Elemento{
 		Random random = new Random();
 		//asignamos un nuevo valor de aparición para el bonus
 		turnoAparicion = random.nextInt((20-10)+1) + 10;
+		
+		this.tiempoVivido = 0;
+		this.tiempoVida = random.nextInt((200-150)+1) + 150;
 	}
 	
 	/**
@@ -63,5 +66,13 @@ public abstract class Bonus extends Elemento{
 		this.setExiste(false);
 	}
 
+	@Override
+	public void jugar() {
+		// TODO Auto-generated method stub
+		this.tiempoVivido++;
+		if(tiempoVivido == tiempoVida){
+			this.setExiste(false);
+		}
+	}
 
 }

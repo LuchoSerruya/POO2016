@@ -77,11 +77,5 @@ public class RobotQuejoDido extends Robot{
 		}
 		
 	}
-	
-	@Override
-	public String toString() {
-		
-		return String.format("%s ROBOT QUEJODIDO | Cantidad municiones: %d", super.toString(), this.getCantidadMuniciones());
-	}
 
 }

@@ -98,7 +98,7 @@ public class Refugio extends Elemento {
 	
 	@Override
 	public String toString() {
-		return String.format("%s | Cantidad rescatados: %d", super.toString(), this.getCantidadRefugiados());
+		return String.format("Cantidad rescatados:\n %d",this.getCantidadRefugiados());
 	}
 	
 }
