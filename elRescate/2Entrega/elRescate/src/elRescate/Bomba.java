@@ -1,7 +1,5 @@
 package elRescate;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 /**
  * Bomba a ser lanzada
  *
@@ -68,7 +66,6 @@ public class Bomba extends Movible {
 	@Override
 	public void avanzar(double velocidad) {
 		//si la bomba todavía posee velocidad
-		System.out.println(this.getVelocidad());
 		if(this.getVelocidad()>0.5){
 			super.avanzar(velocidad);
 			this.setVelocidad(this.getVelocidad() - 0.01);

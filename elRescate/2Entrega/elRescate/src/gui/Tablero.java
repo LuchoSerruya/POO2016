@@ -44,7 +44,6 @@ public class Tablero extends Canvas implements KeyListener{
 	public void keyPressed(KeyEvent e) {
 
 		if (e.getKeyCode() == KeyEvent.VK_DOWN){
-			System.out.println("tecla pulsada");
 			
 			EquipoJugador.getEquipo().getRobot().setAccionTeclado(RobotJugador.MOVER_ABAJO);
 		}
@@ -71,13 +70,13 @@ public class Tablero extends Canvas implements KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		System.out.println("keyReleased");
+
 	}
 
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		System.out.println("keyTyped");
+
 	}
 
 }

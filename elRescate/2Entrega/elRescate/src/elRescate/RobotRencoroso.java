@@ -56,11 +56,4 @@ public class RobotRencoroso extends Robot {
 		
 	}
 	
-	@Override
-	public String toString() {
-		
-		return String.format("%s ROBOT RENCOROSO | Cantidad municiones: %d", super.toString(), this.getCantidadMuniciones());
-	}
-	
-	
 }

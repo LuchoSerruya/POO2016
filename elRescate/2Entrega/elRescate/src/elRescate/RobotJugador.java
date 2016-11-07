@@ -39,35 +39,29 @@ public class RobotJugador extends Robot{
 			case MOVER_IZQ:
 				this.setDireccion(180);
 				this.avanzar(Robot.VELOCIDAD_ROBOT);
-				System.out.println("me muevo izq");
 				this.setAccionTeclado(0);
 				break;
 			case MOVER_ARRIBA:
 				this.setDireccion(90);
 				this.avanzar(Robot.VELOCIDAD_ROBOT);
-				System.out.println("me muevo arriba");
 				this.setAccionTeclado(0);
 				break;
 			case MOVER_DER:
 				this.setDireccion(0);
 				this.avanzar(Robot.VELOCIDAD_ROBOT);
-				System.out.println("me muevo der");
 				this.setAccionTeclado(0);
 				break;
 			case MOVER_ABAJO:
 				this.setDireccion(270);
 				this.avanzar(Robot.VELOCIDAD_ROBOT);
-				System.out.println("me muevo abajo");
 				this.setAccionTeclado(0);
 				break;
 			case DISPARAR_MUNICION:
 				this.dispararMunicion();
-				System.out.println("disparo");
 				this.setAccionTeclado(0);
 				break;
 			case LANZAR_BOMBA:
 				this.lanzarBomba();
-				System.out.println("tiro bomba");
 				this.setAccionTeclado(0);
 				break;
 			default:
@@ -82,13 +76,6 @@ public class RobotJugador extends Robot{
 		
 		//System.out.println("ROBOT JUGADOR: detecte algo");
 		
-	}
-	
-	
-	@Override
-	public String toString() {
-		
-		return String.format("%s ROBOT JUGADOR | Cantidad municiones: %d", super.toString(), this.getCantidadMuniciones());
 	}
 	
 	/**
