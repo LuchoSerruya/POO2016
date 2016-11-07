@@ -50,9 +50,30 @@ public class Escenario{
 		this.listeners = new ArrayList<EscenarioListener>();
 		this.tamanioEscenario = tamanio;
 	}
+	/**
+	 * Realiza espera
+	 * @param millis cantidad de milisegundos a esperar
+	 */
+	public void espera(long millis){
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 	
-	public static void reiniciar(){
-		Escenario.getEscenario().estadoInicial();
+	public void reiniciar(){
+		/*
+		try{
+			Escenario.getEscenario().finalize();
+			Prueba.main(new String[0]);
+		}catch(Throwable e){
+
+		}*/
+		/*
+		escenario = null;
+		this.elementos.clear();
+		Prueba.main(new String[0]);*/
 	}
 	
 	private void estadoInicial() {
@@ -80,18 +101,18 @@ public class Escenario{
 				//ver qué paso
 				verificarChoques();
 	
-				//quitar los que haya que
+				//quitar elementos destruidos
 				depurarElementos();
 	
 				mostrarUI();
 				
 				//mostrarEstado();
 				
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				espera(100);
+			}
+			else{
+
+				espera(1000);
 			}
 			
 		}
@@ -141,10 +162,12 @@ public class Escenario{
 	
 	public void pausa(){
 		this.pausado = true;
+		System.out.println("Pause");
 	}
 	
 	public void reanudar(){
 		this.pausado = false;
+		System.out.println("Continuar");
 	}
 	/**
 	 * Verifica las coliciónes entre elementos de juego
@@ -201,10 +224,6 @@ public class Escenario{
 		this.elementos.remove(elemento);
 	}
 	
-	/*
-	public Tamanio getTamanio(){
-		return this.tamanioEscenario;
-	}*/
 	
 	/**
 	 * 

@@ -254,6 +254,7 @@ public class JuegoUI extends JFrame implements EscenarioListener{
 		JMenuItem mntmReiniciar = new JMenuItem("Reiniciar");
 		mntmReiniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Escenario.getEscenario().reiniciar();
 			}
 		});
 		mnJuego.add(mntmReiniciar);
@@ -261,7 +262,7 @@ public class JuegoUI extends JFrame implements EscenarioListener{
 		JMenuItem mntmPausar = new JMenuItem("Pausar");
 		mntmPausar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Pause");
+				
 				Escenario.getEscenario().pausa();
 			}
 		});
@@ -270,7 +271,7 @@ public class JuegoUI extends JFrame implements EscenarioListener{
 		JMenuItem mntmContinuar = new JMenuItem("Continuar");
 		mntmContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Continuar");
+				
 				Escenario.getEscenario().reanudar();
 			}
 		});
@@ -280,6 +281,13 @@ public class JuegoUI extends JFrame implements EscenarioListener{
 		mnJuego.add(separator);
 		
 		JMenuItem mntmSalir = new JMenuItem("Salir");
+		mntmSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);	
+			}
+		});
 		mnJuego.add(mntmSalir);
 		
 		JMenu mnAyuda = new JMenu("Ayuda");
