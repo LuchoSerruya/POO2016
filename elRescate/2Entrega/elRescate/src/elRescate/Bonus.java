@@ -10,8 +10,8 @@ import java.util.Random;
 
 public abstract class Bonus extends Elemento{
 	//Tamanio del bonus - predeterminado
-	protected static final int ANCHO_BONUS = 5;
-	protected static final int ALTO_BONUS = 5;
+	protected static final int ANCHO_BONUS = 10;
+	protected static final int ALTO_BONUS = 10;
 	
 	public static int turnoAparicion = 0;
 	

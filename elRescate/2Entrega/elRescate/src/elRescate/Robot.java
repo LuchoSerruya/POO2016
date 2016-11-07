@@ -11,7 +11,7 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	private Radar radar;
 	private Persona persona;
 
-	protected static final int ENERGIA_DEFAULT = 100;
+	protected static final int ENERGIA_DEFAULT = 1000;
 	protected static final int ESCUDO_DEFUALT = 100;
 	private static final int MUNICIONES_DEFAULT = 100;
 	private static final int BOMBAS_DEFAULT = 10;
@@ -19,7 +19,7 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	private static final int ANCHO_ROBOT = 20;
 	private static final int ALTO_ROBOT= 20;
 
-	private static final double GASTO_ENERGIA_MOVIMIENTO = 0.2;
+	private static final double GASTO_ENERGIA_MOVIMIENTO = 0.01;
 	protected static final double VELOCIDAD_ROBOT = 5;
 
 	/**

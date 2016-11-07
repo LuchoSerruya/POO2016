@@ -267,6 +267,8 @@ public class JuegoUI extends JFrame implements EscenarioListener{
 		JMenuItem mntmAcercaDe = new JMenuItem("Acerca de");
 		mnAyuda.add(mntmAcercaDe);
 		this.setVisible(true);	
+		
+		tablero.inicializar();
 	}
  
 
