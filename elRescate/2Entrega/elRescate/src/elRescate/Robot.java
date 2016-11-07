@@ -146,7 +146,7 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 			Escenario.getEscenario().agregarElemento(new Bomba(
 					new Posicion(this.getPos().getX(), this.getPos().getY()),
 					this,
-					this.getRadar().getDireccion()));
+					this.getDireccion()));
 			//Disminuimos cantidad de bombas
 			this.setCantidadBombas(this.getCantidadBombas() - 1);
 		}

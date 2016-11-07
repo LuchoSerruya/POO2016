@@ -89,9 +89,13 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	public void dispararMunicion(){
 		//disparamos la munición
 		if(this.getCantidadMuniciones() > 0){
-			Escenario.getEscenario().agregarElemento(new Municion(this.getPos(),this,this.getRadar().getDireccion()));
+			Escenario.getEscenario().agregarElemento(new Municion(
+					new Posicion(this.getPos().getX(), this.getPos().getY()),
+					this,
+					this.getRadar().getDireccion()));
 			//Disminuimos cantidad de municiones
 			this.setCantidadMuniciones(this.getCantidadMuniciones() - 1);
+
 		}
 		
 	}
@@ -115,32 +119,9 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	
 	@Override
 	public void chocarElemento(Elemento elem) {
-		
-		/*
-		 * 
-		 * TODO BORRAR LO COMENTADO 
-		 * 
-		 */
-		
-		/*
-		if(elem instanceof Municion){
-			Municion muni = (Municion) elem;
-			//si no es de mi equipo, me genero el daño
-			if(!(this.getEquipo().getElementos().contains(muni.getDuenio())))
-				this.setNivelEscudo(this.getNivelEscudo() - muni.getDanio());
-		}
-		else if(elem instanceof Bomba){
-			Bomba bomb = (Bomba) elem;
-			//si no es de mi equipo, me genero el daño
-			if(!(this.getEquipo().getElementos().contains(bomb.getDuenio())))
-				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());
-		}*/	
-		
+		elem.chocarSatelite(this);
 	}
-	
 
-
-	
 	@Override
 	public void jugar() {
 		//Si no se encuentra algo que todos los satelites van a hacer
@@ -161,6 +142,4 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 		 * Procesar elementos detectados
 		 */
 	}
-	
-	
 }

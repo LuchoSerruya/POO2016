@@ -17,7 +17,7 @@ public class Bomba extends Movible {
 	private static final int ALTO_BOMBA = 6;
 	
 	//velocidad inicial de la bomba
-	private static final double VELOCIDAD_BOMBA = 10.0;
+	private static final double VELOCIDAD_BOMBA = 2;
 	
 	//daño de la bomba
 	private static final int DANIO_BOMBA = 5;
@@ -69,9 +69,9 @@ public class Bomba extends Movible {
 	public void avanzar(double velocidad) {
 		//si la bomba todavía posee velocidad
 		System.out.println(this.getVelocidad());
-		if(this.getVelocidad()>0){
+		if(this.getVelocidad()>0.5){
 			super.avanzar(velocidad);
-			this.setVelocidad(this.getVelocidad() - 0.5);
+			this.setVelocidad(this.getVelocidad() - 0.01);
 		}
 		else{
 			//si se quedó sin velocidad, tiene que explotar
@@ -128,8 +128,9 @@ public class Bomba extends Movible {
 	@Override
 	public void chocarElemento(Elemento elem) {
 		elem.chocarBomba(this);
+		Robot robot = (Robot)this.getDuenio();
 		//si se choca con quien la lanzo, no explota
-		if (elem != this.getDuenio()){
+		if ((elem != this.getDuenio()) && (elem != robot.getRadar())){
 			this.explotar();
 		}
 		

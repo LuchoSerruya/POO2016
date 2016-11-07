@@ -90,5 +90,24 @@ public class RobotJugador extends Robot{
 		
 		return String.format("%s ROBOT JUGADOR | Cantidad municiones: %d", super.toString(), this.getCantidadMuniciones());
 	}
+	
+	/**
+	 * Dispara una munición en la dirección en la
+	 * que apunta el radar. Ésta es agregada al
+	 * escenario
+	 */
+	public void dispararMunicion(){
+		//disparamos la munición
+		if(this.getCantidadMuniciones() > 0){
 
+			Escenario.getEscenario().agregarElemento(new Municion(
+					new Posicion(this.getPos().getX(), this.getPos().getY()),
+					this,
+					this.getDireccion()));
+
+			//Disminuimos cantidad de municiones
+			this.setCantidadMuniciones(this.getCantidadMuniciones() - 1);
+		}
+
+	}
 }

@@ -93,7 +93,9 @@ public class Escenario{
 		
 		for(Elemento e : elementos){
 //			e.dibujarse();
-			System.out.println(e.toString());
+			if(e instanceof SateliteRencoroso){
+				System.out.println(e.toString());
+			}
 		}
 		
 		

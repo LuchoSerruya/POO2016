@@ -28,7 +28,7 @@ public class SateliteRencoroso extends Satelite {
 			 *  sea un Robot o un Bonus
 			 */
 			if(!encontro){
-				if(e instanceof Robot){
+				if((e instanceof Robot) && (!(this.getEquipo().getElementos().contains(e)))){
 					this.getRadar().apuntar(e);
 					this.dispararMunicion();
 					encontro = true;
@@ -37,7 +37,9 @@ public class SateliteRencoroso extends Satelite {
 					this.getRadar().apuntar(e);
 					this.dispararMunicion();
 					encontro = true;
-				}	
+				}
+			} else{
+				break;
 			}
 			
 		}
