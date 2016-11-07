@@ -1,12 +1,17 @@
 package elRescate;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RobotRencoroso extends Robot {
 	
 	@Override
 	public void jugar() {
 		super.jugar();
+		if(fueraDeEscenario()){
+			this.setDireccion(new Random().nextInt(360));
+		}
+			
 	}
 	
 	public RobotRencoroso(Posicion posicion){

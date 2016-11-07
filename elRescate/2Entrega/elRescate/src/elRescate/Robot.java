@@ -16,8 +16,8 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	private static final int MUNICIONES_DEFAULT = 100;
 	private static final int BOMBAS_DEFAULT = 10;
 
-	private static final int ANCHO_ROBOT = 20;
-	private static final int ALTO_ROBOT= 20;
+	private static final int ANCHO_ROBOT = 30;
+	private static final int ALTO_ROBOT= 30;
 
 	private static final double GASTO_ENERGIA_MOVIMIENTO = 0.01;
 	protected static final double VELOCIDAD_ROBOT = 5;
@@ -88,6 +88,7 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	public void setNivelEscudo(int nivelEscudo){
 		this.nivelEscudo = nivelEscudo;
 		if (this.nivelEscudo <= 0){
+			this.nivelEscudo = 0;
 			this.setExiste(false);
 		}
 	}
@@ -243,44 +244,6 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	public void chocarElemento(Elemento elem) {
 		
 		elem.chocarRobot(this);
-
-		
-		
-		/*
-		 * 
-		 * TODO BORRAR LO COMENTADO 
-		 * 
-		 */
-		//Si es una municion
-		if(elem instanceof Municion){
-			/*lo casteo
-			Municion muni = (Municion) elem;
-			//si no es de mi equipo, me genero el daño
-			if(!(this.getEquipo().getElementos().contains(muni.getDuenio())))
-				this.setNivelEscudo(this.getNivelEscudo() - muni.getDanio());*/
-		} //si es una bomba
-		else if(elem instanceof Bomba){
-			/*casteo
-			Bomba bomb = (Bomba) elem;
-			//verifico equipo y me aplico el daño
-			if(!(this.getEquipo().getElementos().contains(bomb.getDuenio())))
-				this.setNivelEscudo(this.getNivelEscudo() - bomb.getDanio());*/
-		}
-		else if (elem instanceof Bonus){
-			//((Bonus)elem).darBonus(this);
-			
-		}
-
-		/*
-		 * estos else if son a modo de ejemplo para mostrar
-		 * que cuando un robot se choca contra la ZonaRescate
-		 * o contra un refugio va a mostrar un mensaje
-		 *
-		else if(elem instanceof ZonaRescate){
-			System.out.println("Rescate!");
-		} else if(elem instanceof Refugio){
-			System.out.println("Dejo");
-		}*/
 
 	}
 

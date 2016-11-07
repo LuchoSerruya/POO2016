@@ -251,13 +251,14 @@ public class JuegoUI extends JFrame implements EscenarioListener{
 		JMenu mnJuego = new JMenu("Juego");
 		menuBar.add(mnJuego);
 		
+		/*
 		JMenuItem mntmReiniciar = new JMenuItem("Reiniciar");
 		mntmReiniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Escenario.getEscenario().reiniciar();
 			}
 		});
-		mnJuego.add(mntmReiniciar);
+		mnJuego.add(mntmReiniciar);*/
 		
 		JMenuItem mntmPausar = new JMenuItem("Pausar");
 		mntmPausar.addActionListener(new ActionListener() {

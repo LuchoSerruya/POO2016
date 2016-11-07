@@ -2,6 +2,8 @@ package elRescate;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class RobotJugador extends Robot{
 	
 	public final static int MOVER_IZQ = 1;
@@ -95,6 +97,15 @@ public class RobotJugador extends Robot{
 			//Disminuimos cantidad de municiones
 			this.setCantidadMuniciones(this.getCantidadMuniciones() - 1);
 		}
-
+	}
+	
+	@Override
+	public void setNivelEscudo(int nivelEscudo) {
+		super.setNivelEscudo(nivelEscudo);
+		if(this.getNivelEscudo() == 0){
+			JOptionPane.showMessageDialog(null, new String("¡Robot destruido!"));
+			Escenario.espera(1000);
+			System.exit(0);
+		}
 	}
 }

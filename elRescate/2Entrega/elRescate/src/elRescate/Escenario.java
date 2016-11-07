@@ -46,39 +46,22 @@ public class Escenario{
 	 * @param tamanio
 	 */
 	private Escenario(Tamanio tamanio){
-		this.estadoInicial();
+		this.elementos = new ArrayList<Elemento>();
+		this.turnoBonus = 0;
 		this.listeners = new ArrayList<EscenarioListener>();
 		this.tamanioEscenario = tamanio;
 	}
+	
 	/**
 	 * Realiza espera
 	 * @param millis cantidad de milisegundos a esperar
 	 */
-	public void espera(long millis){
+	public static void espera(long millis){
 		try {
 			Thread.sleep(millis);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public void reiniciar(){
-		/*
-		try{
-			Escenario.getEscenario().finalize();
-			Prueba.main(new String[0]);
-		}catch(Throwable e){
-
-		}*/
-		/*
-		escenario = null;
-		this.elementos.clear();
-		Prueba.main(new String[0]);*/
-	}
-	
-	private void estadoInicial() {
-		this.elementos = new ArrayList<Elemento>();
-		this.turnoBonus = 0;
 	}
 
 
