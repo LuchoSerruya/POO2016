@@ -15,7 +15,7 @@ public class Bomba extends Movible {
 	private static final int ALTO_BOMBA = 6;
 	
 	//velocidad inicial de la bomba
-	private static final double VELOCIDAD_BOMBA = 2;
+	private static final double VELOCIDAD_BOMBA = 5;
 	
 	//daño de la bomba
 	private static final int DANIO_BOMBA = 5;
@@ -66,9 +66,9 @@ public class Bomba extends Movible {
 	@Override
 	public void avanzar(double velocidad) {
 		//si la bomba todavía posee velocidad
-		if(this.getVelocidad()>0.5){
+		if(this.getVelocidad()>0){
 			super.avanzar(velocidad);
-			this.setVelocidad(this.getVelocidad() - 0.01);
+			this.setVelocidad(this.getVelocidad() - 0.1);
 		}
 		else{
 			//si se quedó sin velocidad, tiene que explotar

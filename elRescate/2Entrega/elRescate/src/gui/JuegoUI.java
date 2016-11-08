@@ -28,6 +28,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JuegoUI extends JFrame implements EscenarioListener{
 
@@ -250,10 +252,29 @@ public class JuegoUI extends JFrame implements EscenarioListener{
 		menuBar.add(mnJuego);
 		
 		JMenuItem mntmReiniciar = new JMenuItem("Reiniciar");
+		mntmReiniciar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		mnJuego.add(mntmReiniciar);
 		
 		JMenuItem mntmPausar = new JMenuItem("Pausar");
+		mntmPausar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Pause");
+				Escenario.getEscenario().pausa();
+			}
+		});
 		mnJuego.add(mntmPausar);
+		
+		JMenuItem mntmContinuar = new JMenuItem("Continuar");
+		mntmContinuar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Continuar");
+				Escenario.getEscenario().reanudar();
+			}
+		});
+		mnJuego.add(mntmContinuar);
 		
 		JSeparator separator = new JSeparator();
 		mnJuego.add(separator);

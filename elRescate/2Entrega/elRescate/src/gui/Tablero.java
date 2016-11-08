@@ -247,6 +247,7 @@ public class Tablero extends Canvas implements KeyListener{
 		
 		bomba = rotar(bomba, elem.getDireccion());
 		
+		bomba = cambiarTamanio(bomba,elem.getTam().getAncho(),elem.getTam().getAlto());
 		this.getG2D().drawImage(bomba, elem.getPos().getX(), elem.getPos().getY(), null);
 	}
 	

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import gui.EscenarioListener;
 import java.awt.Polygon;
 import java.awt.Rectangle;
-import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -22,6 +21,8 @@ public class Escenario{
 	private ZonaRescate zonaRescate;
 	
 	private int turnoBonus;
+	
+	private boolean pausado = false;
 	
 	Random rdm = new Random();
 	/** 
@@ -45,42 +46,53 @@ public class Escenario{
 	 * @param tamanio
 	 */
 	private Escenario(Tamanio tamanio){
-		this.elementos = new ArrayList<Elemento>();
+		this.estadoInicial();
 		this.listeners = new ArrayList<EscenarioListener>();
 		this.tamanioEscenario = tamanio;
-		this.turnoBonus = 0;
 	}
 	
+	public static void reiniciar(){
+		Escenario.getEscenario().estadoInicial();
+	}
+	
+	private void estadoInicial() {
+		this.elementos = new ArrayList<Elemento>();
+		this.turnoBonus = 0;
+	}
+
+
 	/**
 	 * Inicia el juego
 	 */
 	public void iniciarJuego(){
-		//crearElementos();
 		
 		while(true){
-			aparecerBonus();
-			
-			//que jueguen todos
-			turnos();
-			
-			this.turnoBonus++;
-			
-			//ver qué paso
-			verificarChoques();
+		
+			if(!pausado){
 
-			//quitar los que haya que
-			depurarElementos();
-
-			mostrarUI();
-			
-			//mostrarEstado();
-			
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+				aparecerBonus();
+				
+				//que jueguen todos
+				turnos();
+				
+				this.turnoBonus++;
+				
+				//ver qué paso
+				verificarChoques();
+	
+				//quitar los que haya que
+				depurarElementos();
+	
+				mostrarUI();
+				
+				//mostrarEstado();
+				
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
-			
 			
 		}
 	}
@@ -105,23 +117,7 @@ public class Escenario{
 		for(EscenarioListener listener : listeners){
 			listener.actualizar(this.elementos);
 		}
-	}
-	
-	/**
-	 * Muestra la posicion de cada Elemento creado
-	 */
-	private void mostrarEstado() {
-		
-		for(Elemento e : elementos){
-//			e.dibujarse();
-			if(e instanceof Robot){
-				System.out.println(e.toString());
-			}
-		}
-		
-		
-		
-	}
+	}	
 	
 	public void addEscenarioListener(EscenarioListener listener){
 		listeners.add(listener);
@@ -142,7 +138,14 @@ public class Escenario{
 		}
 	}
 	
-			
+	
+	public void pausa(){
+		this.pausado = true;
+	}
+	
+	public void reanudar(){
+		this.pausado = false;
+	}
 	/**
 	 * Verifica las coliciónes entre elementos de juego
 	 */
