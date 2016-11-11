@@ -4,12 +4,6 @@ import java.util.ArrayList;
 
 public class RobotJugador extends Robot{
 	
-	public final static int MOVER_IZQ = 1;
-	public final static int MOVER_ARRIBA = 2;
-	public final static int MOVER_DER = 3;
-	public final static int MOVER_ABAJO = 4;
-	public final static int DISPARAR_MUNICION = 5;
-	public final static int LANZAR_BOMBA = 6;
 	
 	int accionTeclado = 0;
 	
@@ -36,31 +30,31 @@ public class RobotJugador extends Robot{
 		this.getRadar().escanear();
 		
 		switch (getAccionTeclado()){
-			case MOVER_IZQ:
+			case Config.MOVER_IZQ:
 				this.setDireccion(180);
 				this.avanzar();
 				this.setAccionTeclado(0);
 				break;
-			case MOVER_ARRIBA:
+			case Config.MOVER_ARRIBA:
 				this.setDireccion(90);
 				this.avanzar();
 				this.setAccionTeclado(0);
 				break;
-			case MOVER_DER:
+			case Config.MOVER_DER:
 				this.setDireccion(0);
 				this.avanzar();
 				this.setAccionTeclado(0);
 				break;
-			case MOVER_ABAJO:
+			case Config.MOVER_ABAJO:
 				this.setDireccion(270);
 				this.avanzar();
 				this.setAccionTeclado(0);
 				break;
-			case DISPARAR_MUNICION:
+			case Config.DISPARAR_MUNICION:
 				this.dispararMunicion();
 				this.setAccionTeclado(0);
 				break;
-			case LANZAR_BOMBA:
+			case Config.LANZAR_BOMBA:
 				this.lanzarBomba();
 				this.setAccionTeclado(0);
 				break;

@@ -7,17 +7,6 @@ public class Municion extends Movible {
 	//esto mas que un Elemento tendria que ser un Robot/Satelite
 	private Elemento duenio;
 	
-	
-	//tamaño de la municion
-//	private static final int ANCHO_MUNICION = 5;
-//	private static final int ALTO_MUNICION = 5;
-//	
-//	//velocidad de la municion
-//	private static final double VELOCIDAD_MUNICION = 4;
-//	
-//	//danio de la municion
-//	private static final int DANIO_MUNICION = 1;
-	
 	/**
 	 * Crea la munición en la posicip
 	 * @param posicion

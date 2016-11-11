@@ -2,6 +2,27 @@ package elRescate;
 
 public class Config {
 	
+	//constantes para definir el tamanio del escenario
+	public static final int MAX_X = 600;
+	public static final int MAX_Y = 600;
+	public static final int MIN_X= 0;
+	public static final int MIN_Y = 0;
+	
+	//Constantes de tamaño del rescate
+	public static final int ANCHO_ZONA_RESCATE = 60;
+	public static final int ALTO_ZONA_RESCATE = 60;
+	
+	public static final int X_ZONA_RESCATE = (MAX_X - ANCHO_ZONA_RESCATE)/2;
+	public static final int Y_ZONA_RESCATE = (MAX_Y - ALTO_ZONA_RESCATE)/2;
+	
+	/*ESQUINAS DE LA ZONA DE RESCATE*/
+	public static int offset = 40;
+	public static final Posicion ESQ_SUP_IZQ = new Posicion(X_ZONA_RESCATE - offset, Y_ZONA_RESCATE - offset);
+	public static final Posicion ESQ_SUP_DER = new Posicion(X_ZONA_RESCATE + ANCHO_ZONA_RESCATE + offset, Y_ZONA_RESCATE - offset);
+	public static final Posicion ESQ_INF_DER = new Posicion(X_ZONA_RESCATE + ANCHO_ZONA_RESCATE + offset, Y_ZONA_RESCATE + ALTO_ZONA_RESCATE + offset);
+	public static final Posicion ESQ_INF_IZQ = new Posicion(X_ZONA_RESCATE - offset, Y_ZONA_RESCATE + ALTO_ZONA_RESCATE + offset);
+
+	
 	//tamaño de la bomba
 	public static final int ANCHO_BOMBA = 6;
 	public static final int ALTO_BOMBA = 6;
@@ -32,11 +53,7 @@ public class Config {
 	//danio de la municion
 	public static final int DANIO_MUNICION = 1;
 	
-	//constantes para definir el tamanio del escenario
-	public static final int MAX_X = 600;
-	public static final int MAX_Y = 600;
-	public static final int MIN_X= 0;
-	public static final int MIN_Y = 0;
+
 	
 
 
@@ -77,12 +94,7 @@ public class Config {
 	public static final double GASTO_ENERGIA_MOVIMIENTO = 0.01;
 	public static final double VELOCIDAD_ROBOT = 5;
 	
-	//Constantes de tamaño del rescate
-	public static final int ANCHO_ZONA_RESCATE = 60;
-	public static final int ALTO_ZONA_RESCATE = 60;
-	
-	public static final int X_ZONA_RESCATE = (MAX_X - ANCHO_ZONA_RESCATE)/2;
-	public static final int Y_ZONA_RESCATE = (MAX_Y - ALTO_ZONA_RESCATE)/2;
+
 	
 	/*EQUIPO JUGADOR*/
 	public static final Posicion POSICION_REFUGIO_JUGADOR = new Posicion(1,510);
@@ -97,7 +109,7 @@ public class Config {
 	//Esquina superior derecha del escenario
 	public static final Posicion POSICION_SAT1_QUEJO_DIDO = new Posicion(10, 75);
 	public static final Posicion POSICION_SAT2_QUEJO_DIDO = new Posicion(50, 150);
-	public static final Posicion POSICION_ROBOT_QUEJO_DIDO = new Posicion(ZonaRescate.ESQ_SUP_IZQ.getX(),ZonaRescate.ESQ_SUP_IZQ.getY());
+	public static final Posicion POSICION_ROBOT_QUEJO_DIDO = new Posicion(ESQ_SUP_IZQ.getX(),ESQ_SUP_IZQ.getY());
 
 	/*EQUIPO RENCOROSO*/
 	public static final Posicion POSICION_REFUGIO_RENCOROSO = new Posicion(540, 510);
@@ -113,10 +125,4 @@ public class Config {
 	public static final Posicion POSICION_SAT2_SOLDADO_RYAN = new Posicion(5, 10);
 	public static final Posicion POSICION_ROBOT_SOLDADO_RYAN = new Posicion(45,100);
 
-	
-	public static int offset = 40;
-	public static final Posicion ESQ_SUP_IZQ = new Posicion(X_ZONA_RESCATE - offset, Y_ZONA_RESCATE - offset);
-	public static final Posicion ESQ_SUP_DER = new Posicion(X_ZONA_RESCATE + ANCHO_ZONA_RESCATE + offset, Y_ZONA_RESCATE - offset);
-	public static final Posicion ESQ_INF_DER = new Posicion(X_ZONA_RESCATE + ANCHO_ZONA_RESCATE + offset, Y_ZONA_RESCATE + ALTO_ZONA_RESCATE + offset);
-	public static final Posicion ESQ_INF_IZQ = new Posicion(X_ZONA_RESCATE - offset, Y_ZONA_RESCATE + ALTO_ZONA_RESCATE + offset);
-}
+	}

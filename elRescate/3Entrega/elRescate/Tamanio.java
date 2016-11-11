@@ -2,12 +2,6 @@ package elRescate;
 
 public class Tamanio {
 	
-	//Constantes para definir un máximo y ancho que van a tener todos los elementos
-//	public static final int MAX_ANCHO = Posicion.MAX_X;
-//	public static final int MIN_ANCHO = 1;
-//	public static final int MAX_ALTO = Posicion.MAX_Y;
-//	public static final int MIN_ALTO = 1;
-	
 	private int ancho = Config.MIN_ANCHO;
 	private int alto = Config.MIN_ALTO;
 	

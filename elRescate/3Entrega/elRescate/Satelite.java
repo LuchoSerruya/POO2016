@@ -9,10 +9,6 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	private int nivelEscudo;
 	private int cantidadMuniciones;
 	
-//	protected static final int ESCUDO_INICIAL = 50;
-//	private final static int ANCHO_SATELITE = 15;
-//	private final static int ALTO_SATELITE = 15;
-//	private static final int MUNICIONES_DEFAULT = 100;
 
 
 	/**

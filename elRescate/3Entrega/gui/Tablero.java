@@ -102,25 +102,25 @@ public class Tablero extends Canvas implements KeyListener{
 
 		if (e.getKeyCode() == KeyEvent.VK_DOWN){
 			
-			EquipoJugador.getEquipo().getRobot().setAccionTeclado(RobotJugador.MOVER_ABAJO);
+			EquipoJugador.getEquipo().getRobot().setAccionTeclado(Config.MOVER_ABAJO);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP){
-			EquipoJugador.getEquipo().getRobot().setAccionTeclado(RobotJugador.MOVER_ARRIBA);
+			EquipoJugador.getEquipo().getRobot().setAccionTeclado(Config.MOVER_ARRIBA);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT){
-			EquipoJugador.getEquipo().getRobot().setAccionTeclado(RobotJugador.MOVER_DER);
+			EquipoJugador.getEquipo().getRobot().setAccionTeclado(Config.MOVER_DER);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT){
-			EquipoJugador.getEquipo().getRobot().setAccionTeclado(RobotJugador.MOVER_IZQ);
+			EquipoJugador.getEquipo().getRobot().setAccionTeclado(Config.MOVER_IZQ);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT){
-			EquipoJugador.getEquipo().getRobot().setAccionTeclado(RobotJugador.MOVER_IZQ);
+			EquipoJugador.getEquipo().getRobot().setAccionTeclado(Config.MOVER_IZQ);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE){
-			EquipoJugador.getEquipo().getRobot().setAccionTeclado(RobotJugador.DISPARAR_MUNICION);
+			EquipoJugador.getEquipo().getRobot().setAccionTeclado(Config.DISPARAR_MUNICION);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_B){
-			EquipoJugador.getEquipo().getRobot().setAccionTeclado(RobotJugador.LANZAR_BOMBA);
+			EquipoJugador.getEquipo().getRobot().setAccionTeclado(Config.LANZAR_BOMBA);
 		}
 		
 	}
