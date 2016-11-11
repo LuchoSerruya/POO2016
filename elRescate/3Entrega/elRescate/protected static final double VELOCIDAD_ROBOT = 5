@@ -1,0 +1,2 @@
+	protected static final double VELOCIDAD_ROBOT = 5;
+		private static final double VELOCIDAD_MUNICION = 20;
