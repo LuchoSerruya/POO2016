@@ -84,6 +84,36 @@ public class Config {
 	public static final int X_ZONA_RESCATE = (MAX_X - ANCHO_ZONA_RESCATE)/2;
 	public static final int Y_ZONA_RESCATE = (MAX_Y - ALTO_ZONA_RESCATE)/2;
 	
+	/*EQUIPO JUGADOR*/
+	public static final Posicion POSICION_REFUGIO_JUGADOR = new Posicion(1,510);
+	//Esquina inferior izquierda del escenario
+	public static final Posicion POSICION_SAT1_JUGADOR = new Posicion(5,450);
+	public static final Posicion POSICION_SAT2_JUGADOR = new Posicion(80, 500);
+	public static final Posicion POSICION_ROBOT_JUGADOR = new Posicion(40, 475);
+		
+	
+	/*EQUIPO QUEJODIDO*/
+	public static final Posicion POSICION_REFUGIO_QUEJO_DIDO = new Posicion(540, 1); 
+	//Esquina superior derecha del escenario
+	public static final Posicion POSICION_SAT1_QUEJO_DIDO = new Posicion(10, 75);
+	public static final Posicion POSICION_SAT2_QUEJO_DIDO = new Posicion(50, 150);
+	public static final Posicion POSICION_ROBOT_QUEJO_DIDO = new Posicion(ZonaRescate.ESQ_SUP_IZQ.getX(),ZonaRescate.ESQ_SUP_IZQ.getY());
+
+	/*EQUIPO RENCOROSO*/
+	public static final Posicion POSICION_REFUGIO_RENCOROSO = new Posicion(540, 510);
+	//Esquina inferior derecha del escenario
+	public static final Posicion POSICION_SAT1_RENCOROSO = new Posicion(160, 160);
+	public static final Posicion POSICION_SAT2_RENCOROSO = new Posicion(365, 365);
+	public static final Posicion POSICION_ROBOT_RENCOROSO = new Posicion(400, 400);
+
+	/*EQUIPO SOLDADO RYAN*/
+	public static final Posicion POSICION_REFUGIO_SOLDADO_RYAN = new Posicion(1, 1);
+	//Esquina superior izquierda
+	public static final Posicion POSICION_SAT1_SOLDADO_RYAN = new Posicion(10, 5);
+	public static final Posicion POSICION_SAT2_SOLDADO_RYAN = new Posicion(5, 10);
+	public static final Posicion POSICION_ROBOT_SOLDADO_RYAN = new Posicion(45,100);
+
+	
 	public static int offset = 40;
 	public static final Posicion ESQ_SUP_IZQ = new Posicion(X_ZONA_RESCATE - offset, Y_ZONA_RESCATE - offset);
 	public static final Posicion ESQ_SUP_DER = new Posicion(X_ZONA_RESCATE + ANCHO_ZONA_RESCATE + offset, Y_ZONA_RESCATE - offset);

@@ -141,8 +141,8 @@ public abstract class Elemento {
 	 * @return True si esta fuera de los limites del escenario, false si esta dentro del escenario
 	 */
 	public boolean fueraDeEscenario(){
-		return ((this.getPos().getX() <= Posicion.MIN_X) || (this.getPos().getX() >= Posicion.MAX_X) ||
-				(this.getPos().getY() <= Posicion.MIN_Y) || (this.getPos().getY() >= Posicion.MAX_Y));
+		return ((this.getPos().getX() <= Config.MIN_X) || (this.getPos().getX() >= Config.MAX_X) ||
+				(this.getPos().getY() <= Config.MIN_Y) || (this.getPos().getY() >= Config.MAX_Y));
 	}
 	
 	

@@ -1,7 +1,6 @@
 package elRescate;
 
 public class BonusEscudo extends Bonus{
-	public static final int VALOR_BONUS = 10;
 	
 	private int escudo;
 
@@ -29,7 +28,7 @@ public class BonusEscudo extends Bonus{
 	 */
 	public BonusEscudo(Posicion pos){
 		super(pos);
-		this.setEscudo(VALOR_BONUS);		
+		this.setEscudo(Config.VALOR_BONUS);		
 		
 	}
 }
