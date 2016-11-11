@@ -5,8 +5,6 @@ package elRescate;
  */
 public class BonusEnergia extends Bonus{
 	
-	//valor de energia que otorga
-	public static final int VALOR_BONUS = 10;
 
 	public int energia;
 	
@@ -36,7 +34,6 @@ public class BonusEnergia extends Bonus{
 	 */
 	public BonusEnergia(Posicion pos){
 		super(pos);
-		this.setEnergia(VALOR_BONUS);
 		
 	}
 

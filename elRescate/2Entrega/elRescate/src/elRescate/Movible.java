@@ -8,9 +8,7 @@ public abstract class Movible extends Elemento {
 	//velocidad a la que se mueve
 	private double velocidad;
 	
-	//Velocidad por defecto
-	private static final double VELOCIDAD_DEFECTO = 5;
-	
+
 	
 	/**
 	 * Constructor que recibe los dos objetos
@@ -21,7 +19,7 @@ public abstract class Movible extends Elemento {
 		super(tamanio, posicion);
 		this.setDireccion(0);
 		
-		this.setVelocidad(VELOCIDAD_DEFECTO);
+		this.setVelocidad(Config.VELOCIDAD_DEFECTO);
 	}
 	
 	

@@ -24,7 +24,7 @@ public class SateliteSoldadoRyan extends Satelite{
 		for(Elemento e : elementos){
 			if(!encontro){
 				if((e instanceof Bomba) || 
-				  ((e instanceof BonusEscudo) && (this.getNivelEscudo() < (ESCUDO_INICIAL * 0.4)))){
+				  ((e instanceof BonusEscudo) && (this.getNivelEscudo() < (Config.ESCUDO_INICIAL * 0.4)))){
 					/*
 					 * Si detecta una bomba o si detecta un bonus de escudo 
 					 * y tiene menos del 40% del escudo inicial y adem�s todavia

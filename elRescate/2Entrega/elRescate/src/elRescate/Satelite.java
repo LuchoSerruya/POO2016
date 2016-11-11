@@ -9,10 +9,7 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	private int nivelEscudo;
 	private int cantidadMuniciones;
 	
-	protected static final int ESCUDO_INICIAL = 50;
-	private final static int ANCHO_SATELITE = 15;
-	private final static int ALTO_SATELITE = 15;
-	private static final int MUNICIONES_DEFAULT = 100;
+
 
 
 	/**
@@ -20,12 +17,12 @@ public abstract class Satelite extends Elemento implements TieneEscudo, RadarLis
 	 * @param posicion
 	 */
 	public Satelite(Posicion posicion){
-		super(new Tamanio(ANCHO_SATELITE, ALTO_SATELITE), posicion);
+		super(new Tamanio(Config.ANCHO_SATELITE, Config.ALTO_SATELITE), posicion);
 		this.radar = new Radar(this.getPos(),0);
 		this.radar.addRadarListener(this);
 		
-		this.setNivelEscudo(ESCUDO_INICIAL);
-		this.setCantidadMuniciones(MUNICIONES_DEFAULT);
+		this.setNivelEscudo(Config.ESCUDO_INICIAL);
+		this.setCantidadMuniciones(Config.MUNICIONES_DEFAULT);
 		
 	}
 	

@@ -2,15 +2,8 @@ package elRescate;
 
 public class Tamanio {
 	
-	//Constantes para definir un máximo y ancho que van a tener todos los elementos
-	public static final int MAX_ANCHO = Posicion.MAX_X;
-	public static final int MIN_ANCHO = 1;
-	public static final int MAX_ALTO = Posicion.MAX_Y;
-	public static final int MIN_ALTO = 1;
-	
-	private int ancho = MIN_ANCHO;
-	private int alto = MIN_ALTO;
-	
+	public int ancho = Config.MIN_ANCHO;
+	public int alto = Config.MIN_ALTO;
 	/**
 	 * Devuelve el ancho de un elemento
 	 * @return el ancho del elemento
@@ -32,7 +25,7 @@ public class Tamanio {
 	 * @param ancho valor del ancho a setear
 	 */
 	public void setAncho(int ancho){
-		if(ancho >= MIN_ANCHO && ancho <= MAX_ANCHO)
+		if(ancho >= Config.MIN_ANCHO && ancho <= Config.MAX_ANCHO)
 			this.ancho = ancho;
 	}
 
@@ -41,7 +34,7 @@ public class Tamanio {
 	 * @param alto
 	 */
 	public void setAlto(int alto){
-		if(alto >= MIN_ALTO && alto<= MAX_ALTO)
+		if(alto >= Config.MIN_ALTO && alto<= Config.MAX_ALTO)
 			this.alto = alto;
 	}
 	
@@ -59,6 +52,6 @@ public class Tamanio {
 	 * Sin parámetros. Setea a los valores mínimos
 	 */
 	public Tamanio(){
-		this(MIN_ANCHO, MIN_ALTO);
+		this(Config.MIN_ANCHO, Config.MIN_ALTO);
 	}
 }

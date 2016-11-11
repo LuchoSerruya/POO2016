@@ -30,7 +30,7 @@ public class Escenario{
 	 */
 	public static Escenario getEscenario(){
 		if(escenario == null){
-			escenario = new Escenario(new Tamanio(Posicion.MAX_X, Posicion.MAX_Y));
+			escenario = new Escenario(new Tamanio(Config.MAX_X, Config.MAX_Y));
 		}
 		return escenario;
 	}
@@ -106,10 +106,10 @@ public class Escenario{
 			int enOes = rdm.nextInt(2);
 			//hay que agregar un bonus en la posicion random
 			if(enOes % 2 == 0){
-				Escenario.getEscenario().agregarElemento(new BonusEnergia(new Posicion(rdm.nextInt(Posicion.MAX_X), rdm.nextInt(Posicion.MAX_Y))));
+				Escenario.getEscenario().agregarElemento(new BonusEnergia(new Posicion(rdm.nextInt(Config.MAX_X), rdm.nextInt(Config.MAX_Y))));
 			}
 			else {
-				Escenario.getEscenario().agregarElemento(new BonusEscudo(new Posicion(rdm.nextInt(Posicion.MAX_X), rdm.nextInt(Posicion.MAX_Y))));
+				Escenario.getEscenario().agregarElemento(new BonusEscudo(new Posicion(rdm.nextInt(Config.MAX_X), rdm.nextInt(Config.MAX_Y))));
 			}
 			this.turnoBonus = 0;
 		}

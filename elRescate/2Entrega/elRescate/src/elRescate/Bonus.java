@@ -9,9 +9,7 @@ import java.util.Random;
  */
 
 public abstract class Bonus extends Elemento{
-	//Tamanio del bonus - predeterminado
-	protected static final int ANCHO_BONUS = 15;
-	protected static final int ALTO_BONUS = 15;
+	
 	
 	public static int turnoAparicion = 0;
 	
@@ -46,7 +44,7 @@ public abstract class Bonus extends Elemento{
 	 * @param pos
 	 */
 	public Bonus(Posicion pos){
-		super(new Tamanio(ANCHO_BONUS, ALTO_BONUS), pos);
+		super(new Tamanio(Config.ANCHO_BONUS, Config.ALTO_BONUS), pos);
 		//creamos contenedor del numero aleatorio
 		Random random = new Random();
 		//asignamos un nuevo valor de aparición para el bonus

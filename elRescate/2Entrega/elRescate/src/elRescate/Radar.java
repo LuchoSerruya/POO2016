@@ -15,8 +15,7 @@ public class Radar extends Elemento {
 	//ArrayList de los listeners
 	private ArrayList<RadarListener> listeners;
 	
-	private static final int ANCHO_RADAR = 1;
-	private static final int ALTO_RADAR = 1;	
+
 	
 	/**
 	 * Agregamos a un escuchador del Radar
@@ -45,7 +44,7 @@ public class Radar extends Elemento {
 		 * el radar (robot o satelite)
 		 */
 		
-		super(new Tamanio(ANCHO_RADAR, ALTO_RADAR), posicion);
+		super(new Tamanio(Config.ANCHO_RADAR, Config.ALTO_RADAR), posicion);
 		this.setAnguloApertura(30);
 		this.direccion = direccion;
 		this.listeners = new ArrayList<RadarListener>();

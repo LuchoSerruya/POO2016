@@ -6,19 +6,9 @@ package elRescate;
  */
 public class Bomba extends Movible {
 	
-	private int danio;
-	
 	private Elemento duenio;
 	
-	//tamaño de la bomba
-	private static final int ANCHO_BOMBA = 6;
-	private static final int ALTO_BOMBA = 6;
-	
-	//velocidad inicial de la bomba
-	private static final double VELOCIDAD_BOMBA = 5;
-	
-	//daño de la bomba
-	private static final int DANIO_BOMBA = 5;
+	private int danio;
 	
 	//si la bomba ha explotado
 	private boolean explotada;
@@ -28,9 +18,9 @@ public class Bomba extends Movible {
 	 * @param posicion Posicion de su lanzante
 	 */
 	public Bomba(Posicion posicion, Elemento duenio, double direccion){
-		super(new Tamanio(ANCHO_BOMBA, ALTO_BOMBA), posicion);
-		this.setVelocidad(VELOCIDAD_BOMBA);
-		this.setDanio(DANIO_BOMBA);
+		super(new Tamanio(Config.ANCHO_BOMBA, Config.ALTO_BOMBA), posicion);
+		this.setVelocidad(Config.VELOCIDAD_BOMBA);
+		this.setDanio(Config.DANIO_BOMBA);
 		this.setDireccion(direccion);
 		
 		this.duenio = duenio;
