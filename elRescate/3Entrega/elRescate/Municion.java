@@ -9,23 +9,23 @@ public class Municion extends Movible {
 	
 	
 	//tamaño de la municion
-	private static final int ANCHO_MUNICION = 5;
-	private static final int ALTO_MUNICION = 5;
-	
-	//velocidad de la municion
-	private static final double VELOCIDAD_MUNICION = 4;
-	
-	//danio de la municion
-	private static final int DANIO_MUNICION = 1;
+//	private static final int ANCHO_MUNICION = 5;
+//	private static final int ALTO_MUNICION = 5;
+//	
+//	//velocidad de la municion
+//	private static final double VELOCIDAD_MUNICION = 4;
+//	
+//	//danio de la municion
+//	private static final int DANIO_MUNICION = 1;
 	
 	/**
 	 * Crea la munición en la posicip
 	 * @param posicion
 	 */
 	public Municion(Posicion posicion, Elemento duenio, double direccion){
-		super(new Tamanio(ANCHO_MUNICION,ALTO_MUNICION), posicion);
-		this.setDanio(DANIO_MUNICION);
-		this.setVelocidad(VELOCIDAD_MUNICION);
+		super(new Tamanio(Config.ANCHO_MUNICION,Config.ALTO_MUNICION), posicion);
+		this.setDanio(Config.DANIO_MUNICION);
+		this.setVelocidad(Config.VELOCIDAD_MUNICION);
 		this.duenio = duenio;
 		this.setDireccion(direccion);
 	}

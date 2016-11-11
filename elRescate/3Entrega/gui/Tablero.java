@@ -29,7 +29,7 @@ public class Tablero extends Canvas implements KeyListener{
 
 	
 	private void limpiar(){
-		this.getG2D().drawImage(getImagen("fondo3",Posicion.MAX_X, Posicion.MAX_Y), 0, 0, getWidth(), getHeight(), null);
+		this.getG2D().drawImage(getImagen("fondo3",Config.MAX_X, Config.MAX_Y), 0, 0, getWidth(), getHeight(), null);
 	}
 	
 	public void mostrar(ArrayList<Elemento> elementos){

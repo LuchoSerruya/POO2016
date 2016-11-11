@@ -23,17 +23,17 @@ public class RobotQuejoDido extends Robot{
 		  * distancia de 5
 		  */
 			
-		if(this.getPos().equals(ZonaRescate.ESQ_SUP_DER)){
+		if(this.getPos().equals(Config.ESQ_SUP_DER)){
 			this.setDireccion(270);
 		}
-		else if(this.getPos().equals(ZonaRescate.ESQ_INF_DER)){
+		else if(this.getPos().equals(Config.ESQ_INF_DER)){
 			this.setDireccion(180);
 		}
-		else if(this.getPos().equals(ZonaRescate.ESQ_INF_IZQ)){
+		else if(this.getPos().equals(Config.ESQ_INF_IZQ)){
 			this.setDireccion(90);
 			
 		}
-		else if(this.getPos().equals(ZonaRescate.ESQ_SUP_IZQ)){
+		else if(this.getPos().equals(Config.ESQ_SUP_IZQ)){
 			this.setDireccion(0);
 		}
 		
@@ -66,7 +66,7 @@ public class RobotQuejoDido extends Robot{
 						encontro = true;
 					}
 				}
-				else if((e instanceof BonusEnergia) && (this.getNivelEnergia() < ENERGIA_DEFAULT * 0.2)){
+				else if((e instanceof BonusEnergia) && (this.getNivelEnergia() < Config.ENERGIA_DEFAULT * 0.2)){
 					this.getRadar().apuntar(e);
 					this.dispararMunicion();
 					encontro = true;

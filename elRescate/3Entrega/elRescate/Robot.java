@@ -11,16 +11,16 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	private Radar radar;
 	private Persona persona;
 
-	protected static final int ENERGIA_DEFAULT = 1000;
-	protected static final int ESCUDO_DEFUALT = 100;
-	private static final int MUNICIONES_DEFAULT = 100;
-	private static final int BOMBAS_DEFAULT = 10;
-
-	private static final int ANCHO_ROBOT = 20;
-	private static final int ALTO_ROBOT= 20;
-
-	private static final double GASTO_ENERGIA_MOVIMIENTO = 0.01;
-	protected static final double VELOCIDAD_ROBOT = 5;
+//	protected static final int ENERGIA_DEFAULT = 1000;
+//	protected static final int ESCUDO_DEFUALT = 100;
+//	private static final int MUNICIONES_DEFAULT = 100;
+//	private static final int BOMBAS_DEFAULT = 10;
+//
+//	private static final int ANCHO_ROBOT = 20;
+//	private static final int ALTO_ROBOT= 20;
+//
+//	private static final double GASTO_ENERGIA_MOVIMIENTO = 0.01;
+//	protected static final double VELOCIDAD_ROBOT = 5;
 
 	/**
 	 * Crea un robot con un tamanio fijo en una posicion indicada.
@@ -28,13 +28,13 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	 * @param posicion
 	 */
 	public Robot(Posicion posicion){
-		super(new Tamanio(ANCHO_ROBOT, ALTO_ROBOT), posicion);
+		super(new Tamanio(Config.ANCHO_ROBOT, Config.ALTO_ROBOT), posicion);
 
-		setCantidadBombas(BOMBAS_DEFAULT);
-		setCantidadMuniciones(MUNICIONES_DEFAULT);
+		setCantidadBombas(Config.BOMBAS_DEFAULT);
+		setCantidadMuniciones(Config.MUNICIONES_DEFAULT);
 
-		this.setNivelEscudo(ESCUDO_DEFUALT);
-		this.setNivelEnergia(ENERGIA_DEFAULT);
+		this.setNivelEscudo(Config.ESCUDO_DEFUALT_ROBOT);
+		this.setNivelEnergia(Config.ENERGIA_DEFAULT);
 
 		this.radar = new Radar(this,this.getDireccion());
 		this.radar.addRadarListener(this);
@@ -126,14 +126,14 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 	public void avanzar() {
 		//Si aun tengo energia, me muevo
 		if(this.getNivelEnergia() > 0){	
-			this.setVelocidad(VELOCIDAD_ROBOT);
+			this.setVelocidad(Config.VELOCIDAD_ROBOT);
 			super.avanzar();
 	
 			//Preguntamos si tiene una persona cargada para controlar el gasto de energia
 			if(this.llevandoPersona())
-				this.setNivelEnergia((int)(this.getNivelEnergia() - GASTO_ENERGIA_MOVIMIENTO));
+				this.setNivelEnergia((int)(this.getNivelEnergia() - Config.GASTO_ENERGIA_MOVIMIENTO));
 			else
-				this.setNivelEnergia((int)(this.getNivelEnergia() - (GASTO_ENERGIA_MOVIMIENTO * 2)));
+				this.setNivelEnergia((int)(this.getNivelEnergia() - (Config.GASTO_ENERGIA_MOVIMIENTO * 2)));
 		}
 	}
 
@@ -230,7 +230,7 @@ public abstract class Robot extends Movible implements TieneEscudo, RadarListene
 			//si no es nuestro refugio y no estamos llevando persona
 			//robamos persona
 			this.cargarPersona(refugio.quitarPersona());
-			this.setNivelEscudo(this.getNivelEscudo() - Refugio.PENALIDAD);
+			this.setNivelEscudo(this.getNivelEscudo() - Config.PENALIDAD);
 		
 				
 		}

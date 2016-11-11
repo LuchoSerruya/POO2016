@@ -17,8 +17,8 @@ public class Radar{
 	//ArrayList de los listeners
 	private ArrayList<RadarListener> listeners;
 	
-	private static final int ANCHO_RADAR = 1;
-	private static final int ALTO_RADAR = 1;	
+//	private static final int ANCHO_RADAR = 1;
+//	private static final int ALTO_RADAR = 1;	
 	
 	/**
 	 * Agregamos a un escuchador del Radar

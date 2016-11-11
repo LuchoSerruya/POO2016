@@ -3,13 +3,13 @@ package elRescate;
 
 public class Posicion {
 	//constantes para definir el tamanio del escenario
-	public static final int MAX_X = 600;
-	public static final int MAX_Y = 600;
-	public static final int MIN_X= 0;
-	public static final int MIN_Y = 0;
+//	public static final int MAX_X = 600;
+//	public static final int MAX_Y = 600;
+//	public static final int MIN_X= 0;
+//	public static final int MIN_Y = 0;
 	
-	private int x = MIN_X;
-	private int y = MIN_Y;
+	private int x = Config.MIN_X;
+	private int y = Config.MIN_Y;
 
 	/**
 	 * Devuelve coordenada x de un elemento
@@ -24,7 +24,7 @@ public class Posicion {
 	 * @param x
 	 */
 	public void setX(int x) {
-		if(x >= MIN_X && x <= MAX_X)
+		if(x >= Config.MIN_X && x <= Config.MAX_X)
 			this.x = x;
 	}
 
@@ -41,7 +41,7 @@ public class Posicion {
 	 * @param y
 	 */
 	public void setY(int y) {
-		if(y >= MIN_Y && y <= MAX_Y)
+		if(y >= Config.MIN_Y && y <= Config.MAX_Y)
 			this.y = y;
 	}
 	
@@ -69,7 +69,7 @@ public class Posicion {
 	 * Crea una posicion con valores predeterminados
 	 */
 	public Posicion(){
-		this(MIN_X, MIN_Y);
+		this(Config.MIN_X, Config.MIN_Y);
 	}
 	
 	

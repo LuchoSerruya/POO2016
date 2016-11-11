@@ -35,7 +35,7 @@ public class RobotSoldadoRyan extends Robot {
 		for(Elemento e : elementos){
 			if(!encontro){
 				if((e instanceof Bomba) || 
-				  ((e instanceof BonusEscudo) && (this.getNivelEscudo() < (ESCUDO_DEFUALT * 0.4)))){
+				  ((e instanceof BonusEscudo) && (this.getNivelEscudo() < (Config.ESCUDO_DEFUALT_ROBOT * 0.4)))){
 					/*Si detecta una bomba o si detecta un bonus de escudo 
 					 * y tiene menos del 40% del escudo inicial, apunta y dispara*/
 					this.getRadar().apuntar(e);

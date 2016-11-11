@@ -12,13 +12,14 @@ import java.util.Stack;
  */
 public class Refugio extends Elemento {
 
-	private static final int ANCHO_REFUGIO = 50;
-	private static final int ALTO_REFUGIO = 50;
+//	private static final int ANCHO_REFUGIO = 50;
+//	private static final int ALTO_REFUGIO = 50;
+//	public static final int PENALIDAD = 3;
 	
 	private Stack<Persona> listaPersonas;
 	
 	private int cantidadRefugiados;
-	public static final int PENALIDAD = 3;
+	
 	
 	
 	/**
@@ -26,7 +27,7 @@ public class Refugio extends Elemento {
 	 * @param posicion
 	 */
 	public Refugio(Posicion posicion){
-		super(new Tamanio(ANCHO_REFUGIO, ALTO_REFUGIO), posicion);
+		super(new Tamanio(Config.ANCHO_REFUGIO, Config.ALTO_REFUGIO), posicion);
 		
 		//lista de personas
 		listaPersonas = new Stack<Persona>();
