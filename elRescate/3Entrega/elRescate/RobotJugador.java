@@ -68,7 +68,6 @@ public class RobotJugador extends Robot{
 	public void elementosDetectado(ArrayList<Elemento> elementos) {
 		super.elementosDetectado(elementos);
 		
-		//System.out.println("ROBOT JUGADOR: detecte algo");
 		
 	}
 	

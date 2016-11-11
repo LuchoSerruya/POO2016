@@ -10,7 +10,6 @@ public class SateliteQuejoDido extends Satelite {
 	
 	@Override
 	public void jugar() {
-		//que podria hacer??
 		super.jugar();
 	}
 	

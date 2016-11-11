@@ -10,7 +10,6 @@ public class SateliteSoldadoRyan extends Satelite{
 	
 	@Override
 	public void jugar() {
-		//que podria hacer??
 		super.jugar();
 	}
 	
@@ -30,10 +29,7 @@ public class SateliteSoldadoRyan extends Satelite{
 					 * y tiene menos del 40% del escudo inicial y adem�s todavia
 					 * no encontr� ni bomba ni bonus, apunta y dispara
 					 * */
-					
-					//el apuntar deberia ser de Radar, o de Elemento de ultima
-					//this.apuntar(e);
-					System.out.println("SATELITE SOLDADO RYAN WA A DISPARA");
+
 					this.getRadar().apuntar(e);
 					this.dispararMunicion();
 					encontro = true;
