@@ -1,16 +1,21 @@
 package elRescate;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RobotRencoroso extends Robot {
 	
 	@Override
 	public void jugar() {
 		super.jugar();
+		if(fueraDeEscenario()){
+			this.setDireccion(new Random().nextInt(360));
+		}
 	}
 	
 	public RobotRencoroso(Posicion posicion){
 		super(posicion);
+		this.setDireccion(new Random().nextInt(360));
 	}
 	
 	@Override
@@ -21,12 +26,10 @@ public class RobotRencoroso extends Robot {
 	@Override
 	public void elementosDetectado(ArrayList<Elemento> elementos) {
 		super.elementosDetectado(elementos);
+		
 		/*
 		 * Bandera para que no itere de m�s
 		 */
-		
-		
-		
 		boolean encontro = false;
 		
 		for(Elemento e : elementos){

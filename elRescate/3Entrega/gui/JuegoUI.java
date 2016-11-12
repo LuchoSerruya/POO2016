@@ -13,6 +13,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -21,6 +22,7 @@ import elRescate.*;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -28,6 +30,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JuegoUI extends JFrame implements EscenarioListener{
 
@@ -249,16 +253,36 @@ public class JuegoUI extends JFrame implements EscenarioListener{
 		JMenu mnJuego = new JMenu("Juego");
 		menuBar.add(mnJuego);
 		
-		JMenuItem mntmReiniciar = new JMenuItem("Reiniciar");
-		mnJuego.add(mntmReiniciar);
 		
 		JMenuItem mntmPausar = new JMenuItem("Pausar");
+		mntmPausar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Escenario.getEscenario().pausa();
+			}
+		});
 		mnJuego.add(mntmPausar);
+		
+		JMenuItem mntmContinuar = new JMenuItem("Continuar");
+		mntmContinuar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Escenario.getEscenario().reanudar();
+			}
+		});
+		mnJuego.add(mntmContinuar);
 		
 		JSeparator separator = new JSeparator();
 		mnJuego.add(separator);
 		
 		JMenuItem mntmSalir = new JMenuItem("Salir");
+		mntmSalir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);	
+			}
+		});
 		mnJuego.add(mntmSalir);
 		
 		JMenu mnAyuda = new JMenu("Ayuda");
@@ -266,6 +290,19 @@ public class JuegoUI extends JFrame implements EscenarioListener{
 		
 		JMenuItem mntmAcercaDe = new JMenuItem("Acerca de");
 		mnAyuda.add(mntmAcercaDe);
+		mntmAcercaDe.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, new String("El Rescate\n"
+						+ "Programación Orientada a Objetos, 2016. UNPSJB\n\n"
+						+ "Pablo Toledo Margalef\n"
+						+ "Luciano Serruya Aloisi"));
+				
+			}
+		});
+		
+		
 		this.setVisible(true);	
 		
 		tablero.inicializar();

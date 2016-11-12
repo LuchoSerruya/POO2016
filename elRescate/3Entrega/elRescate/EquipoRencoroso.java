@@ -1,5 +1,6 @@
 package elRescate;
 
+
 public class EquipoRencoroso extends Equipo {
 	private static EquipoRencoroso equipo;
 	
@@ -28,6 +29,5 @@ public class EquipoRencoroso extends Equipo {
 	 */
 	private EquipoRencoroso(Robot robot, Satelite sat1, Satelite sat2, Refugio refugio){
 		super(robot, sat1, sat2, refugio);
-		robot.setDireccion(90);
 	}
 }

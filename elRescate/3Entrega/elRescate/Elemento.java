@@ -67,9 +67,8 @@ public abstract class Elemento {
 	 * Destruir el elemento
 	 */
 	public void destruir(){
-		//Eliminamos el elemento destruido de la lista del escenario
+
 		this.existe = false;
-		//Depende de la implementación para mostrarlos
 	}
 	
 	/**
@@ -141,8 +140,8 @@ public abstract class Elemento {
 	 * @return True si esta fuera de los limites del escenario, false si esta dentro del escenario
 	 */
 	public boolean fueraDeEscenario(){
-		return ((this.getPos().getX() <= Config.MIN_X) || (this.getPos().getX() >= Config.MAX_X) ||
-				(this.getPos().getY() <= Config.MIN_Y) || (this.getPos().getY() >= Config.MAX_Y));
+		return ((this.getPos().getX() <= Config.MIN_X + 10) || (this.getPos().getX() >= Config.MAX_X - 10) ||
+				(this.getPos().getY() <= Config.MIN_Y + 10) || (this.getPos().getY() >= Config.MAX_Y - 10));
 	}
 	
 	

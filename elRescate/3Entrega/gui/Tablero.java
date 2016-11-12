@@ -27,6 +27,12 @@ public class Tablero extends Canvas implements KeyListener{
 		this.addKeyListener(this);
 	}
 
+	/*
+	@Override
+	public void paint(Graphics g) {
+		mostrar();
+	}*/
+	
 	
 	private void limpiar(){
 		this.getG2D().drawImage(getImagen("fondo3",Config.MAX_X, Config.MAX_Y), 0, 0, getWidth(), getHeight(), null);
@@ -234,6 +240,7 @@ public class Tablero extends Canvas implements KeyListener{
 		
 		bomba = rotar(bomba, elem.getDireccion());
 		
+		bomba = cambiarTamanio(bomba,elem.getTam().getAncho(),elem.getTam().getAlto());
 		this.getG2D().drawImage(bomba, elem.getPos().getX(), elem.getPos().getY(), null);
 	}
 	

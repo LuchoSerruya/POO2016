@@ -55,4 +55,9 @@ public class Tamanio {
 	public Tamanio(){
 		this(Config.MIN_ANCHO, Config.MIN_ALTO);
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("Ancho: %d\nAlto: %d", this.getAncho(), this.getAlto());
+	}
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import gui.EscenarioListener;
 import java.awt.Polygon;
 import java.awt.Rectangle;
-import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -20,6 +19,7 @@ public class Escenario{
 	private static Escenario escenario = null;
 	private Tamanio tamanioEscenario;
 	private ZonaRescate zonaRescate;
+	private boolean pausado = false;
 	
 	private int turnoBonus;
 	
@@ -51,6 +51,36 @@ public class Escenario{
 		this.turnoBonus = 0;
 	}
 	
+	
+	/**
+	 * Realiza espera
+	 * @param millis cantidad de milisegundos a esperar
+	 */
+	public static void espera(long millis){
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Pausa el juego
+	 */
+	public void pausa(){
+		this.pausado = true;
+		System.out.println("Pause");
+	}
+	
+	/**
+	 * Reanuda el juego
+	 */
+	public void reanudar(){
+		this.pausado = false;
+		System.out.println("Continuar");
+	}
+	
+	
 	/**
 	 * Inicia el juego
 	 */
@@ -58,29 +88,30 @@ public class Escenario{
 		//crearElementos();
 		
 		while(true){
-			aparecerBonus();
 			
-			//que jueguen todos
-			turnos();
-			
-			this.turnoBonus++;
-			
-			//ver qué paso
-			verificarChoques();
+			if(!pausado){
 
-			//quitar los que haya que
-			depurarElementos();
-
-			mostrarUI();
-			
-			//mostrarEstado();
-			
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+				aparecerBonus();
+				
+				//que jueguen todos
+				turnos();
+				
+				this.turnoBonus++;
+				
+				//ver qué paso
+				verificarChoques();
+				
+				//quitar elementos destruidos
+				depurarElementos();
+	
+				mostrarUI();
+				
+				espera(100);
 			}
-			
+			else{
+
+				espera(1000);
+			}
 			
 		}
 	}
@@ -106,22 +137,7 @@ public class Escenario{
 			listener.actualizar(this.elementos);
 		}
 	}
-	
-	/**
-	 * Muestra la posicion de cada Elemento creado
-	 */
-	private void mostrarEstado() {
-		
-		for(Elemento e : elementos){
-//			e.dibujarse();
-			if(e instanceof Robot){
-				System.out.println(e.toString());
-			}
-		}
-		
-		
-		
-	}
+
 	
 	public void addEscenarioListener(EscenarioListener listener){
 		listeners.add(listener);
@@ -198,10 +214,10 @@ public class Escenario{
 		this.elementos.remove(elemento);
 	}
 	
-	/*
+	
 	public Tamanio getTamanio(){
 		return this.tamanioEscenario;
-	}*/
+	}
 	
 	/**
 	 * 

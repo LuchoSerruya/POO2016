@@ -1,5 +1,7 @@
 package elRescate;
 
+import javax.swing.JOptionPane;
+
 /**
  * Bomba a ser lanzada
  *
@@ -22,6 +24,7 @@ public class Bomba extends Movible {
 		this.setVelocidad(Config.VELOCIDAD_BOMBA);
 		this.setDanio(Config.DANIO_BOMBA);
 		this.setDireccion(direccion);
+		this.explotada = false;
 		
 		this.duenio = duenio;
 	}
@@ -48,6 +51,7 @@ public class Bomba extends Movible {
 	public Elemento getDuenio() {
 		return this.duenio;
 	}
+	//a
 	
 	
 	/**
@@ -56,10 +60,9 @@ public class Bomba extends Movible {
 	@Override
 	public void avanzar() {
 		//si la bomba todavía posee velocidad
-		if(this.getVelocidad()>0.5){
-			this.setVelocidad(Config.VELOCIDAD_BOMBA);
+		if(this.getVelocidad() > 1){
 			super.avanzar();
-			this.setVelocidad(this.getVelocidad() - 0.01);
+			this.setVelocidad(this.getVelocidad() - 0.1);
 		}
 		else{
 			//si se quedó sin velocidad, tiene que explotar
@@ -73,17 +76,9 @@ public class Bomba extends Movible {
 	 */
 	public void explotar() {
 		//conseguimos su tamaño actual
-		if(!this.explotada){
-		Tamanio tamanioBomba = this.getTam();
-		
-		//lo modificamos
-		tamanioBomba.setAlto(tamanioBomba.getAlto() * 10);
-		tamanioBomba.setAncho(tamanioBomba.getAncho() * 10);
-		
-		//se lo otorgamos
-		this.setTam(tamanioBomba);
-		this.explotada = true;
-		this.destruir();
+		if(!this.haExplotado()){
+			this.setTam(new Tamanio(Config.ALTO_BOMBA*10, Config.ANCHO_BOMBA*10));
+			this.explotada = true;
 		}
 	}
 	
@@ -92,6 +87,8 @@ public class Bomba extends Movible {
 	 */
 	public void jugar(){
 		this.avanzar();
+		if(this.haExplotado())
+			this.destruir();
 	}
 	
 	/**
@@ -121,6 +118,5 @@ public class Bomba extends Movible {
 			this.explotar();
 		}
 		
-
 	}
 }

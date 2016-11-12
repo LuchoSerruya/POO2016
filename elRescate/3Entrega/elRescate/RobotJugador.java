@@ -2,6 +2,8 @@ package elRescate;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class RobotJugador extends Robot{
 	
 	
@@ -89,5 +91,14 @@ public class RobotJugador extends Robot{
 			this.setCantidadMuniciones(this.getCantidadMuniciones() - 1);
 		}
 
+	}
+	
+	@Override
+	public void setNivelEscudo(int nivelEscudo) {
+		super.setNivelEscudo(nivelEscudo);
+		if(this.getNivelEscudo() == 0){
+			JOptionPane.showMessageDialog(null, new String("¡Robot destruido!"));
+			System.exit(0);
+		}
 	}
 }
